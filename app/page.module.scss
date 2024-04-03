@@ -1,0 +1,7 @@
+.main {
+  background-color: var(--test-background);
+
+  &.test {
+    color: rgb(67, 126, 0);
+  }
+}
