@@ -1,7 +1,8 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./login.module.scss";
 import cn from "classnames";
+import Button from "../Button/Button";
 
 export default function Login(): JSX.Element {
   const handleClick = (): void => {
@@ -24,8 +25,8 @@ export default function Login(): JSX.Element {
   };
 
   return (
-    <button className={cn(styles.buttonTest)} onClick={handleClick}>
-      Login
-    </button>
+    <Button onClick={handleClick} appearance={"login"}>
+      Continue with Spotify
+    </Button>
   );
 }

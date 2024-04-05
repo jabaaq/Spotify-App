@@ -1,7 +1,19 @@
 .main {
-  background-color: var(--test-background);
+  background-color: var(--green);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  &.test {
-    color: rgb(67, 126, 0);
+  .login_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .logo {
+    min-width: 250px;
+    width: 40vw;
   }
 }
