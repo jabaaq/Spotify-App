@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
-import styles from "./login.module.scss";
-import cn from "classnames";
 import Button from "../Button/Button";
+import spotifyLogo from "../../public/Spotify_Logo_CMYK_Black.png";
+import cn from "classnames";
+import styles from "./login.module.scss";
 
 export default function Login(): JSX.Element {
   const handleClick = (): void => {
@@ -25,8 +26,11 @@ export default function Login(): JSX.Element {
   };
 
   return (
-    <Button onClick={handleClick} appearance={"login"}>
-      Continue with Spotify
-    </Button>
+    <div className={cn(styles.login_container, {})}>
+      <img src={spotifyLogo.src} alt="Spotify" className={cn(styles.logo)} />
+      <Button onClick={handleClick} appearance={"login"}>
+        Continue with Spotify
+      </Button>
+    </div>
   );
 }

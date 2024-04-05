@@ -5,7 +5,12 @@ import styles from "./Button.module.scss";
 
 const Button = ({ appearance, children, ...props }: ButtonProps) => {
   return (
-    <button className={cn(styles.login_button)} {...props}>
+    <button
+      className={cn(styles.button, {
+        [styles.login_button]: appearance === "login",
+      })}
+      {...props}
+    >
       {children}
     </button>
   );

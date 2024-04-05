@@ -4,6 +4,7 @@ import { RootState } from "./store/store";
 import { useEffect } from "react";
 import { reducerCases } from "./store/slice";
 import Login from "@/component/Login/Login";
+import Spotify from "./spotify/page";
 
 const GetToken = () => {
   const dispatch = useDispatch();
@@ -14,11 +15,11 @@ const GetToken = () => {
     if (hash) {
       const token: string = hash.substring(1).split("&")[0].split("=")[1];
       dispatch(reducerCases(token));
-      console.log(token);
+      // console.log(token);
     }
   }, [token, dispatch]);
 
-  return <div>{token ? "You are logged in" : <Login />}</div>;
+  return <div>{token ? <Spotify /> : <Login />}</div>; //I have to add Error page here
 };
 
 export default GetToken;
