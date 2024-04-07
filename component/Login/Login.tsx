@@ -3,7 +3,7 @@ import React from "react";
 import Button from "../Button/Button";
 import spotifyLogo from "../../public/Spotify_Logo_CMYK_Black.png";
 import cn from "classnames";
-import styles from "./login.module.scss";
+import style from "./login.module.scss";
 
 export default function Login(): JSX.Element {
   const handleClick = (): void => {
@@ -26,11 +26,13 @@ export default function Login(): JSX.Element {
   };
 
   return (
-    <div className={cn(styles.login_container, {})}>
-      <img src={spotifyLogo.src} alt="Spotify" className={cn(styles.logo)} />
-      <Button onClick={handleClick} appearance={"login"}>
-        Continue with Spotify
-      </Button>
-    </div>
+    <main className={cn(style.main)}>
+      <div className={cn(style.login_container, {})}>
+        <img src={spotifyLogo.src} alt="Spotify" className={cn(style.logo)} />
+        <Button onClick={handleClick} appearance={"login"}>
+          Continue with Spotify
+        </Button>
+      </div>
+    </main>
   );
 }

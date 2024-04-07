@@ -1,15 +1,20 @@
 "use client";
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import cn from "classnames";
+import style from "./spotify.module.scss";
+import Link from "next/link";
+import { checkToken } from "@/component/checkToken";
+import { useEffect } from "react";
 
 export default function Spotify() {
-  const { token } = useSelector((state: RootState) => state.spotifyReducer);
+  const checkT = checkToken();
+  // const { token } = useSelector((state: RootState) => state.spotifyReducer);
   useEffect(() => {
-    console.log(token);
+    console.log(checkT);
   }, []);
 
   return (
-    <>{token === null ? <h1>Please log in</h1> : <h1>Spotify Main Page</h1>}</> ////I have to add Error page here
+    <main className={cn(style.main)}>
+      {checkT ? <h1>hello world!</h1> : <h1>NOPE</h1>}
+    </main>
   );
 }

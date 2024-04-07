@@ -2,24 +2,23 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import { useEffect } from "react";
-import { reducerCases } from "./store/slice";
+import { setToken } from "./store/slice";
 import Login from "@/component/Login/Login";
 import Spotify from "./spotify/page";
 
 const GetToken = () => {
-  const dispatch = useDispatch();
   const { token } = useSelector((state: RootState) => state.spotifyReducer);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const hash: string = window.location.hash;
     if (hash) {
       const token: string = hash.substring(1).split("&")[0].split("=")[1];
-      dispatch(reducerCases(token));
-      // console.log(token);
+      dispatch(setToken(token));
     }
   }, [token, dispatch]);
 
-  return <div>{token ? <Spotify /> : <Login />}</div>; //I have to add Error page here
+  return <div>{token ? <h1>Logged</h1> : <Login />}</div>; //I have to add Error page here instead of <Login/>
 };
 
 export default GetToken;
