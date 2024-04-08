@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import { Quicksand } from "next/font/google";
 import style from "./spotify.module.scss";
+import Navbar from "@/component/Navbar/Navbar";
 
-const fonts = Open_Sans({ subsets: ["latin"] });
+const fonts = Quicksand({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Spotify - Web Player: Music for everyone",
@@ -16,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <div className={fonts.className}>
-      <h1>Navbar</h1>
+      <Navbar>Search</Navbar>
       {children}
     </div>
   );
