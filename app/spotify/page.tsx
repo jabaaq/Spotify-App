@@ -9,26 +9,23 @@ import { AppDispatch, RootState } from "../store/store";
 import Login from "@/component/Login/Login";
 import { useRouter } from "next/navigation";
 import { fetchPlaylist } from "../store/slice";
+import HomePage from "./HomePage/HomePage";
 
 export default function Spotify() {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
-  const checkT = checkToken();
 
   const { token } = useSelector((state: RootState) => state.spotifyReducer);
 
   useEffect(() => {
-    console.log(checkT);
-    console.log(token);
-    dispatch(fetchPlaylist());
     if (!token) {
       router.push("/");
     }
-  }, []);
+    console.log(token);
+    dispatch(fetchPlaylist());
+  }, [token, dispatch]);
 
   return (
-    <main className={cn(style.main)}>
-      {checkT ? <h1>Hello</h1> : <Login />}
-    </main>
+    <main className={cn(style.main)}>{token ? <HomePage /> : <Login />}</main>
   );
 }

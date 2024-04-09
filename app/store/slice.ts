@@ -1,4 +1,4 @@
-import { AsyncThunkAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { useHttp } from "@/services/http.hook";
 import { RootState } from "./store";
@@ -8,32 +8,22 @@ const { request } = useHttp();
 export interface SpotifyState {
   token: string | null;
   fetchedPlaylist: any;
+  loadHomePage: boolean;
 }
 
 const initialState: SpotifyState = {
   token: sessionStorage.getItem("spotifyToken") || null,
   fetchedPlaylist: [],
+  loadHomePage: false,
 };
-
-// export const fetchPlaylist = createAsyncThunk(
-//   "fetch/fetchPlaylist",
-//   async () => {
-//     const url: string = "https://api.spotify.com/v1/me/playlists";
-//     const res = await request(url);
-//     console.log(res);
-//     return res;
-//   }
-// );
 
 export const fetchPlaylist = createAsyncThunk(
   "fetch/fetchPlaylist",
   async () => {
-    const { token } = initialState;
+    const token: string | null = sessionStorage.getItem("spotifyToken");
+    console.log(token);
     const url: string = "https://api.spotify.com/v1/me/playlists";
-    const res = await request(url, "GET", null, {
-      Authorization: "Bearer " + token,
-      "Content-Type": "application/json",
-    });
+    const res = await request(url, token);
     console.log(res);
     return res;
   }
@@ -44,19 +34,22 @@ export const spotifySlice = createSlice({
   initialState,
   reducers: {
     setToken: (state, action: PayloadAction<string>) => {
-      state.token = action.payload;
       sessionStorage.setItem("spotifyToken", action.payload);
+      state.token = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPlaylist.fulfilled, (state, action) => {
         state.fetchedPlaylist = action.payload;
+        state.loadHomePage = true;
       })
-      .addCase(fetchPlaylist.pending, () => {
+      .addCase(fetchPlaylist.pending, (state, action) => {
+        state.loadHomePage = false;
         console.log("Pending");
       })
-      .addCase(fetchPlaylist.rejected, () => {
+      .addCase(fetchPlaylist.rejected, (state, action) => {
+        state.loadHomePage = false;
         console.log("Rejected");
       });
   },

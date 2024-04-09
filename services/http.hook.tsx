@@ -1,10 +1,11 @@
 const useHttp = () => {
   const request = async (
     url: string,
+    token: string | null,
     method = "GET",
     body = null,
     headers = {
-      Authorization: "Bearer ",
+      Authorization: "Bearer " + token,
       "Content-Type": "application/json",
     }
   ) => {
