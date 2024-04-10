@@ -1,8 +1,6 @@
 "use client";
 import cn from "classnames";
 import style from "./spotify.module.scss";
-import Link from "next/link";
-import { checkToken } from "@/component/checkToken";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";

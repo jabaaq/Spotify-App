@@ -20,7 +20,7 @@ const initialState: SpotifyState = {
 export const fetchPlaylist = createAsyncThunk(
   "fetch/fetchPlaylist",
   async () => {
-    const token: string | null = sessionStorage.getItem("spotifyToken");
+    const token: string | null = sessionStorage.getItem("spotifyToken"); //it will always get the latest token value from sessionStorage
     console.log(token);
     const url: string = "https://api.spotify.com/v1/me/playlists";
     const res = await request(url, token);

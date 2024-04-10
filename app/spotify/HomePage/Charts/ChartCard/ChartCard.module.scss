@@ -1,0 +1,32 @@
+.chartCard {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  background: var(--dark-alt);
+  color: var(--text-color);
+  max-width: 415px;
+  width: 90%;
+  border-radius: 20px;
+  height: 96px;
+  padding: 17px;
+
+  .chartCard_description {
+    margin: 17px;
+
+    h3 {
+      color: white;
+    }
+
+    :nth-child(3) {
+      color: white;
+    }
+  }
+
+  img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,43 @@
+.heroSection_container {
+  width: 60%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  .section_description {
+    color: white;
+    position: absolute;
+    text-wrap: wrap;
+    width: 30%;
+    // max-width: 270px;
+    margin: 0 45px;
+
+    h2 {
+      font-size: 35px;
+    }
+
+    p {
+      font-size: 14px;
+      height: 50px;
+      //   tex
+    }
+  }
+
+  img {
+    border-radius: 40px;
+    width: 100%;
+    object-fit: cover;
+    min-height: 380px;
+  }
+}
+@media only screen and (max-width: 720px) {
+  .heroSection_container {
+    width: 100%;
+    height: 500px;
+
+    img {
+      min-height: 501px;
+      border-radius: 20px;
+    }
+  }
+}
