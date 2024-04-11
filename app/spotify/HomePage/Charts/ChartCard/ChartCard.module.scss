@@ -1,4 +1,5 @@
 .chartCard {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -28,5 +29,41 @@
     height: 65px;
     object-fit: cover;
     border-radius: 10px;
+  }
+}
+@media only screen and (max-width: 720px) {
+  .chartCard {
+    width: 320px;
+    height: 233px;
+    flex-direction: column;
+    align-items: flex-start;
+
+    img {
+      width: 108px;
+      height: 99px;
+    }
+
+    .chartCard_description {
+      margin: 0;
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      // align-items: center;
+      flex-direction: column;
+
+      h3 {
+        font-size: 17px;
+      }
+
+      :nth-child(2) {
+        font-size: 14px;
+      }
+
+      :nth-child(3) {
+        font-size: 17px;
+        color: white;
+        margin-top: 23px;
+      }
+    }
   }
 }

@@ -1,6 +1,7 @@
 import styles from "./ChartCard.module.scss";
 import cn from "classnames";
 import testImg from "../../../../../testImages/heroSection.jpeg";
+import Checkbox from "@/component/Checkbox/Checkbox";
 
 const ChartCard = () => {
   return (
@@ -12,6 +13,7 @@ const ChartCard = () => {
         <p>Artist Name</p>
         <p>2:34:45</p>
       </div>
+      <Checkbox children={null}></Checkbox>
     </div>
   );
 };

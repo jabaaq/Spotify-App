@@ -19,7 +19,7 @@ export default function Spotify() {
     if (!token) {
       router.push("/");
     }
-    console.log(token);
+    // console.log(token);
     dispatch(fetchPlaylist());
   }, [token, dispatch]);
 
