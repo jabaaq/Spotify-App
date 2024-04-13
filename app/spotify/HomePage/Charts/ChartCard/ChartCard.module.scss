@@ -7,10 +7,14 @@
   background: var(--dark-alt);
   color: var(--text-color);
   max-width: 415px;
+  min-width: 260px;
   width: 90%;
   border-radius: 20px;
   height: 96px;
   padding: 17px;
+  text-wrap: nowrap;
+  flex-wrap: nowrap;
+  overflow: hidden;
 
   .chartCard_description {
     margin: 17px;
@@ -48,7 +52,6 @@
       display: flex;
       gap: 5px;
       justify-content: center;
-      // align-items: center;
       flex-direction: column;
 
       h3 {

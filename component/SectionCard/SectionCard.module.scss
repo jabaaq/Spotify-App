@@ -1,0 +1,39 @@
+.section_card {
+  height: 193px;
+  width: 153px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--white);
+  cursor: pointer;
+
+  .card_description {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+
+    h3 {
+      font-weight: 500;
+    }
+
+    p {
+      font-weight: 500;
+      color: var(--text-color);
+    }
+  }
+
+  .card_image {
+    width: 153px;
+    height: 153px;
+    border-radius: 25px;
+    object-fit: cover;
+    transition: 0.4s;
+
+    &:hover {
+      filter: grayscale(100%) brightness(50%);
+    }
+  }
+}

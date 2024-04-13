@@ -36,13 +36,13 @@ const Charts = () => {
       ) : (
         <div className={cn(style.swiper)}>
           <Swiper
-            slidesPerView={1}
-            spaceBetween={1}
-            freeMode={true}
+            slidesPerView={2}
+            spaceBetween={320}
+            // freeMode={true}
             modules={[FreeMode, Pagination]}
             className="mySwiper"
             loop={true}
-            centeredSlidesBounds={true}
+            // centeredSlidesBounds={true}
           >
             <SwiperSlide>
               <ChartCard />
