@@ -17,8 +17,8 @@ const SectionBuilder = () => {
           500: {
             slidesPerView: 2.5,
           },
-          720: {
-            slidesPerView: 3,
+          750: {
+            slidesPerView: 4,
           },
           1200: {
             slidesPerView: 6,
@@ -30,7 +30,7 @@ const SectionBuilder = () => {
             slidesPerView: 9,
           },
         }}
-        spaceBetween={1}
+        spaceBetween={30}
         // freeMode={true}
         modules={[FreeMode, Pagination]}
         className="mySwiper"

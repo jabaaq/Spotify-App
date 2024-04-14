@@ -47,15 +47,6 @@
     display: none;
 }
 
-.heart-container .svg-celebrate {
-    position: absolute;
-    animation: keyframes-svg-celebrate .5s;
-    animation-fill-mode: forwards;
-    display: none;
-    stroke: var(--yellow);
-    fill: var(--yellow);
-    stroke-width: 2px;
-}
 
 .heart-container .checkbox:checked~.svg-container .svg-filled {
     display: block
@@ -80,22 +71,6 @@
     }
 }
 
-@keyframes keyframes-svg-celebrate {
-    0% {
-        transform: scale(0);
-    }
-
-    50% {
-        opacity: 1;
-        filter: brightness(1.5);
-    }
-
-    100% {
-        transform: scale(1.4);
-        opacity: 0;
-        display: none;
-    }
-}
 
 @media only screen and (max-width:720px) {
     .circle {

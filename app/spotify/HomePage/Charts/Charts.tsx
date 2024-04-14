@@ -9,14 +9,19 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store/store";
+import { Track } from "@/service/serviceInterfaces";
 
 const Charts = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const { fetchedTopTracks } = useSelector(
+    (state: RootState) => state.spotifyReducer
+  );
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -26,33 +31,48 @@ const Charts = () => {
 
   return (
     <div className={cn(style.chart_container)}>
-      <h1>Top Charts</h1> {/* need to create the h component */}
+      <h1>Top Charts</h1> {/* need to create the <h> component */}
       {windowWidth > 720 ? (
         <div className={cn(style.chartCards)}>
-          <ChartCard />
-          <ChartCard />
-          <ChartCard />
+          {fetchedTopTracks.map((item: Track) => (
+            <ChartCard
+              key={item.key}
+              title={item.title}
+              id={item.id}
+              image={item.image}
+              artist={item.artist}
+              duration={item.duration}
+            />
+          ))}
         </div>
       ) : (
         <div className={cn(style.swiper)}>
           <Swiper
-            slidesPerView={2}
-            spaceBetween={320}
-            // freeMode={true}
+            breakpoints={{
+              360: {
+                slidesPerView: 1.2,
+              },
+              560: {
+                slidesPerView: 1.7,
+              },
+            }}
+            spaceBetween={40}
+            cssMode={true}
             modules={[FreeMode, Pagination]}
             className="mySwiper"
-            loop={true}
-            // centeredSlidesBounds={true}
           >
-            <SwiperSlide>
-              <ChartCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ChartCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ChartCard />
-            </SwiperSlide>
+            {fetchedTopTracks.map((item: Track) => (
+              <SwiperSlide key={item.key}>
+                <ChartCard
+                  key={item.key}
+                  title={item.title}
+                  id={item.id}
+                  image={item.image}
+                  artist={item.artist}
+                  duration={item.duration}
+                />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       )}

@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import Login from "@/component/Login/Login";
 import { useRouter } from "next/navigation";
-import { fetchPlaylist } from "../store/slice";
+import { fetchPlaylist, fetchTopTracks } from "../store/slice";
 import HomePage from "./HomePage/HomePage";
 
 export default function Spotify() {
@@ -19,8 +19,8 @@ export default function Spotify() {
     if (!token) {
       router.push("/");
     }
-    // console.log(token);
     dispatch(fetchPlaylist());
+    dispatch(fetchTopTracks());
   }, [token, dispatch]);
 
   return (

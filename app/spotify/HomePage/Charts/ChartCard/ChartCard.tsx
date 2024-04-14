@@ -2,16 +2,17 @@ import styles from "./ChartCard.module.scss";
 import cn from "classnames";
 import testImg from "../../../../../testImages/heroSection.jpeg";
 import Checkbox from "@/component/Checkbox/Checkbox";
+import { Track } from "@/service/serviceInterfaces";
 
-const ChartCard = () => {
+const ChartCard = ({ title, image, artist, duration }: Track): JSX.Element => {
   return (
     <div className={cn(styles.chartCard)}>
-      <img src={testImg.src} alt="Test Image" />
+      <img src={image} alt="Test Image" />
       <div className={styles.chartCard_description}>
         {/* need to create the tag components */}
-        <h3>Music Title</h3>
-        <p>Artist Name</p>
-        <p>2:34:45</p>
+        <h3>{title}</h3>
+        <p>{artist}</p>
+        <p>{duration}</p>
       </div>
       <Checkbox children={null}></Checkbox>
     </div>
