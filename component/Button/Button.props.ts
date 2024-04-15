@@ -6,5 +6,5 @@ export interface ButtonProps
     HTMLButtonElement
   > {
   children: ReactNode;
-  appearance: "login";
+  appearance: "login" | "start";
 }

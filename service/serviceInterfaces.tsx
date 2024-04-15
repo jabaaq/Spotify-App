@@ -6,3 +6,14 @@ export interface Track {
   artist: string;
   duration: string;
 }
+
+export interface Playlist {
+  name?: string;
+  image?: string;
+  id?: string;
+  description?: string;
+}
+
+export interface User {
+  name: string;
+}

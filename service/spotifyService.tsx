@@ -1,4 +1,4 @@
-import { Track } from "./serviceInterfaces";
+import { Track, Playlist, User } from "./serviceInterfaces";
 
 const spotifyService = () => {
   const millisToMinutes = (milliSeconds: number): string => {
@@ -24,11 +24,25 @@ const spotifyService = () => {
       duration: millisToMinutes(track.duration_ms),
     };
   };
-  const _transferPlaylists = (playlist: any): any => {
-    // return ()
+
+  const _transferPlaylists = (playlist: any): Playlist => {
+    return {
+      name: playlist.name,
+      image: playlist.images[0].url,
+      id: playlist.id,
+      description: playlist.description
+        ? playlist.description
+        : "Without description",
+    };
   };
 
-  return { _transferTracks, _transferPlaylists };
+  const _transferUser = (user: any): User => {
+    return {
+      name: user.display_name,
+    };
+  };
+
+  return { _transferTracks, _transferPlaylists, _transferUser };
 };
 
 export default spotifyService;

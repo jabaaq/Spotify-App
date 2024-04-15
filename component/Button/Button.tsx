@@ -8,6 +8,7 @@ const Button = ({ appearance, children, ...props }: ButtonProps) => {
     <button
       className={cn(styles.button, {
         [styles.login_button]: appearance === "login",
+        [styles.start_button]: appearance === "start",
       })}
       {...props}
     >

@@ -5,17 +5,19 @@ import { RootState } from "./store";
 import spotifyService from "@/service/spotifyService";
 
 const { request } = useHttp();
-const { _transferTracks } = spotifyService();
+const { _transferTracks, _transferPlaylists, _transferUser } = spotifyService();
 export interface SpotifyState {
   token: string | null;
   loadHomePage: boolean;
   fetchedPlaylist: any;
   fetchedTopTracks: any;
+  userInformation: any;
 }
 
 const initialState: SpotifyState = {
   token: sessionStorage.getItem("spotifyToken") || null,
   fetchedPlaylist: [],
+  userInformation: [],
   loadHomePage: false,
   fetchedTopTracks: [],
 };
@@ -24,11 +26,23 @@ export const fetchPlaylist = createAsyncThunk(
   "fetch/fetchPlaylist",
   async () => {
     const token: string | null = sessionStorage.getItem("spotifyToken"); //it will always get the latest token value from sessionStorage
-    // const url: string = "https://api.spotify.com/v1/me/playlists";
+    const url: string = "https://api.spotify.com/v1/me/playlists";
+    // const url: string = "https://api.spotify.com/v1/browse/featured-playlists";
+    const res = await request(url, token);
+    // console.log("PLAYLIST", res);
+    // console.log("PLAYLIST", res.items.map(_transferPlaylists));
+    return res.items.map(_transferPlaylists);
+  }
+);
+export const fetchUserInformation = createAsyncThunk(
+  "fetch/fetchUserInformation",
+  async () => {
+    const token: string | null = sessionStorage.getItem("spotifyToken"); //it will always get the latest token value from sessionStorage
     const url: string = "https://api.spotify.com/v1/me";
     const res = await request(url, token);
-    console.log("PLAYLIST", res);
-    return res;
+    // console.log("User", res);
+    console.log("User", _transferUser(res));
+    return _transferUser(res);
   }
 );
 
@@ -65,16 +79,26 @@ export const spotifySlice = createSlice({
       .addCase(fetchPlaylist.rejected, (state, action) => {
         state.loadHomePage = false;
       })
+      //USER INFORMATION
+      .addCase(fetchUserInformation.fulfilled, (state, action) => {
+        state.userInformation = action.payload;
+        state.loadHomePage = true;
+      })
+      .addCase(fetchUserInformation.pending, (state, action) => {
+        state.loadHomePage = false;
+      })
+      .addCase(fetchUserInformation.rejected, (state, action) => {
+        state.loadHomePage = false;
+      })
       //TRACKS
       .addCase(fetchTopTracks.fulfilled, (state, action) => {
         state.fetchedTopTracks = action.payload;
-        console.log("Fulfilled");
       })
       .addCase(fetchTopTracks.pending, (state, action) => {
-        console.log("Pending");
+        state.loadHomePage = false;
       })
       .addCase(fetchTopTracks.rejected, (state, action) => {
-        console.log("Rejected");
+        state.loadHomePage = false;
       })
       .addDefaultCase(() => {});
   },
