@@ -3,15 +3,17 @@
 import style from "./Charts.module.scss";
 import cn from "classnames";
 import ChartCard from "./ChartCard/ChartCard";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store/store";
+import { Track } from "@/service/serviceInterfaces";
+
+//Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/store/store";
-import { Track } from "@/service/serviceInterfaces";
 
 const Charts = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

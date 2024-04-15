@@ -1,20 +1,31 @@
 import style from "./HeroSection.module.scss";
 import cn from "classnames";
 import testImg from "../../../../testImages/heroSection.jpeg";
+import HeroSectionCard from "./HeroSectionCard";
 
-const HeroSection = () => {
+//Swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+
+const HeroSection = (): JSX.Element => {
   return (
-    <div className={cn(style.heroSection_container)}>
-      <div className={cn(style.section_description)}>
-        {/* A separate component must be created for this 2 tag ↓ */}
-        <h2>Music Title</h2>{" "}
-        <p>
-          All mine, Lie again, Petty call me everyday, Out of time, No love, Bad
-          habit, and so much more
-        </p>
-      </div>
-      <img src={testImg.src} alt="TESTIMG" />
-    </div>
+    // <HeroSectionCard />
+    <Swiper
+      pagination={true}
+      modules={[Pagination]}
+      slidesPerView={1}
+      spaceBetween={30}
+      className="mySwiper"
+    >
+      <SwiperSlide>
+        <HeroSectionCard />
+      </SwiperSlide>
+      <SwiperSlide>
+        <HeroSectionCard />
+      </SwiperSlide>
+    </Swiper>
   );
 };
 

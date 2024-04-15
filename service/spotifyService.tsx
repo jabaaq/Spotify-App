@@ -24,8 +24,11 @@ const spotifyService = () => {
       duration: millisToMinutes(track.duration_ms),
     };
   };
+  const _transferPlaylists = (playlist: any): any => {
+    // return ()
+  };
 
-  return { _transferTracks };
+  return { _transferTracks, _transferPlaylists };
 };
 
 export default spotifyService;

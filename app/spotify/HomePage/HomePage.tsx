@@ -8,7 +8,9 @@ const HomePage = () => {
   return (
     <div className={cn(style.homepage)}>
       <div className={cn(style.homePage_container)}>
-        <HeroSection />
+        <div className={cn(style.swiper)}>
+          <HeroSection />
+        </div>
         <Charts />
       </div>
       <div className={cn(style.section_container)}>

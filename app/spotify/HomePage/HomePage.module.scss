@@ -6,12 +6,16 @@
 
   .homePage_container {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
     gap: 17px;
     height: 50%;
     min-height: 380px;
+
+    .swiper {
+      width: 60%;
+    }
   }
 
   .section_container {
@@ -20,11 +24,14 @@
     gap: 30px;
   }
 }
+
 @media only screen and (max-width: 720px) {
-  .homepage {
-    .homePage_container {
-      flex-direction: column;
-      height: 80%;
+  .homepage .homePage_container {
+    flex-direction: column;
+    height: 80%;
+
+    .swiper {
+      width: 100%;
     }
   }
 }

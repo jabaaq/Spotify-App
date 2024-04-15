@@ -24,9 +24,10 @@ export const fetchPlaylist = createAsyncThunk(
   "fetch/fetchPlaylist",
   async () => {
     const token: string | null = sessionStorage.getItem("spotifyToken"); //it will always get the latest token value from sessionStorage
-    const url: string = "https://api.spotify.com/v1/me/playlists";
+    // const url: string = "https://api.spotify.com/v1/me/playlists";
+    const url: string = "https://api.spotify.com/v1/me";
     const res = await request(url, token);
-    // console.log("PLAYLIST", res);
+    console.log("PLAYLIST", res);
     return res;
   }
 );
@@ -37,10 +38,7 @@ export const fetchTopTracks = createAsyncThunk(
     const token: string | null = sessionStorage.getItem("spotifyToken");
     const url: string =
       "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=3";
-    // "https://api.spotify.com/v1/recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2Ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA";
     const res = await request(url, token);
-    console.log(res);
-    console.log("TOP TRACKS", res.items.map(_transferTracks));
     return res.items.map(_transferTracks);
   }
 );
