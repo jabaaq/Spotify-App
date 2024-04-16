@@ -12,6 +12,7 @@ export interface Playlist {
   image?: string;
   id?: string;
   description?: string;
+  scrollTo: any;
 }
 
 export interface User {

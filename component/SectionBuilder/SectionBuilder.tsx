@@ -7,9 +7,9 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
-const SectionBuilder = () => {
+const SectionBuilder = ({ myRef }: any) => {
   return (
-    <div className={cn(style.section_builder)}>
+    <div className={cn(style.section_builder)} ref={myRef}>
       <h2 className={cn(style.section_header)}>Section Name.</h2>
       <Swiper
         slidesPerView={2}

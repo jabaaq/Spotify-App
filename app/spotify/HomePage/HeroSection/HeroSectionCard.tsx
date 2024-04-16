@@ -4,7 +4,13 @@ import heroSection from "../../../../images/HeroSection.jpg";
 import { Playlist } from "@/service/serviceInterfaces";
 import Button from "@/component/Button/Button";
 
-const HeroSectionCard = ({ name, image, id, description }: Playlist) => {
+const HeroSectionCard = ({
+  name,
+  image,
+  id,
+  description,
+  scrollTo,
+}: Playlist) => {
   return (
     <div className={cn(style.heroSection_container)}>
       <div className={cn(style.section_description)}>
@@ -16,6 +22,9 @@ const HeroSectionCard = ({ name, image, id, description }: Playlist) => {
           with every play.
         </p>
         <h3>Welcome, {name}!</h3>
+        <Button appearance={"start"} onClick={scrollTo}>
+          Let's Start
+        </Button>
       </div>
       <img src={heroSection.src} alt="HeroSection" />
     </div>

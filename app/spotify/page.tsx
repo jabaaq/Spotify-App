@@ -6,7 +6,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import Login from "@/component/Login/Login";
 import { useRouter } from "next/navigation";
-import { fetchTopTracks, fetchUserInformation } from "../store/slice";
+import {
+  fetchTopTracks,
+  fetchUserInformation,
+  fetchTrackRecommendations,
+} from "../store/slice";
 import HomePage from "./HomePage/HomePage";
 
 export default function Spotify() {
@@ -22,6 +26,7 @@ export default function Spotify() {
     // dispatch(fetchPlaylist());
     dispatch(fetchTopTracks());
     dispatch(fetchUserInformation());
+    dispatch(fetchTrackRecommendations());
   }, [token, dispatch]);
 
   return (

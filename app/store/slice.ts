@@ -12,6 +12,7 @@ export interface SpotifyState {
   fetchedPlaylist: any;
   fetchedTopTracks: any;
   userInformation: any;
+  fetchedTrackRecommendations: any;
 }
 
 const initialState: SpotifyState = {
@@ -20,28 +21,27 @@ const initialState: SpotifyState = {
   userInformation: [],
   loadHomePage: false,
   fetchedTopTracks: [],
+  fetchedTrackRecommendations: [],
 };
 
 export const fetchPlaylist = createAsyncThunk(
   "fetch/fetchPlaylist",
   async () => {
     const token: string | null = sessionStorage.getItem("spotifyToken"); //it will always get the latest token value from sessionStorage
-    const url: string = "https://api.spotify.com/v1/me/playlists";
-    // const url: string = "https://api.spotify.com/v1/browse/featured-playlists";
+    const url: string = process.env.NEXT_PUBLIC_PLAYLIST!;
     const res = await request(url, token);
     // console.log("PLAYLIST", res);
     // console.log("PLAYLIST", res.items.map(_transferPlaylists));
     return res.items.map(_transferPlaylists);
   }
 );
+
 export const fetchUserInformation = createAsyncThunk(
   "fetch/fetchUserInformation",
   async () => {
     const token: string | null = sessionStorage.getItem("spotifyToken"); //it will always get the latest token value from sessionStorage
-    const url: string = "https://api.spotify.com/v1/me";
+    const url: string = process.env.NEXT_PUBLIC_USER!;
     const res = await request(url, token);
-    // console.log("User", res);
-    console.log("User", _transferUser(res));
     return _transferUser(res);
   }
 );
@@ -50,10 +50,21 @@ export const fetchTopTracks = createAsyncThunk(
   "fetch/fetchTopTracks",
   async () => {
     const token: string | null = sessionStorage.getItem("spotifyToken");
-    const url: string =
-      "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=3";
+    const url: string = process.env.NEXT_PUBLIC_TOP_TRACKS!;
     const res = await request(url, token);
     return res.items.map(_transferTracks);
+  }
+);
+
+export const fetchTrackRecommendations = createAsyncThunk(
+  "fetch/fetchTrackRecommendations",
+  async () => {
+    const token: string | null = sessionStorage.getItem("spotifyToken");
+    const url: string = process.env.NEXT_PUBLIC_TRACKS_RECOMMENDATIONS!;
+    const res = await request(url, token);
+    console.log(res);
+
+    return res;
   }
 );
 
@@ -100,6 +111,11 @@ export const spotifySlice = createSlice({
       .addCase(fetchTopTracks.rejected, (state, action) => {
         state.loadHomePage = false;
       })
+      //TRACK RECOMMENDATIONS
+      .addCase(fetchTrackRecommendations.fulfilled, (state, action) => {
+        state.fetchedTrackRecommendations = action.payload;
+      })
+
       .addDefaultCase(() => {});
   },
 });
