@@ -1,4 +1,10 @@
-import { Track, Playlist, User } from "./serviceInterfaces";
+import {
+  Track,
+  Playlist,
+  User,
+  Recommendations,
+  NewReleases,
+} from "./serviceInterfaces";
 
 const spotifyService = () => {
   const millisToMinutes = (milliSeconds: number): string => {
@@ -33,6 +39,19 @@ const spotifyService = () => {
       description: playlist.description
         ? playlist.description
         : "Without description",
+      scrollTo,
+    };
+  };
+
+  const _transferNewReleases = (release: any): NewReleases => {
+    return {
+      type: release.album_type,
+      artist: release.artists[0].name,
+      artist_id: release.artists[0].id,
+      id: release.id,
+      image: release.images[0],
+      name: release.name,
+      release_date: release.release_date,
     };
   };
 
@@ -42,7 +61,22 @@ const spotifyService = () => {
     };
   };
 
-  return { _transferTracks, _transferPlaylists, _transferUser };
+  const _transferTrackRecommendations = (track: any): Recommendations => {
+    return {
+      artist:
+        track.artists.length === 1
+          ? track.artists.name
+          : track.artists.name + " and ..",
+      id: track.id,
+    };
+  };
+
+  return {
+    _transferTracks,
+    _transferPlaylists,
+    _transferUser,
+    _transferNewReleases,
+  };
 };
 
 export default spotifyService;

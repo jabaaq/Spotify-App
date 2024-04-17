@@ -1,11 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAllOf } from "@reduxjs/toolkit";
 import { PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { useHttp } from "@/services/http.hook";
 import { RootState } from "./store";
 import spotifyService from "@/service/spotifyService";
 
 const { request } = useHttp();
-const { _transferTracks, _transferPlaylists, _transferUser } = spotifyService();
+const {
+  _transferTracks,
+  _transferPlaylists,
+  _transferUser,
+  _transferNewReleases,
+} = spotifyService();
 export interface SpotifyState {
   token: string | null;
   loadHomePage: boolean;
@@ -13,6 +18,9 @@ export interface SpotifyState {
   fetchedTopTracks: any;
   userInformation: any;
   fetchedTrackRecommendations: any;
+  fetchedGenres: any;
+  fetchedNewReleases: any;
+  section: any;
 }
 
 const initialState: SpotifyState = {
@@ -22,6 +30,9 @@ const initialState: SpotifyState = {
   loadHomePage: false,
   fetchedTopTracks: [],
   fetchedTrackRecommendations: [],
+  fetchedGenres: [],
+  fetchedNewReleases: [],
+  section: [],
 };
 
 export const fetchPlaylist = createAsyncThunk(
@@ -62,9 +73,28 @@ export const fetchTrackRecommendations = createAsyncThunk(
     const token: string | null = sessionStorage.getItem("spotifyToken");
     const url: string = process.env.NEXT_PUBLIC_TRACKS_RECOMMENDATIONS!;
     const res = await request(url, token);
-    console.log(res);
-
+    // console.log(res);
     return res;
+  }
+);
+
+export const fetchGenres = createAsyncThunk("fetch/fetchGenres", async () => {
+  const token: string | null = sessionStorage.getItem("spotifyToken");
+  const url: string = process.env.NEXT_PUBLIC_GENRES!;
+  const res = await request(url, token);
+  console.log(res);
+  return res;
+});
+
+export const fetchNewReleases = createAsyncThunk(
+  "fetch/fetchNewReleases",
+  async () => {
+    const token: string | null = sessionStorage.getItem("spotifyToken");
+    const url: string = process.env.NEXT_PUBLIC_NEW_RELEASES!;
+    const res = await request(url, token);
+    // console.log(res);
+    // console.log(res.albums.items.map(_transferNewReleases));
+    return res.albums.items.map(_transferNewReleases);
   }
 );
 
@@ -115,7 +145,23 @@ export const spotifySlice = createSlice({
       .addCase(fetchTrackRecommendations.fulfilled, (state, action) => {
         state.fetchedTrackRecommendations = action.payload;
       })
-
+      //GENRES
+      .addCase(fetchGenres.fulfilled, (state, action) => {
+        state.fetchedGenres = action.payload;
+      })
+      //NEW RELEASES
+      .addCase(fetchNewReleases.fulfilled, (state, action) => {
+        console.log(state.fetchedNewReleases);
+      })
+      .addMatcher(
+        isAllOf(
+          fetchNewReleases.fulfilled,
+          fetchTrackRecommendations.fulfilled
+        ),
+        (state, action) => {
+          state.section = action.payload;
+        }
+      )
       .addDefaultCase(() => {});
   },
 });

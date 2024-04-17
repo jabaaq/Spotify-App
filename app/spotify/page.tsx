@@ -10,6 +10,8 @@ import {
   fetchTopTracks,
   fetchUserInformation,
   fetchTrackRecommendations,
+  fetchGenres,
+  fetchNewReleases,
 } from "../store/slice";
 import HomePage from "./HomePage/HomePage";
 
@@ -23,8 +25,10 @@ export default function Spotify() {
     if (!token) {
       router.push("/");
     }
-    // dispatch(fetchPlaylist());
+
+    // dispatch(fetchGenres());
     dispatch(fetchTopTracks());
+    dispatch(fetchNewReleases());
     dispatch(fetchUserInformation());
     dispatch(fetchTrackRecommendations());
   }, [token, dispatch]);

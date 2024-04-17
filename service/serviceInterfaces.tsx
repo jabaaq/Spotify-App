@@ -18,3 +18,17 @@ export interface Playlist {
 export interface User {
   name: string;
 }
+
+export interface Recommendations {
+  artist: string;
+  id: string;
+}
+export interface NewReleases {
+  type: string;
+  artist: string;
+  artist_id: string;
+  id: string;
+  image: string;
+  name: string;
+  release_date: string;
+}

@@ -1,3 +1,4 @@
+"use client";
 import style from "./SectionBuilder.module.scss";
 import cn from "classnames";
 import SectionCard from "../SectionCard/SectionCard";
@@ -6,8 +7,20 @@ import { FreeMode, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store/store";
+import { useEffect } from "react";
 
 const SectionBuilder = ({ myRef }: any) => {
+  const { section, fetchedNewReleases } = useSelector(
+    (state: RootState) => state.spotifyReducer
+  );
+
+  useEffect(() => {
+    // console.log("TEST SECTION", section);
+    // console.log("TEST SECTION", fetchedNewReleases);
+  }, [fetchedNewReleases]);
+
   return (
     <div className={cn(style.section_builder)} ref={myRef}>
       <h2 className={cn(style.section_header)}>Section Name.</h2>
