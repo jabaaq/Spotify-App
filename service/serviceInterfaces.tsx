@@ -24,11 +24,11 @@ export interface Recommendations {
   id: string;
 }
 export interface NewReleases {
-  type: string;
+  type?: string;
   artist: string;
-  artist_id: string;
-  id: string;
+  artist_id?: string;
+  id?: string;
   image: string;
   name: string;
-  release_date: string;
+  release_date?: string;
 }

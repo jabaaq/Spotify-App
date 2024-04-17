@@ -46,11 +46,17 @@ const spotifyService = () => {
   const _transferNewReleases = (release: any): NewReleases => {
     return {
       type: release.album_type,
-      artist: release.artists[0].name,
+      artist:
+        release.artists[0].name.length >= 15
+          ? release.artists[0].name.substring(0, 15) + "..."
+          : release.artists[0].name,
       artist_id: release.artists[0].id,
       id: release.id,
-      image: release.images[0],
-      name: release.name,
+      image: release.images[2].url,
+      name:
+        release.name.length >= 15
+          ? release.name.substring(0, 15) + "..."
+          : release.name,
       release_date: release.release_date,
     };
   };

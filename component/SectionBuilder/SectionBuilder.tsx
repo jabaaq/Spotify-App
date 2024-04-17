@@ -2,27 +2,23 @@
 import style from "./SectionBuilder.module.scss";
 import cn from "classnames";
 import SectionCard from "../SectionCard/SectionCard";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store/store";
+import { NewReleases } from "@/service/serviceInterfaces";
+
+//Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/store/store";
-import { useEffect } from "react";
 
-const SectionBuilder = ({ myRef }: any) => {
+const SectionBuilder = (): JSX.Element => {
   const { section, fetchedNewReleases } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
-
-  useEffect(() => {
-    // console.log("TEST SECTION", section);
-    // console.log("TEST SECTION", fetchedNewReleases);
-  }, [fetchedNewReleases]);
-
   return (
-    <div className={cn(style.section_builder)} ref={myRef}>
+    <div className={cn(style.section_builder)}>
       <h2 className={cn(style.section_header)}>Section Name.</h2>
       <Swiper
         slidesPerView={2}
@@ -44,42 +40,21 @@ const SectionBuilder = ({ myRef }: any) => {
           },
         }}
         spaceBetween={30}
-        // freeMode={true}
         modules={[FreeMode, Pagination]}
         className="mySwiper"
-        loop={true}
-        // centeredSlidesBounds={true}
+        freeMode={true}
       >
-        <SwiperSlide>
-          <SectionCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SectionCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SectionCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SectionCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SectionCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SectionCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SectionCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SectionCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SectionCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <SectionCard />
-        </SwiperSlide>
+        {fetchedNewReleases[1] &&
+          fetchedNewReleases[1].map((item: NewReleases, i: number) => (
+            <SwiperSlide key={item.id}>
+              <SectionCard
+                key={item.id}
+                artist={item.artist}
+                image={item.image}
+                name={item.name}
+              />
+            </SwiperSlide>
+          ))}
       </Swiper>
     </div>
   );

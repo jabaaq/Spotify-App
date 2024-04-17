@@ -73,7 +73,6 @@ export const fetchTrackRecommendations = createAsyncThunk(
     const token: string | null = sessionStorage.getItem("spotifyToken");
     const url: string = process.env.NEXT_PUBLIC_TRACKS_RECOMMENDATIONS!;
     const res = await request(url, token);
-    // console.log(res);
     return res;
   }
 );
@@ -143,7 +142,8 @@ export const spotifySlice = createSlice({
       })
       //TRACK RECOMMENDATIONS
       .addCase(fetchTrackRecommendations.fulfilled, (state, action) => {
-        state.fetchedTrackRecommendations = action.payload;
+        state.fetchedTrackRecommendations = ["Recommendations", action.payload];
+        // console.log(state.fetchedTrackRecommendations);
       })
       //GENRES
       .addCase(fetchGenres.fulfilled, (state, action) => {
@@ -151,6 +151,7 @@ export const spotifySlice = createSlice({
       })
       //NEW RELEASES
       .addCase(fetchNewReleases.fulfilled, (state, action) => {
+        state.fetchedNewReleases = ["New Releases", action.payload];
         console.log(state.fetchedNewReleases);
       })
       .addMatcher(

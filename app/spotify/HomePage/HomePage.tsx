@@ -20,8 +20,8 @@ const HomePage = () => {
         </div>
         <Charts />
       </div>
-      <div className={cn(style.section_container)}>
-        <SectionBuilder myRef={myRef} />
+      <div ref={myRef} className={cn(style.section_container)}>
+        <SectionBuilder />
         <SectionBuilder />
       </div>
     </div>
