@@ -22,6 +22,9 @@ export interface User {
 export interface Recommendations {
   artist: string;
   id: string;
+  name: string;
+  type: string;
+  image: string;
 }
 export interface NewReleases {
   type?: string;

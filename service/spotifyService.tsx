@@ -70,10 +70,16 @@ const spotifyService = () => {
   const _transferTrackRecommendations = (track: any): Recommendations => {
     return {
       artist:
-        track.artists.length === 1
-          ? track.artists.name
-          : track.artists.name + " and ..",
+        track.artists.length > 1
+          ? track.artists[0].name
+          : track.artists[0].name + ", ...",
       id: track.id,
+      name:
+        track.name.length >= 15
+          ? track.name.substring(0, 15) + "..."
+          : track.name,
+      type: track.type,
+      image: track.album.images[0].url,
     };
   };
 
@@ -82,6 +88,7 @@ const spotifyService = () => {
     _transferPlaylists,
     _transferUser,
     _transferNewReleases,
+    _transferTrackRecommendations,
   };
 };
 

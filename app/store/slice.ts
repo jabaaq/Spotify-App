@@ -1,7 +1,6 @@
-import { createSlice, isAllOf } from "@reduxjs/toolkit";
+import { createSlice, isAllOf, isAnyOf } from "@reduxjs/toolkit";
 import { PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { useHttp } from "@/services/http.hook";
-import { RootState } from "./store";
 import spotifyService from "@/service/spotifyService";
 
 const { request } = useHttp();
@@ -10,6 +9,7 @@ const {
   _transferPlaylists,
   _transferUser,
   _transferNewReleases,
+  _transferTrackRecommendations,
 } = spotifyService();
 export interface SpotifyState {
   token: string | null;
@@ -41,8 +41,6 @@ export const fetchPlaylist = createAsyncThunk(
     const token: string | null = sessionStorage.getItem("spotifyToken"); //it will always get the latest token value from sessionStorage
     const url: string = process.env.NEXT_PUBLIC_PLAYLIST!;
     const res = await request(url, token);
-    // console.log("PLAYLIST", res);
-    // console.log("PLAYLIST", res.items.map(_transferPlaylists));
     return res.items.map(_transferPlaylists);
   }
 );
@@ -50,7 +48,7 @@ export const fetchPlaylist = createAsyncThunk(
 export const fetchUserInformation = createAsyncThunk(
   "fetch/fetchUserInformation",
   async () => {
-    const token: string | null = sessionStorage.getItem("spotifyToken"); //it will always get the latest token value from sessionStorage
+    const token: string | null = sessionStorage.getItem("spotifyToken");
     const url: string = process.env.NEXT_PUBLIC_USER!;
     const res = await request(url, token);
     return _transferUser(res);
@@ -73,7 +71,7 @@ export const fetchTrackRecommendations = createAsyncThunk(
     const token: string | null = sessionStorage.getItem("spotifyToken");
     const url: string = process.env.NEXT_PUBLIC_TRACKS_RECOMMENDATIONS!;
     const res = await request(url, token);
-    return res;
+    return res.tracks.map(_transferTrackRecommendations);
   }
 );
 
@@ -81,7 +79,7 @@ export const fetchGenres = createAsyncThunk("fetch/fetchGenres", async () => {
   const token: string | null = sessionStorage.getItem("spotifyToken");
   const url: string = process.env.NEXT_PUBLIC_GENRES!;
   const res = await request(url, token);
-  console.log(res);
+  // console.log(res);
   return res;
 });
 
@@ -91,8 +89,6 @@ export const fetchNewReleases = createAsyncThunk(
     const token: string | null = sessionStorage.getItem("spotifyToken");
     const url: string = process.env.NEXT_PUBLIC_NEW_RELEASES!;
     const res = await request(url, token);
-    // console.log(res);
-    // console.log(res.albums.items.map(_transferNewReleases));
     return res.albums.items.map(_transferNewReleases);
   }
 );
@@ -106,6 +102,7 @@ export const spotifySlice = createSlice({
       state.token = action.payload;
     },
   },
+
   extraReducers: (builder) => {
     builder
       //PLAYLIST
@@ -152,15 +149,19 @@ export const spotifySlice = createSlice({
       //NEW RELEASES
       .addCase(fetchNewReleases.fulfilled, (state, action) => {
         state.fetchedNewReleases = ["New Releases", action.payload];
-        console.log(state.fetchedNewReleases);
+        // console.log(state.fetchedNewReleases);
       })
       .addMatcher(
-        isAllOf(
+        isAnyOf(
           fetchNewReleases.fulfilled,
           fetchTrackRecommendations.fulfilled
         ),
         (state, action) => {
-          state.section = action.payload;
+          state.section = [
+            state.fetchedNewReleases,
+            state.fetchedTrackRecommendations,
+          ];
+          // console.log("SECTION", state.section);
         }
       )
       .addDefaultCase(() => {});

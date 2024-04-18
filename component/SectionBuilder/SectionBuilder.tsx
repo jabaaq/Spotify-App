@@ -1,9 +1,6 @@
-"use client";
 import style from "./SectionBuilder.module.scss";
 import cn from "classnames";
 import SectionCard from "../SectionCard/SectionCard";
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/store/store";
 import { NewReleases } from "@/service/serviceInterfaces";
 
 //Swiper
@@ -13,13 +10,10 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
-const SectionBuilder = (): JSX.Element => {
-  const { section, fetchedNewReleases } = useSelector(
-    (state: RootState) => state.spotifyReducer
-  );
+const SectionBuilder = ({ sectionName, data }: any): JSX.Element => {
   return (
     <div className={cn(style.section_builder)}>
-      <h2 className={cn(style.section_header)}>Section Name.</h2>
+      <h2 className={cn(style.section_header)}>{sectionName}.</h2>
       <Swiper
         slidesPerView={2}
         breakpoints={{
@@ -44,8 +38,8 @@ const SectionBuilder = (): JSX.Element => {
         className="mySwiper"
         freeMode={true}
       >
-        {fetchedNewReleases[1] &&
-          fetchedNewReleases[1].map((item: NewReleases, i: number) => (
+        {data &&
+          data.map((item: NewReleases, i: number) => (
             <SwiperSlide key={item.id}>
               <SectionCard
                 key={item.id}
