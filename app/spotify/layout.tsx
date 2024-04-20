@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import style from "./spotify.module.scss";
 import Navbar from "@/component/Navbar/Navbar";
+import AppNav from "@/component/AppNav/AppNav";
 
 const fonts = Quicksand({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
     <div className={fonts.className}>
       <Navbar>Search</Navbar>
       {children}
+      <AppNav />
     </div>
   );
 }

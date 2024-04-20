@@ -13,7 +13,7 @@ import "swiper/css/pagination";
 const SectionBuilder = ({ sectionName, data }: any): JSX.Element => {
   return (
     <div className={cn(style.section_builder)}>
-      <h2 className={cn(style.section_header)}>{sectionName}.</h2>
+      <h2 className={cn(style.section_header)}>{sectionName}</h2>
       <Swiper
         slidesPerView={2}
         breakpoints={{
@@ -39,7 +39,7 @@ const SectionBuilder = ({ sectionName, data }: any): JSX.Element => {
         freeMode={true}
       >
         {data &&
-          data.map((item: NewReleases, i: number) => (
+          data.map((item: NewReleases) => (
             <SwiperSlide key={item.id}>
               <SectionCard
                 key={item.id}

@@ -20,6 +20,7 @@ export interface SpotifyState {
   fetchedTrackRecommendations: any;
   fetchedGenres: any;
   fetchedNewReleases: any;
+  fetchedArtists: any;
   section: any;
 }
 
@@ -32,6 +33,7 @@ const initialState: SpotifyState = {
   fetchedTrackRecommendations: [],
   fetchedGenres: [],
   fetchedNewReleases: [],
+  fetchedArtists: [],
   section: [],
 };
 
@@ -79,7 +81,14 @@ export const fetchGenres = createAsyncThunk("fetch/fetchGenres", async () => {
   const token: string | null = sessionStorage.getItem("spotifyToken");
   const url: string = process.env.NEXT_PUBLIC_GENRES!;
   const res = await request(url, token);
-  // console.log(res);
+  return res;
+});
+
+export const fetchArtists = createAsyncThunk("fetch/fetchArtists", async () => {
+  const token: string | null = sessionStorage.getItem("spotifyToken");
+  const url: string = process.env.NEXT_PUBLIC_SEVERAL_ARTISTS!;
+  const res = await request(url, token);
+  console.log(res);
   return res;
 });
 
@@ -151,17 +160,20 @@ export const spotifySlice = createSlice({
         state.fetchedNewReleases = ["New Releases", action.payload];
         // console.log(state.fetchedNewReleases);
       })
+      //ARTISTS
+      .addCase(fetchArtists.fulfilled, (state, action) => {
+        state.fetchedArtists = action.payload;
+      })
       .addMatcher(
         isAnyOf(
           fetchNewReleases.fulfilled,
           fetchTrackRecommendations.fulfilled
         ),
-        (state, action) => {
+        (state) => {
           state.section = [
             state.fetchedNewReleases,
             state.fetchedTrackRecommendations,
           ];
-          // console.log("SECTION", state.section);
         }
       )
       .addDefaultCase(() => {});

@@ -12,6 +12,7 @@ import {
   fetchTrackRecommendations,
   fetchGenres,
   fetchNewReleases,
+  fetchArtists,
 } from "../store/slice";
 import HomePage from "./HomePage/HomePage";
 
@@ -27,6 +28,7 @@ export default function Spotify() {
     }
 
     // dispatch(fetchGenres());
+    dispatch(fetchArtists());
     dispatch(fetchTopTracks());
     dispatch(fetchNewReleases());
     dispatch(fetchUserInformation());
