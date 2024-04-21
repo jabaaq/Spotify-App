@@ -22,6 +22,8 @@ export interface SpotifyState {
   fetchedNewReleases: any;
   fetchedArtists: any;
   section: any;
+  activePage: string;
+  openSideMenu: boolean;
 }
 
 const initialState: SpotifyState = {
@@ -35,6 +37,8 @@ const initialState: SpotifyState = {
   fetchedNewReleases: [],
   fetchedArtists: [],
   section: [],
+  activePage: "home",
+  openSideMenu: false,
 };
 
 export const fetchPlaylist = createAsyncThunk(
@@ -110,6 +114,12 @@ export const spotifySlice = createSlice({
       sessionStorage.setItem("spotifyToken", action.payload);
       state.token = action.payload;
     },
+    handlePageChange: (state, action) => {
+      state.activePage = action.payload;
+    },
+    toggleSideMenu: (state) => {
+      state.openSideMenu = !state.openSideMenu;
+    },
   },
 
   extraReducers: (builder) => {
@@ -180,7 +190,8 @@ export const spotifySlice = createSlice({
   },
 });
 
-export const { setToken } = spotifySlice.actions;
+export const { setToken, handlePageChange, toggleSideMenu } =
+  spotifySlice.actions;
 const { reducer } = spotifySlice;
 
 export default reducer;

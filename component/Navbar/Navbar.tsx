@@ -3,6 +3,8 @@ import cn from "classnames";
 import { CiSearch } from "react-icons/ci";
 import { NavbarProps } from "./Navbar.props";
 import logo from "../../images/logo.png";
+import SideMenu from "../SideMenu/SideMenu";
+import HamburgerCheckbox from "../Checkbox/HamburgerCheckbox";
 
 const Navbar = ({ children, ...props }: NavbarProps) => {
   return (
@@ -21,6 +23,10 @@ const Navbar = ({ children, ...props }: NavbarProps) => {
           placeholder="Search"
         />
       </div>
+      <div className={cn(style.hamburger_container)}>
+        <HamburgerCheckbox />
+      </div>
+      <SideMenu />
     </nav>
   );
 };

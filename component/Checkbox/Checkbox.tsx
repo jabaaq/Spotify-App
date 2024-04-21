@@ -8,7 +8,6 @@ const Checkbox = ({
   id,
   ...props
 }: CheckboxProps): JSX.Element => {
-  //   return <input type="checkbox" {...props} />;
   return (
     <div className="circle">
       <div title="Like" className="heart-container">

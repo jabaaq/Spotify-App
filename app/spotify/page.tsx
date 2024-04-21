@@ -28,11 +28,11 @@ export default function Spotify() {
     }
 
     // dispatch(fetchGenres());
-    dispatch(fetchArtists());
-    dispatch(fetchTopTracks());
-    dispatch(fetchNewReleases());
-    dispatch(fetchUserInformation());
-    dispatch(fetchTrackRecommendations());
+    // dispatch(fetchArtists());
+    // dispatch(fetchTopTracks());
+    // dispatch(fetchNewReleases());
+    // dispatch(fetchUserInformation());
+    // dispatch(fetchTrackRecommendations());
   }, [token, dispatch]);
 
   return (
