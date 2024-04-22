@@ -5,17 +5,20 @@ import { navItems } from "../AppNav/AppNav";
 import { useSelector, useDispatch } from "react-redux";
 import { handlePageChange, toggleSideMenu } from "@/app/store/slice";
 import { RootState } from "@/app/store/store";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const SideMenu = (): JSX.Element => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const { activePage, openSideMenu } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
 
   useEffect(() => {
-    console.log(openSideMenu);
-  }, [openSideMenu]);
+    console.log(window.location.href);
+  }, [router]);
 
   return (
     <div
@@ -25,7 +28,8 @@ const SideMenu = (): JSX.Element => {
     >
       <ul>
         {navItems.map((item, i) => (
-          <li
+          <Link
+            href={item.page === "home" ? "/spotify" : `/spotify/${item.page}`}
             key={i}
             className={cn({ [style.activePage]: activePage === item.page })}
             onClick={() =>
@@ -37,7 +41,7 @@ const SideMenu = (): JSX.Element => {
           >
             {item.icon}
             {item.page[0].toUpperCase() + item.page.slice(1)}
-          </li>
+          </Link>
         ))}
       </ul>
     </div>

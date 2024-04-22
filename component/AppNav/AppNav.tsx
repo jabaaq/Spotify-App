@@ -8,6 +8,7 @@ import { NavItem } from "./AppNav.props";
 import { handlePageChange } from "@/app/store/slice";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/app/store/store";
+import Link from "next/link";
 
 export const navItems: NavItem[] = [
   { icon: <GoHomeFill size={20} />, page: "home" },
@@ -25,13 +26,14 @@ const AppNav = () => {
     <nav className={cn(style.AppNav)}>
       <ul>
         {navItems.map((item, i) => (
-          <li
+          <Link
+            href={item.page === "home" ? "/spotify" : `/spotify/${item.page}`}
             key={i}
             className={cn({ [style.activePage]: activePage === item.page })}
             onClick={() => dispatch(handlePageChange(item.page))}
           >
             {item.icon}
-          </li>
+          </Link>
         ))}
       </ul>
     </nav>

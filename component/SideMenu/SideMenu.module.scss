@@ -32,10 +32,11 @@
     height: 100%;
   }
 
-  li {
+  a {
     list-style: none;
     cursor: pointer;
-
+    color: var(--text-color);
+    text-decoration: none;
     display: flex;
     gap: 27px;
   }

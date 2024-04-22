@@ -92,7 +92,6 @@ export const fetchArtists = createAsyncThunk("fetch/fetchArtists", async () => {
   const token: string | null = sessionStorage.getItem("spotifyToken");
   const url: string = process.env.NEXT_PUBLIC_SEVERAL_ARTISTS!;
   const res = await request(url, token);
-  console.log(res);
   return res;
 });
 

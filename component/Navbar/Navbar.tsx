@@ -5,13 +5,14 @@ import { NavbarProps } from "./Navbar.props";
 import logo from "../../images/logo.png";
 import SideMenu from "../SideMenu/SideMenu";
 import HamburgerCheckbox from "../Checkbox/HamburgerCheckbox";
+import Link from "next/link";
 
 const Navbar = ({ children, ...props }: NavbarProps) => {
   return (
     <nav className={cn(style.navbar)}>
-      <div className={cn(style.logo)}>
+      <Link href={"/spotify"} className={cn(style.logo)}>
         <img src={logo.src} alt="Logo" />
-      </div>
+      </Link>
       <div className={cn(style.search)}>
         <div className="searchLogo">
           <CiSearch />

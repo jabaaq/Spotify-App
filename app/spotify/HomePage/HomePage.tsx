@@ -15,11 +15,6 @@ const HomePage = () => {
   };
 
   const { section } = useSelector((state: RootState) => state.spotifyReducer);
-
-  // useEffect(() => {
-  //   console.log(section);
-  // }, [section]);
-
   return (
     <div className={cn(style.homepage)}>
       <div className={cn(style.homePage_container)}>
