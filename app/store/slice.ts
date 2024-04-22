@@ -117,8 +117,10 @@ export const spotifySlice = createSlice({
     handlePageChange: (state, action) => {
       state.activePage = action.payload;
     },
-    toggleSideMenu: (state) => {
-      state.openSideMenu = !state.openSideMenu;
+    toggleSideMenu: (state, action): void => {
+      action.payload
+        ? (state.openSideMenu = action.payload)
+        : (state.openSideMenu = !state.openSideMenu);
     },
   },
 

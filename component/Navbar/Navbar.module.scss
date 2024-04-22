@@ -20,6 +20,8 @@
     justify-content: center;
     align-items: center;
     width: 15%;
+    display: none;
+    z-index: 10;
   }
 
   .search {
@@ -44,6 +46,11 @@
       &:focus {
         background: var(--light-dark);
       }
+    }
+  }
+  @media only screen and (max-width: 720px) {
+    .hamburger_container {
+      display: block;
     }
   }
 }

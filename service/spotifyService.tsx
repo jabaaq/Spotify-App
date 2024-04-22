@@ -63,7 +63,10 @@ const spotifyService = () => {
 
   const _transferUser = (user: any): User => {
     return {
-      name: user.display_name,
+      name:
+        user.display_name.length > 20
+          ? user.display_name.substring(0, 20) + "..."
+          : user.display_name,
     };
   };
 
