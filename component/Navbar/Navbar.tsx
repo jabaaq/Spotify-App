@@ -1,18 +1,16 @@
+"use client";
 import style from "./Navbar.module.scss";
 import cn from "classnames";
 import { CiSearch } from "react-icons/ci";
 import { NavbarProps } from "./Navbar.props";
-import logo from "../../images/logo.png";
 import SideMenu from "../SideMenu/SideMenu";
 import HamburgerCheckbox from "../Checkbox/HamburgerCheckbox";
-import Link from "next/link";
+import AppLogo from "../AppNav/AppLogo/AppLogo";
 
 const Navbar = ({ children, ...props }: NavbarProps) => {
   return (
     <nav className={cn(style.navbar)}>
-      <Link href={"/spotify"} className={cn(style.logo)}>
-        <img src={logo.src} alt="Logo" />
-      </Link>
+      <AppLogo />
       <div className={cn(style.search)}>
         <div className="searchLogo">
           <CiSearch />

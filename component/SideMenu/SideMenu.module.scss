@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
   transition: 0.5s ease;
+  display: none;
 
   color: var(--text-color);
   background: var(--dark);
@@ -44,4 +45,10 @@
 
 .open {
   right: 0;
+}
+
+@media only screen and (max-width: 720px) {
+  .SideMenu {
+    display: block;
+  }
 }

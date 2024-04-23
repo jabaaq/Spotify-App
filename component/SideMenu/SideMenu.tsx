@@ -6,19 +6,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { handlePageChange, toggleSideMenu } from "@/app/store/slice";
 import { RootState } from "@/app/store/store";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 const SideMenu = (): JSX.Element => {
-  const router = useRouter();
   const dispatch = useDispatch();
   const { activePage, openSideMenu } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
 
-  useEffect(() => {
-    console.log(window.location.href);
-  }, [router]);
+  // useEffect(() => {
+  //   console.log(location.pathname.split("/")[1]);
+  // }, [location.pathname]);
 
   return (
     <div
