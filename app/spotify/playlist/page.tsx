@@ -1,13 +1,12 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
+import { useAuth } from "@/app/useAuth";
+import Login from "@/component/Login/Login";
 
-export default function playlist() {
-  return (
-    <>
-      <h1>playlist</h1>
-      <h1>playlist</h1>
-      <h1>playlist</h1>
-      <h1>playlist</h1>
-      <h1>playlist</h1>
-    </>
-  );
-}
+const Playlist = (): JSX.Element => {
+  const token = useAuth();
+
+  return <>{token ? <h1>playlist</h1> : <Login />}</>;
+};
+
+export default Playlist;

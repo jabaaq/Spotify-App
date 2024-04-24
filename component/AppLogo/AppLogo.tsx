@@ -1,10 +1,10 @@
-'"use client";';
+"use client";
 import Link from "next/link";
 import style from "./AppLogo.module.scss";
 import cn from "classnames";
 import { useDispatch } from "react-redux";
 import { handlePageChange, toggleSideMenu } from "@/app/store/slice";
-import logo from "../../../images/logo.png";
+import logo from "../../images/logo.png";
 
 export default function AppLogo() {
   const dispatch = useDispatch();
