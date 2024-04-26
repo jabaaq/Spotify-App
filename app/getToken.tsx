@@ -16,13 +16,13 @@ const GetToken = () => {
 
   useEffect(() => {
     const hash: string = window.location.hash;
+
     if (hash) {
       const token: string = hash.substring(1).split("&")[0].split("=")[1];
       dispatch(setToken(token));
+
       router.push("/spotify");
     }
-
-    console.log("pathname", pathname);
   }, [dispatch]);
 
   useEffect(() => {

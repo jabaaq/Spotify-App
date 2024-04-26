@@ -1,12 +1,19 @@
 "use client";
-import React, { useEffect } from "react";
 import { useAuth } from "@/app/useAuth";
+import cn from "classnames";
+import style from "./Collection.module.scss";
 import Login from "@/component/Login/Login";
+import CollectionPage from "./CollectionPage/CollectionPage";
 
-const Playlist = (): JSX.Element => {
+const Collection = (): JSX.Element => {
   const token = useAuth();
 
-  return <>{token ? <h1>playlist</h1> : <Login />}</>;
+  return (
+    <main className={cn(style.main)}>
+      <CollectionPage />
+      {/* {token ? <CollectionPage /> : <Login />} */}
+    </main>
+  );
 };
 
-export default Playlist;
+export default Collection;

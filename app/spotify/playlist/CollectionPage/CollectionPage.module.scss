@@ -1,0 +1,12 @@
+.playlist {
+  width: 80%;
+  // height: 100vh;
+  // background: red;
+
+  .radioButtonsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+}

@@ -19,11 +19,7 @@ import { useAuth } from "../useAuth";
 export default function Spotify() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const token = useAuth();
-
-  useEffect(() => {
-    console.log(token);
-  }, []);
+  // const token = useAuth();
 
   useEffect(() => {
     // dispatch(fetchGenres());
@@ -32,9 +28,12 @@ export default function Spotify() {
     dispatch(fetchNewReleases());
     dispatch(fetchUserInformation());
     // dispatch(fetchTrackRecommendations());
-  }, [token, dispatch]);
+  }, [dispatch]);
 
   return (
-    <main className={cn(style.main)}>{token ? <HomePage /> : <Login />}</main>
+    // <main className={cn(style.main)}>{token ? <HomePage /> : <Login />}</main>
+    <main className={cn(style.main)}>
+      <HomePage />
+    </main>
   );
 }

@@ -1,0 +1,23 @@
+.radio {
+  display: none;
+}
+.label {
+  font-weight: 500;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  height: 37px;
+  padding: 8px 17.5px;
+  background-color: #88888800;
+  border: 2px solid var(--text-color);
+  border-radius: 27px;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 14px;
+}
+#lang-1:checked ~ .label-1,
+#lang-2:checked ~ .label-2 {
+  background-color: var(--yellow);
+  color: var(--dark);
+  border: 2px solid var(--yellow);
+}

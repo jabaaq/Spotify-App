@@ -2,6 +2,7 @@ import { createSlice, isAllOf, isAnyOf } from "@reduxjs/toolkit";
 import { PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { useHttp } from "@/services/http.hook";
 import spotifyService from "@/service/spotifyService";
+import { Salsa } from "next/font/google";
 
 const { request } = useHttp();
 const {
@@ -24,10 +25,12 @@ export interface SpotifyState {
   section: any;
   activePage: string;
   openSideMenu: boolean;
+  isLogged: boolean;
 }
 
 const initialState: SpotifyState = {
   token: sessionStorage.getItem("spotifyToken") || null,
+  // token: "" || null,
   fetchedPlaylist: [],
   userInformation: [],
   loadHomePage: false,
@@ -39,22 +42,16 @@ const initialState: SpotifyState = {
   section: [],
   activePage: "home",
   openSideMenu: false,
+  isLogged: false,
 };
-
-export const fetchPlaylist = createAsyncThunk(
-  "fetch/fetchPlaylist",
-  async () => {
-    const token: string | null = sessionStorage.getItem("spotifyToken"); //it will always get the latest token value from sessionStorage
-    const url: string = process.env.NEXT_PUBLIC_PLAYLIST!;
-    const res = await request(url, token);
-    return res.items.map(_transferPlaylists);
-  }
-);
+const getToken = () => {
+  return sessionStorage.getItem("spotifyToken");
+};
 
 export const fetchUserInformation = createAsyncThunk(
   "fetch/fetchUserInformation",
   async () => {
-    const token: string | null = sessionStorage.getItem("spotifyToken");
+    const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_USER!;
     const res = await request(url, token);
     return _transferUser(res);
@@ -64,7 +61,7 @@ export const fetchUserInformation = createAsyncThunk(
 export const fetchTopTracks = createAsyncThunk(
   "fetch/fetchTopTracks",
   async () => {
-    const token: string | null = sessionStorage.getItem("spotifyToken");
+    const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_TOP_TRACKS!;
     const res = await request(url, token);
     return res.items.map(_transferTracks);
@@ -74,7 +71,7 @@ export const fetchTopTracks = createAsyncThunk(
 export const fetchTrackRecommendations = createAsyncThunk(
   "fetch/fetchTrackRecommendations",
   async () => {
-    const token: string | null = sessionStorage.getItem("spotifyToken");
+    const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_TRACKS_RECOMMENDATIONS!;
     const res = await request(url, token);
     return res.tracks.map(_transferTrackRecommendations);
@@ -82,14 +79,14 @@ export const fetchTrackRecommendations = createAsyncThunk(
 );
 
 export const fetchGenres = createAsyncThunk("fetch/fetchGenres", async () => {
-  const token: string | null = sessionStorage.getItem("spotifyToken");
+  const token: string | null = getToken();
   const url: string = process.env.NEXT_PUBLIC_GENRES!;
   const res = await request(url, token);
   return res;
 });
 
 export const fetchArtists = createAsyncThunk("fetch/fetchArtists", async () => {
-  const token: string | null = sessionStorage.getItem("spotifyToken");
+  const token: string | null = getToken();
   const url: string = process.env.NEXT_PUBLIC_SEVERAL_ARTISTS!;
   const res = await request(url, token);
   return res;
@@ -98,7 +95,7 @@ export const fetchArtists = createAsyncThunk("fetch/fetchArtists", async () => {
 export const fetchNewReleases = createAsyncThunk(
   "fetch/fetchNewReleases",
   async () => {
-    const token: string | null = sessionStorage.getItem("spotifyToken");
+    const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_NEW_RELEASES!;
     const res = await request(url, token);
     return res.albums.items.map(_transferNewReleases);
@@ -112,6 +109,7 @@ export const spotifySlice = createSlice({
     setToken: (state, action: PayloadAction<string>) => {
       sessionStorage.setItem("spotifyToken", action.payload);
       state.token = action.payload;
+      state.isLogged = true;
     },
     handlePageChange: (state, action) => {
       state.activePage = action.payload;
@@ -126,41 +124,22 @@ export const spotifySlice = createSlice({
   extraReducers: (builder) => {
     builder
       //PLAYLIST
-      .addCase(fetchPlaylist.fulfilled, (state, action) => {
-        state.fetchedPlaylist = action.payload;
-        state.loadHomePage = true;
-      })
-      .addCase(fetchPlaylist.pending, (state, action) => {
-        state.loadHomePage = false;
-      })
-      .addCase(fetchPlaylist.rejected, (state, action) => {
-        state.loadHomePage = false;
-      })
+      // .addCase(fetchPlaylist.fulfilled, (state, action) => {
+      //   state.fetchedPlaylist = action.payload;
+      //   state.loadHomePage = true;
+      // })
       //USER INFORMATION
       .addCase(fetchUserInformation.fulfilled, (state, action) => {
         state.userInformation = action.payload;
         state.loadHomePage = true;
       })
-      .addCase(fetchUserInformation.pending, (state, action) => {
-        state.loadHomePage = false;
-      })
-      .addCase(fetchUserInformation.rejected, (state, action) => {
-        state.loadHomePage = false;
-      })
       //TRACKS
       .addCase(fetchTopTracks.fulfilled, (state, action) => {
         state.fetchedTopTracks = action.payload;
       })
-      .addCase(fetchTopTracks.pending, (state, action) => {
-        state.loadHomePage = false;
-      })
-      .addCase(fetchTopTracks.rejected, (state, action) => {
-        state.loadHomePage = false;
-      })
       //TRACK RECOMMENDATIONS
       .addCase(fetchTrackRecommendations.fulfilled, (state, action) => {
         state.fetchedTrackRecommendations = ["Recommendations", action.payload];
-        // console.log(state.fetchedTrackRecommendations);
       })
       //GENRES
       .addCase(fetchGenres.fulfilled, (state, action) => {
@@ -169,7 +148,6 @@ export const spotifySlice = createSlice({
       //NEW RELEASES
       .addCase(fetchNewReleases.fulfilled, (state, action) => {
         state.fetchedNewReleases = ["New Releases", action.payload];
-        // console.log(state.fetchedNewReleases);
       })
       //ARTISTS
       .addCase(fetchArtists.fulfilled, (state, action) => {

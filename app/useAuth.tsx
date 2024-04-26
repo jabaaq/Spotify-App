@@ -25,5 +25,4 @@ export const useAuth = () => {
   }, [token]);
 
   return token;
-  // return <div>{token ? <Login /> : "WITHOUT TOKEN"}</div>;
 };

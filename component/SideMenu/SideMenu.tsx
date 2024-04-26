@@ -13,10 +13,6 @@ const SideMenu = (): JSX.Element => {
     (state: RootState) => state.spotifyReducer
   );
 
-  // useEffect(() => {
-  //   console.log(location.pathname.split("/")[1]);
-  // }, [location.pathname]);
-
   return (
     <div
       className={cn(style.SideMenu, {
