@@ -1,4 +1,3 @@
-"use client";
 import styles from "./page.module.scss";
 import cn from "classnames";
 import GetToken from "./getToken";

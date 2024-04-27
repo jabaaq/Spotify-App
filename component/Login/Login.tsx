@@ -4,8 +4,11 @@ import Button from "../Button/Button";
 import spotifyLogo from "../../public/Spotify_Logo_CMYK_Black.png";
 import cn from "classnames";
 import style from "./login.module.scss";
+import { useDispatch } from "react-redux";
+import { setIsLogged } from "@/app/store/slice";
 
 export default function Login(): JSX.Element {
+  const dispatch = useDispatch();
   const handleClick = (): void => {
     const scope = [
       "user-read-email",
@@ -23,6 +26,8 @@ export default function Login(): JSX.Element {
     }&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URL}&scope=${scope.join(
       " "
     )}&response_type=token&show_dialog=true`;
+
+    dispatch(setIsLogged());
   };
 
   return (
