@@ -29,7 +29,8 @@
     ".next/types/**/*.ts",
     "component/Login/Login.jsx",
     "app/spotify/page.jsx",
-    "app/store/store.ts"
+    "app/store/store.ts",
+    "app/api/auth/[...nextauth].js"
   ],
   "exclude": ["node_modules"]
 }

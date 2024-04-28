@@ -1,7 +1,5 @@
 import { createSlice, isAllOf, isAnyOf } from "@reduxjs/toolkit";
 import { PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { useHttp } from "@/services/http.hook";
-import spotifyService from "@/service/spotifyService";
 import { SpotifyState } from "@/interfaces/interfaces";
 import {
   fetchGenres,
@@ -14,7 +12,7 @@ import {
 
 const initialState: SpotifyState = {
   // token: sessionStorage.getItem("spotifyToken") || null,
-  token: "" || null,
+  token: "",
   fetchedPlaylist: [],
   userInformation: [],
   loadHomePage: false,

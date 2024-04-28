@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { useHttp } from "@/services/http.hook";
 import spotifyService from "@/service/spotifyService";
-
 const { request } = useHttp();
 
 const {

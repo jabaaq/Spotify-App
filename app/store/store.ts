@@ -1,6 +1,5 @@
-import { applyMiddleware, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import spotifyReducer from "./slice";
-import { thunk } from "redux-thunk";
 
 export const store = configureStore({
   reducer: {

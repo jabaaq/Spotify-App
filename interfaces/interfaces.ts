@@ -1,5 +1,5 @@
 export interface SpotifyState {
-  token: string | null;
+  token: string;
   loadHomePage: boolean;
   fetchedPlaylist: any;
   fetchedTopTracks: any;
