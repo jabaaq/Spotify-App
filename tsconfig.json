@@ -30,7 +30,10 @@
     "component/Login/Login.jsx",
     "app/spotify/page.jsx",
     "app/store/store.ts",
-    "app/api/auth/[...nextauth].js"
+    "app/login/nextauthtest.js",
+    "app/api/auth/[...next-auth]/route.ts",
+    "app/api/auth/[...nextauth]/route.ts",
+    "lib/spotify.ts"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,14 +1,31 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import spotifyLogo from "../../public/Spotify_Logo_CMYK_Black.png";
 import cn from "classnames";
 import style from "./login.module.scss";
-import { useDispatch } from "react-redux";
-import { setIsLogged } from "@/app/store/slice";
+import { getProviders, signIn } from "next-auth/react";
+import { LOGIN_URL } from "@/lib/spotify";
 
-export default function Login(): JSX.Element {
-  const dispatch = useDispatch();
+export default function LoginComponent() {
+  // const [providers, setProviders] = useState<any>(null);
+  // const providersPromise = getProviders();
+
+  // useEffect(() => {
+  //   providersPromise
+  //     .then((provider) => {
+  //       setProviders(provider?.spotify);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching providers: ", error);
+  //     });
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log(LOGIN_URL);
+  //   console.log(providers);
+  // }, [providers]);
+
   const handleClick = (): void => {
     const scope = [
       "user-read-email",
@@ -26,18 +43,17 @@ export default function Login(): JSX.Element {
     }&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URL}&scope=${scope.join(
       " "
     )}&response_type=token&show_dialog=true`;
-
-    dispatch(setIsLogged());
   };
 
   return (
     <main className={cn(style.main)}>
-      <div className={cn(style.login_container, {})}>
-        <img src={spotifyLogo.src} alt="Spotify" className={cn(style.logo)} />
+      <div className={cn(style.login_container)}>
+        <img src={spotifyLogo.src} alt="spotify" className={cn(style.logo)} />
         <Button onClick={handleClick} appearance={"login"}>
           Continue with Spotify
         </Button>
       </div>
     </main>
+    // <h1>Hello</h1>
   );
 }

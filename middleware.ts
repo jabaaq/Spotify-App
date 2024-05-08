@@ -1,23 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
-import { store } from "./app/store/store";
-import { headers } from "next/headers";
+export async function middleware(req: NextRequest) {
+  const token = req.cookies.get("token")?.value;
+  // const token = cookies().get("token")?.value;
 
-const testIsLogged: boolean = true;
+  const { pathname } = req.nextUrl;
 
-export async function middleware(request: NextRequest) {
-  const isLogged: boolean = store.getState().spotifyReducer.isLogged;
+  console.log("Token --- ", token);
+  console.log("pathname --- ", pathname);
 
-  let response = NextResponse.next();
+  // //First login
+  // if (pathname === "/" || !token) {
+  //   return NextResponse.next();
+  // }
 
-  response.cookies.set({
-    name: "isLogged",
-    value: isLogged ? "Yes" : "false",
-  });
-
-  if (!testIsLogged && request.url === "http://localhost:3000/spotify") {
-    return NextResponse.redirect(new URL("/", request.url));
+  if (pathname === "/" && token) {
+    return NextResponse.redirect(new URL("/spotify", req.url));
   }
 
-  return response;
-  // return NextResponse.next();
+  //not logged yet and trying to visit other pages
+  if (!token && pathname !== "/") {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+
+  return NextResponse.next();
 }
+
+export const config = {
+  matcher: ["/((?!api|_next/static|_next/image|img/|favicon.ico).*)"],
+};

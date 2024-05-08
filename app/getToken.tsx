@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { setToken } from "./store/slice";
 import Login from "@/component/Login/Login";
 import { usePathname, useRouter } from "next/navigation";
+import cookie from "@boiseitguru/cookie-cutter";
 
 const GetToken = () => {
   const { token } = useSelector((state: RootState) => state.spotifyReducer);
@@ -22,6 +23,9 @@ const GetToken = () => {
 
     if (hash) {
       const token: string = hash.substring(1).split("&")[0].split("=")[1];
+      // cookies().set("token", token);
+      // document.cookie = `token=${token}; path=/`;
+      cookie.set("token", token);
       dispatch(setToken(token));
       router.push("/spotify");
     }
