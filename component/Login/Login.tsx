@@ -8,24 +8,6 @@ import { getProviders, signIn } from "next-auth/react";
 import { LOGIN_URL } from "@/lib/spotify";
 
 export default function LoginComponent() {
-  // const [providers, setProviders] = useState<any>(null);
-  // const providersPromise = getProviders();
-
-  // useEffect(() => {
-  //   providersPromise
-  //     .then((provider) => {
-  //       setProviders(provider?.spotify);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching providers: ", error);
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log(LOGIN_URL);
-  //   console.log(providers);
-  // }, [providers]);
-
   const handleClick = (): void => {
     const scope = [
       "user-read-email",

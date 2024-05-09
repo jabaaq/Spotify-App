@@ -32,7 +32,6 @@ const LOGIN_URL = `${process.env.NEXT_PUBLIC_API_URL}?client_id=${
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
   clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
-  // redirectUri:process.env.NEXT_PUBLIC_CLIENT_SECRET
 });
 
 console.log("spotifyApi ---", spotifyApi);

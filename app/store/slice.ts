@@ -1,6 +1,7 @@
 import { createSlice, isAllOf, isAnyOf } from "@reduxjs/toolkit";
-import { PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { PayloadAction } from "@reduxjs/toolkit";
 import { SpotifyState } from "@/interfaces/interfaces";
+import cookie from "@boiseitguru/cookie-cutter";
 import {
   fetchGenres,
   fetchArtists,
@@ -11,7 +12,6 @@ import {
 } from "./asyncThunks";
 
 const initialState: SpotifyState = {
-  // token: sessionStorage.getItem("spotifyToken") || null,
   token: "",
   fetchedPlaylist: [],
   userInformation: [],
@@ -24,7 +24,6 @@ const initialState: SpotifyState = {
   section: [],
   activePage: "home",
   openSideMenu: false,
-  isLogged: false,
 };
 
 export const spotifySlice = createSlice({
@@ -32,10 +31,8 @@ export const spotifySlice = createSlice({
   initialState,
   reducers: {
     setToken: (state, action: PayloadAction<string>) => {
-      sessionStorage.setItem("spotifyToken", action.payload);
+      cookie.set("token", action.payload);
       state.token = action.payload;
-      console.log("token without sessionStorage", state.token);
-      // state.isLogged = true;
     },
     handlePageChange: (state, action) => {
       state.activePage = action.payload;
@@ -45,19 +42,10 @@ export const spotifySlice = createSlice({
         ? (state.openSideMenu = action.payload)
         : (state.openSideMenu = !state.openSideMenu);
     },
-    setIsLogged: (state) => {
-      state.isLogged = true;
-    },
   },
 
   extraReducers: (builder) => {
     builder
-      //PLAYLIST
-      // .addCase(fetchPlaylist.fulfilled, (state, action) => {
-      //   state.fetchedPlaylist = action.payload;
-      //   state.loadHomePage = true;
-      // })
-      //USER INFORMATION
       .addCase(fetchUserInformation.fulfilled, (state, action) => {
         state.userInformation = action.payload;
         state.loadHomePage = true;
@@ -98,7 +86,7 @@ export const spotifySlice = createSlice({
   },
 });
 
-export const { setToken, handlePageChange, toggleSideMenu, setIsLogged } =
+export const { setToken, handlePageChange, toggleSideMenu } =
   spotifySlice.actions;
 const { reducer } = spotifySlice;
 

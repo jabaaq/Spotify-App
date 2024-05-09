@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { useHttp } from "@/services/http.hook";
 import spotifyService from "@/service/spotifyService";
+import cookie from "@boiseitguru/cookie-cutter";
 
 const { request } = useHttp();
 
@@ -12,8 +13,11 @@ const {
   _transferTrackRecommendations,
 } = spotifyService();
 
+// const token = cookie.get("token")!;
+// console.log(token);
+
 const getToken = () => {
-  return sessionStorage.getItem("spotifyToken");
+  return cookie.get("token")!;
 };
 
 export const fetchUserInformation = createAsyncThunk(

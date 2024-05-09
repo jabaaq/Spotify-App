@@ -11,5 +11,4 @@ export interface SpotifyState {
   section: any;
   activePage: string;
   openSideMenu: boolean;
-  isLogged: boolean;
 }
