@@ -12,6 +12,7 @@ import {
   fetchNewReleases,
   fetchArtists,
   fetchTopTracks,
+  fetchUserPlaylist,
 } from "../store/asyncThunks";
 
 export default function Spotify() {
@@ -19,6 +20,7 @@ export default function Spotify() {
 
   useEffect(() => {
     // dispatch(fetchGenres());
+    // dispatch(fetchUserPlaylist());
     dispatch(fetchArtists());
     dispatch(fetchTopTracks());
     dispatch(fetchNewReleases());

@@ -33,7 +33,7 @@ const SideMenu = (): JSX.Element => {
             }
           >
             {item.icon}
-            {item.page[0].toUpperCase() + item.page.slice(1)}
+            {item.name[0].toUpperCase() + item.name.slice(1)}
           </Link>
         ))}
       </ul>

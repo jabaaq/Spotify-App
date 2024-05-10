@@ -11,12 +11,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/app/store/store";
 import Link from "next/link";
 import cookie from "@boiseitguru/cookie-cutter";
+import { useEffect } from "react";
 
 export const navItems: NavItem[] = [
-  { icon: <GoHomeFill size={20} />, page: "home" },
-  { icon: <BiSolidCollection size={20} />, page: "playlist" },
-  { icon: <IoPerson size={20} />, page: "profile" },
-  { icon: <IoLogOut size={20} />, page: "/" },
+  { icon: <GoHomeFill size={20} />, page: "home", name: "home" },
+  {
+    icon: <BiSolidCollection size={20} />,
+    page: "collection",
+    name: "collection",
+  },
+  { icon: <IoPerson size={20} />, page: "profile", name: "profile" },
+  { icon: <IoLogOut size={20} />, page: "/", name: "logout" },
 ];
 
 const AppNav = () => {
@@ -25,8 +30,14 @@ const AppNav = () => {
     (state: RootState) => state.spotifyReducer
   );
 
-  const handleLog = (): void => {
+  useEffect(() => {
+    const storageActivePage = sessionStorage.getItem("ActivePage");
+    handlePageChange(storageActivePage);
+  }, [activePage]);
+
+  const handleLogOut = (): void => {
     cookie.set("token", "", { expires: new Date(0) });
+    sessionStorage.removeItem("ActivePage");
     window.location.reload();
   };
 
@@ -39,8 +50,8 @@ const AppNav = () => {
             key={i}
             className={cn({ [style.activePage]: activePage === item.page })}
             onClick={() =>
-              item.page === "/"
-                ? handleLog()
+              item.name === "logout"
+                ? handleLogOut()
                 : dispatch(handlePageChange(item.page))
             }
           >

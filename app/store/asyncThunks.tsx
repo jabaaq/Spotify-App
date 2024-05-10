@@ -13,12 +13,21 @@ const {
   _transferTrackRecommendations,
 } = spotifyService();
 
-// const token = cookie.get("token")!;
-// console.log(token);
-
 const getToken = () => {
   return cookie.get("token")!;
 };
+
+export const fetchUserPlaylist = createAsyncThunk(
+  "fetch/fetchUserPlaylist",
+  async () => {
+    const token: string | null = getToken();
+    const url: string = process.env.NEXT_PUBLIC_PLAYLIST!;
+    const res = await request(url, token);
+    console.log(res);
+
+    return _transferPlaylists(res);
+  }
+);
 
 export const fetchUserInformation = createAsyncThunk(
   "fetch/fetchUserInformation",

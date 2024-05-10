@@ -1,4 +1,4 @@
-import { createSlice, isAllOf, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { SpotifyState } from "@/interfaces/interfaces";
 import cookie from "@boiseitguru/cookie-cutter";
@@ -9,6 +9,7 @@ import {
   fetchTopTracks,
   fetchTrackRecommendations,
   fetchUserInformation,
+  fetchUserPlaylist,
 } from "./asyncThunks";
 
 const initialState: SpotifyState = {
@@ -22,7 +23,8 @@ const initialState: SpotifyState = {
   fetchedNewReleases: [],
   fetchedArtists: [],
   section: [],
-  activePage: "home",
+  // activePage: "home",
+  activePage: sessionStorage.getItem("ActivePage") || "home",
   openSideMenu: false,
 };
 
@@ -35,6 +37,7 @@ export const spotifySlice = createSlice({
       state.token = action.payload;
     },
     handlePageChange: (state, action) => {
+      sessionStorage.setItem("ActivePage", action.payload);
       state.activePage = action.payload;
     },
     toggleSideMenu: (state, action): void => {
@@ -69,6 +72,11 @@ export const spotifySlice = createSlice({
       //ARTISTS
       .addCase(fetchArtists.fulfilled, (state, action) => {
         state.fetchedArtists = action.payload;
+      })
+      //Playlists
+      .addCase(fetchUserPlaylist.fulfilled, (state, action) => {
+        state.fetchedPlaylist = action.payload;
+        console.log("PAYLOAD", action.payload);
       })
       .addMatcher(
         isAnyOf(
