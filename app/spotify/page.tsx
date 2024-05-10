@@ -29,7 +29,6 @@ export default function Spotify() {
   }, [dispatch]);
 
   return (
-    // <main className={cn(style.main)}>{token ? <HomePage /> : <Login />}</main>
     <main className={cn(style.main)}>
       <HomePage />
     </main>

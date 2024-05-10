@@ -5,10 +5,6 @@ export async function middleware(req: NextRequest) {
   // const token = cookies().get("token")?.value;
 
   const { pathname } = req.nextUrl;
-
-  console.log("Token --- ", token);
-  console.log("pathname --- ", pathname);
-
   // //First login
   // if (pathname === "/" || !token) {
   //   return NextResponse.next();

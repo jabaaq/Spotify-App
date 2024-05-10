@@ -4,6 +4,7 @@ import { RootState, store } from "./store/store";
 import { useEffect } from "react";
 import { setToken } from "./store/slice";
 import Login from "@/component/Login/Login";
+import Spotify from "./spotify/page";
 import { useRouter } from "next/navigation";
 const GetToken = () => {
   const { token } = useSelector((state: RootState) => state.spotifyReducer);
@@ -16,11 +17,11 @@ const GetToken = () => {
     if (hash) {
       const token: string = hash.substring(1).split("&")[0].split("=")[1];
       dispatch(setToken(token));
-      router.push("/spotify");
+      router.push("/");
     }
   }, []);
 
-  return <div>{token ? <Login /> : <Login />}</div>; //I have to add Error page here instead of <Login/>
+  return <div>{token ? <Spotify /> : <Login />}</div>; //I have to add Error page here instead of <Login/>
 };
 
 export default GetToken;

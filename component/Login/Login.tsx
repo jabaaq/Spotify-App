@@ -4,27 +4,11 @@ import Button from "../Button/Button";
 import spotifyLogo from "../../public/Spotify_Logo_CMYK_Black.png";
 import cn from "classnames";
 import style from "./login.module.scss";
-import { getProviders, signIn } from "next-auth/react";
 import { LOGIN_URL } from "@/lib/spotify";
 
 export default function LoginComponent() {
   const handleClick = (): void => {
-    const scope = [
-      "user-read-email",
-      "user-read-private",
-      "user-read-playback-state",
-      "user-modify-playback-state",
-      "user-read-currently-playing",
-      "user-read-playback-position",
-      "user-top-read",
-      "user-read-recently-played",
-    ];
-
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}?client_id=${
-      process.env.NEXT_PUBLIC_CLIENT_ID
-    }&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URL}&scope=${scope.join(
-      " "
-    )}&response_type=token&show_dialog=true`;
+    window.location.href = LOGIN_URL;
   };
 
   return (
@@ -36,6 +20,5 @@ export default function LoginComponent() {
         </Button>
       </div>
     </main>
-    // <h1>Hello</h1>
   );
 }
