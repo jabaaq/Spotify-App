@@ -1,5 +1,4 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import spotifyLogo from "../../public/Spotify_Logo_CMYK_Black.png";
 import cn from "classnames";

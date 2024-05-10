@@ -2,14 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
-  // const token = cookies().get("token")?.value;
 
   const { pathname } = req.nextUrl;
-  // //First login
-  // if (pathname === "/" || !token) {
-  //   return NextResponse.next();
-  // }
 
+  //already logged in
   if (pathname === "/" && token) {
     return NextResponse.redirect(new URL("/spotify", req.url));
   }

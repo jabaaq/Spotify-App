@@ -38,7 +38,11 @@ const AppNav = () => {
             href={item.page === "home" ? "/spotify" : `/spotify/${item.page}`}
             key={i}
             className={cn({ [style.activePage]: activePage === item.page })}
-            onClick={() => (dispatch(handlePageChange(item.page)), handleLog())}
+            onClick={() =>
+              item.page === "/"
+                ? handleLog()
+                : dispatch(handlePageChange(item.page))
+            }
           >
             {item.icon}
           </Link>

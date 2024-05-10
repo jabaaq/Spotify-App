@@ -5,8 +5,6 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import HomePage from "./HomePage/HomePage";
-import { useAuth } from "../useAuth";
-
 import {
   fetchUserInformation,
   fetchTrackRecommendations,
