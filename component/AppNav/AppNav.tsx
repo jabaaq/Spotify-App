@@ -21,7 +21,7 @@ export const navItems: NavItem[] = [
     name: "collection",
   },
   { icon: <IoPerson size={20} />, page: "profile", name: "profile" },
-  { icon: <IoLogOut size={20} />, page: "/", name: "logout" },
+  { icon: <IoLogOut size={20} />, page: "", name: "logout" },
 ];
 
 const AppNav = () => {
@@ -38,7 +38,7 @@ const AppNav = () => {
   const handleLogOut = (): void => {
     cookie.set("token", "", { expires: new Date(0) });
     sessionStorage.removeItem("ActivePage");
-    window.location.reload();
+    window.location.href = "/";
   };
 
   return (

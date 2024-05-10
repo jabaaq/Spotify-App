@@ -39,7 +39,9 @@ const spotifyService = () => {
       description: playlist.description
         ? playlist.description
         : "Without description",
-      scrollTo,
+      uri: playlist.uri,
+      tracks: playlist.tracks,
+      href: playlist.href,
     };
   };
 

@@ -1,6 +1,5 @@
 import style from "./SectionCard.module.scss";
 import cn from "classnames";
-import testImg from "../../testImages/heroSection.jpeg";
 import { NewReleases } from "@/service/serviceInterfaces";
 
 const SectionCard = ({ name, artist, image }: NewReleases) => {
