@@ -9,6 +9,6 @@ export interface SpotifyState {
   fetchedNewReleases: any;
   fetchedArtists: any;
   section: any;
-  activePage: string;
+  activePage: string | null;
   openSideMenu: boolean;
 }

@@ -1,7 +1,16 @@
-.playlist {
+.collections {
   width: 80%;
-  // height: 100vh;
-  // background: red;
+  height: 100vh;
+
+  .collectionCardsContainer {
+    background: red;
+    padding: 23px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
 
   .radioButtonsContainer {
     width: 100%;

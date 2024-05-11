@@ -33,7 +33,7 @@ const AppNav = () => {
   useEffect(() => {
     const storageActivePage = sessionStorage.getItem("ActivePage");
     handlePageChange(storageActivePage);
-  }, [activePage]);
+  }, []);
 
   const handleLogOut = (): void => {
     cookie.set("token", "", { expires: new Date(0) });

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/app/store/store";
 import { useEffect } from "react";
 import { fetchUserPlaylist } from "@/app/store/asyncThunks";
+import CollectionCards from "../CollectionCards/CollectionCards";
 
 const CollectionPage = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
@@ -23,13 +24,16 @@ const CollectionPage = (): JSX.Element => {
   }, [fetchedPlaylist]);
 
   return (
-    <div className={cn(style.playlist)}>
+    <div className={cn(style.collections)}>
       <div className={cn(style.radioButtonsContainer)}>
         <RadioButtons />
       </div>
-      <h1>PlaylistPage</h1>
-      <h1>PlaylistPage</h1>
-      <h1>PlaylistPage</h1>
+      <div className={cn(style.collectionCardsContainer)}>
+        <CollectionCards />
+        <CollectionCards />
+        <CollectionCards />
+        <CollectionCards />
+      </div>
     </div>
   );
 };

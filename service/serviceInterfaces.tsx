@@ -12,6 +12,9 @@ export interface Playlist {
   image?: string;
   id?: string;
   description?: string;
+  uri: string;
+  tracks: string;
+  href: string;
   scrollTo?: any;
 }
 

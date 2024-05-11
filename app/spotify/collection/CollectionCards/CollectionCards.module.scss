@@ -1,0 +1,12 @@
+.collectionCard {
+  width: 213px;
+  height: 234px;
+  border-radius: 20px;
+  background-color: blue;
+}
+
+@media only screen and (max-width: 720px) {
+  .collectionCard {
+    width: 100%;
+  }
+}

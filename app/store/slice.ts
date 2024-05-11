@@ -23,7 +23,6 @@ const initialState: SpotifyState = {
   fetchedNewReleases: [],
   fetchedArtists: [],
   section: [],
-  // activePage: "home",
   activePage: sessionStorage.getItem("ActivePage") || "home",
   openSideMenu: false,
 };
