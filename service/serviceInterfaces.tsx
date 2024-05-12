@@ -9,12 +9,12 @@ export interface Track {
 
 export interface Playlist {
   name?: string;
-  image?: string;
+  image?: any;
   id?: string;
   description?: string;
-  uri: string;
-  tracks: string;
-  href: string;
+  uri?: string;
+  tracks?: string;
+  href?: string;
   scrollTo?: any;
 }
 

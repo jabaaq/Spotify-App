@@ -14,6 +14,7 @@
   color: var(--text-color);
   cursor: pointer;
   font-size: 14px;
+  text-wrap: nowrap;
 }
 #lang-1:checked ~ .label-1,
 #lang-2:checked ~ .label-2 {

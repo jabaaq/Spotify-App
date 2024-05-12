@@ -6,7 +6,6 @@
   flex-direction: row;
   background: var(--dark-alt);
   color: var(--text-color);
-  // min-width: 280px;
   width: 100%;
   border-radius: 20px;
   height: 96px;
@@ -14,6 +13,7 @@
   text-wrap: nowrap;
   flex-wrap: nowrap;
   overflow: hidden;
+  transition: 0.5s;
 
   .chartCard_description {
     margin: 17px;

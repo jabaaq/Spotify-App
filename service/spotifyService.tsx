@@ -5,6 +5,7 @@ import {
   Recommendations,
   NewReleases,
 } from "./serviceInterfaces";
+import withoutImage from "../images/without_image.png";
 
 const spotifyService = () => {
   const millisToMinutes = (milliSeconds: number): string => {
@@ -34,7 +35,7 @@ const spotifyService = () => {
   const _transferPlaylists = (playlist: any): Playlist => {
     return {
       name: playlist.name,
-      image: playlist.images[0].url,
+      image: playlist.images ? playlist.images[0].url : null,
       id: playlist.id,
       description: playlist.description
         ? playlist.description
