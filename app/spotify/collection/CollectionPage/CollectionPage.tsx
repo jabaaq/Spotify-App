@@ -5,23 +5,23 @@ import RadioButtons from "@/component/RadioButton/RadioButton";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/app/store/store";
 import { useEffect } from "react";
-import { fetchUserPlaylist } from "@/app/store/asyncThunks";
+import { fetchUserPlaylist, fetchSavedAlbums } from "@/app/store/asyncThunks";
 import CollectionCard from "../CollectionCards/CollectionCards";
 
 const CollectionPage = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { fetchedPlaylist } = useSelector(
-    (state: RootState) => state.spotifyReducer
-  );
+  const { fetchedPlaylist, fetchedLikedSongs, selectedRadioButton } =
+    useSelector((state: RootState) => state.spotifyReducer);
 
   useEffect(() => {
     dispatch(fetchUserPlaylist());
+    dispatch(fetchSavedAlbums());
   }, []);
 
   useEffect(() => {
-    console.log("fetchedPlaylist", fetchedPlaylist);
-  }, [fetchedPlaylist]);
+    console.log("fetched albums", fetchedLikedSongs);
+  }, [fetchedLikedSongs]);
 
   return (
     <div className={cn(style.collections)}>

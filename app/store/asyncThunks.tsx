@@ -23,8 +23,18 @@ export const fetchUserPlaylist = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_PLAYLIST!;
     const res = await request(url, token);
-    console.log("From async thunks", res);
     return res.items.map(_transferPlaylists);
+  }
+);
+
+export const fetchSavedAlbums = createAsyncThunk(
+  "fetch/fetchSavedAlbums",
+  async () => {
+    const token: string | null = getToken();
+    const url: string = process.env.NEXT_PUBLIC_LIKED_SONGS!;
+    const res = await request(url, token);
+    console.log(res);
+    return res;
   }
 );
 

@@ -15,6 +15,7 @@
   cursor: pointer;
   font-size: 14px;
   text-wrap: nowrap;
+  transition: 0.5s;
 }
 #lang-1:checked ~ .label-1,
 #lang-2:checked ~ .label-2 {

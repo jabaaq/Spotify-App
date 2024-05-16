@@ -1,6 +1,7 @@
 export interface SpotifyState {
   token: string;
   loadHomePage: boolean;
+  fetchedLikedSongs: string[];
   fetchedPlaylist: any;
   fetchedTopTracks: any;
   userInformation: any;
@@ -11,4 +12,5 @@ export interface SpotifyState {
   section: any;
   activePage: string | null;
   openSideMenu: boolean;
+  selectedRadioButton: string;
 }

@@ -1,8 +1,20 @@
-import cn from "classnames";
-// import style from "./RadioButton.module.scss";
+import { RadioButtonsProps } from "./RadioButton.props";
 import "./RadioButton.scss";
+import { useEffect, useState } from "react";
+import { handleSelectRadioButton } from "@/app/store/slice";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "@/app/store/store";
 
-const RadioButtons = (): JSX.Element => {
+const RadioButtons = ({}: RadioButtonsProps): JSX.Element => {
+  const dispatch = useDispatch();
+  const { selectedRadioButton } = useSelector(
+    (state: RootState) => state.spotifyReducer
+  );
+
+  useEffect(() => {
+    console.log(selectedRadioButton);
+  }, [selectedRadioButton]);
+
   return (
     <>
       <input
@@ -11,6 +23,7 @@ const RadioButtons = (): JSX.Element => {
         name="lang"
         value="collection"
         className="radio"
+        onChange={() => dispatch(handleSelectRadioButton("collection"))}
         defaultChecked
       />
       <label className="label label-1" htmlFor="lang-1">
@@ -23,6 +36,7 @@ const RadioButtons = (): JSX.Element => {
         name="lang"
         value="likes"
         className="radio"
+        onChange={() => dispatch(handleSelectRadioButton("likes"))}
       />
       <label className="label label-2" id="lang-2" htmlFor="lang-2">
         Likes

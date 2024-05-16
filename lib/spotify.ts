@@ -3,14 +3,18 @@ import SpotifyWebApi from "spotify-web-api-node";
 const scopes: any = [
   "user-read-email",
   "playlist-read-private",
+  "user-library-read",
   "playlist-read-collaborative",
   "user-read-private",
+  "user-library-modify",
   "user-read-playback-state",
   "user-modify-playback-state",
   "user-read-currently-playing",
   "user-read-playback-position",
   "user-top-read",
   "user-read-recently-played",
+  "user-library-modify",
+  "user-library-read",
 ];
 
 const LOGIN_URL = `${process.env.NEXT_PUBLIC_API_URL}?client_id=${

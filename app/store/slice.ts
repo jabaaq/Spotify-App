@@ -10,11 +10,13 @@ import {
   fetchTrackRecommendations,
   fetchUserInformation,
   fetchUserPlaylist,
+  fetchSavedAlbums,
 } from "./asyncThunks";
 
 const initialState: SpotifyState = {
   token: "",
   fetchedPlaylist: [],
+  fetchedLikedSongs: [],
   userInformation: [],
   loadHomePage: false,
   fetchedTopTracks: [],
@@ -25,6 +27,7 @@ const initialState: SpotifyState = {
   section: [],
   activePage: sessionStorage.getItem("ActivePage") || "home",
   openSideMenu: false,
+  selectedRadioButton: "collection",
 };
 
 export const spotifySlice = createSlice({
@@ -43,6 +46,9 @@ export const spotifySlice = createSlice({
       action.payload
         ? (state.openSideMenu = action.payload)
         : (state.openSideMenu = !state.openSideMenu);
+    },
+    handleSelectRadioButton: (state, action) => {
+      state.selectedRadioButton = action.payload;
     },
   },
 
@@ -76,6 +82,10 @@ export const spotifySlice = createSlice({
       .addCase(fetchUserPlaylist.fulfilled, (state, action) => {
         state.fetchedPlaylist = action.payload;
       })
+      //Albums
+      .addCase(fetchSavedAlbums.fulfilled, (state, action) => {
+        state.fetchedLikedSongs = action.payload;
+      })
       .addMatcher(
         isAnyOf(
           fetchNewReleases.fulfilled,
@@ -92,8 +102,12 @@ export const spotifySlice = createSlice({
   },
 });
 
-export const { setToken, handlePageChange, toggleSideMenu } =
-  spotifySlice.actions;
+export const {
+  setToken,
+  handlePageChange,
+  toggleSideMenu,
+  handleSelectRadioButton,
+} = spotifySlice.actions;
 const { reducer } = spotifySlice;
 
 export default reducer;
