@@ -16,18 +16,11 @@ const CollectionPage = (): JSX.Element => {
   );
 
   useEffect(() => {
+    console.log(selectedRadioButton);
     selectedRadioButton === "collection"
       ? dispatch(fetchUserPlaylist())
       : dispatch(fetchLikedSongs());
   }, [selectedRadioButton]);
-
-  useEffect(() => {
-    console.log(selectedRadioButton);
-  }, [selectedRadioButton]);
-
-  useEffect(() => {
-    console.log("Collection information:", fetchedCollectionPageInformation);
-  }, [fetchedCollectionPageInformation]);
 
   return (
     <div className={cn(style.collections)}>

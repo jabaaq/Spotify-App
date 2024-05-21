@@ -11,10 +11,6 @@ const RadioButtons = ({}: RadioButtonsProps): JSX.Element => {
     (state: RootState) => state.spotifyReducer
   );
 
-  // useEffect(() => {
-  //   console.log(selectedRadioButton);
-  // }, [selectedRadioButton]);
-
   return (
     <>
       <input
@@ -23,8 +19,8 @@ const RadioButtons = ({}: RadioButtonsProps): JSX.Element => {
         name="lang"
         value="collection"
         className="radio"
+        checked={selectedRadioButton === "collection"}
         onChange={() => dispatch(handleSelectRadioButton("collection"))}
-        defaultChecked
       />
       <label className="label label-1" htmlFor="lang-1">
         My Collection
@@ -36,6 +32,7 @@ const RadioButtons = ({}: RadioButtonsProps): JSX.Element => {
         name="lang"
         value="likes"
         className="radio"
+        checked={selectedRadioButton === "likes"}
         onChange={() => dispatch(handleSelectRadioButton("likes"))}
       />
       <label className="label label-2" id="lang-2" htmlFor="lang-2">
