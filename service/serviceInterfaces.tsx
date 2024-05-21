@@ -16,6 +16,7 @@ export interface Playlist {
   tracks?: string;
   href?: string;
   scrollTo?: any;
+  artist?: string;
 }
 
 export interface User {
@@ -37,4 +38,15 @@ export interface NewReleases {
   image: string;
   name: string;
   release_date?: string;
+}
+
+export interface LikedSongs {
+  artist: string;
+  href: string;
+  id: string;
+  name: string;
+  type: string;
+  uri: string;
+  preview_url: string;
+  image: string;
 }

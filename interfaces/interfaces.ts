@@ -13,4 +13,5 @@ export interface SpotifyState {
   activePage: string | null;
   openSideMenu: boolean;
   selectedRadioButton: string;
+  fetchedCollectionPageInformation: string[];
 }

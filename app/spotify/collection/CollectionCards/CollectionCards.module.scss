@@ -11,6 +11,7 @@
   -moz-box-shadow: inset 0px -106px 186px -110px rgba(0, 0, 0, 0.75);
   box-shadow: inset 0px -106px 186px -110px rgba(0, 0, 0, 0.75);
   transition: 0.5s;
+  text-wrap: wrap;
 
   &:hover {
     filter: grayscale(5%) brightness(60%);

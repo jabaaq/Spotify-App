@@ -11,9 +11,9 @@ const RadioButtons = ({}: RadioButtonsProps): JSX.Element => {
     (state: RootState) => state.spotifyReducer
   );
 
-  useEffect(() => {
-    console.log(selectedRadioButton);
-  }, [selectedRadioButton]);
+  // useEffect(() => {
+  //   console.log(selectedRadioButton);
+  // }, [selectedRadioButton]);
 
   return (
     <>

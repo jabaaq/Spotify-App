@@ -10,7 +10,7 @@ import {
   fetchTrackRecommendations,
   fetchUserInformation,
   fetchUserPlaylist,
-  fetchSavedAlbums,
+  fetchLikedSongs,
 } from "./asyncThunks";
 
 const initialState: SpotifyState = {
@@ -28,6 +28,7 @@ const initialState: SpotifyState = {
   activePage: sessionStorage.getItem("ActivePage") || "home",
   openSideMenu: false,
   selectedRadioButton: "collection",
+  fetchedCollectionPageInformation: [],
 };
 
 export const spotifySlice = createSlice({
@@ -80,11 +81,13 @@ export const spotifySlice = createSlice({
       })
       //Playlists
       .addCase(fetchUserPlaylist.fulfilled, (state, action) => {
-        state.fetchedPlaylist = action.payload;
+        state.fetchedCollectionPageInformation = [];
+        state.fetchedCollectionPageInformation = action.payload;
       })
       //Albums
-      .addCase(fetchSavedAlbums.fulfilled, (state, action) => {
-        state.fetchedLikedSongs = action.payload;
+      .addCase(fetchLikedSongs.fulfilled, (state, action) => {
+        state.fetchedCollectionPageInformation = [];
+        state.fetchedCollectionPageInformation = action.payload;
       })
       .addMatcher(
         isAnyOf(

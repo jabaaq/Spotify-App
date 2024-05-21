@@ -11,6 +11,7 @@ const {
   _transferUser,
   _transferNewReleases,
   _transferTrackRecommendations,
+  _transferLikedSongs,
 } = spotifyService();
 
 const getToken = () => {
@@ -27,14 +28,13 @@ export const fetchUserPlaylist = createAsyncThunk(
   }
 );
 
-export const fetchSavedAlbums = createAsyncThunk(
-  "fetch/fetchSavedAlbums",
+export const fetchLikedSongs = createAsyncThunk(
+  "fetch/fetchLikedSongs",
   async () => {
     const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_LIKED_SONGS!;
     const res = await request(url, token);
-    console.log(res);
-    return res;
+    return res.items.map(_transferLikedSongs);
   }
 );
 

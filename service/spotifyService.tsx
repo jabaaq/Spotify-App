@@ -4,6 +4,7 @@ import {
   User,
   Recommendations,
   NewReleases,
+  LikedSongs,
 } from "./serviceInterfaces";
 import withoutImage from "../images/without_image.png";
 
@@ -12,7 +13,7 @@ const spotifyService = () => {
     let minutes = Math.floor(milliSeconds / 60000);
     let seconds = ((milliSeconds % 60000) / 1000).toFixed(0);
 
-    return String(minutes + ":" + seconds);
+    return minutes + ":" + (+seconds < 10 ? "0" : "") + seconds;
   };
 
   const _transferTracks = (track: any): Track => {
@@ -43,6 +44,7 @@ const spotifyService = () => {
       uri: playlist.uri,
       tracks: playlist.tracks,
       href: playlist.href,
+      artist: playlist.artist,
     };
   };
 
@@ -89,12 +91,29 @@ const spotifyService = () => {
     };
   };
 
+  const _transferLikedSongs = (song: any): LikedSongs => {
+    return {
+      artist: song.track.artists[0].name,
+      href: song.track.href,
+      id: song.track.id,
+      name:
+        song.track.name.length > 15
+          ? song.track.name.substring(0, 15) + "..."
+          : song.track.name,
+      type: song.track.type,
+      uri: song.track.uri,
+      preview_url: song.track.preview_url,
+      image: song.track.album.images[0].url,
+    };
+  };
+
   return {
     _transferTracks,
     _transferPlaylists,
     _transferUser,
     _transferNewReleases,
     _transferTrackRecommendations,
+    _transferLikedSongs,
   };
 };
 

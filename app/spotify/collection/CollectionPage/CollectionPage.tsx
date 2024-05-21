@@ -5,23 +5,29 @@ import RadioButtons from "@/component/RadioButton/RadioButton";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/app/store/store";
 import { useEffect } from "react";
-import { fetchUserPlaylist, fetchSavedAlbums } from "@/app/store/asyncThunks";
+import { fetchUserPlaylist, fetchLikedSongs } from "@/app/store/asyncThunks";
 import CollectionCard from "../CollectionCards/CollectionCards";
 
 const CollectionPage = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { fetchedPlaylist, fetchedLikedSongs, selectedRadioButton } =
-    useSelector((state: RootState) => state.spotifyReducer);
+  const { selectedRadioButton, fetchedCollectionPageInformation } = useSelector(
+    (state: RootState) => state.spotifyReducer
+  );
 
   useEffect(() => {
-    dispatch(fetchUserPlaylist());
-    dispatch(fetchSavedAlbums());
-  }, []);
+    selectedRadioButton === "collection"
+      ? dispatch(fetchUserPlaylist())
+      : dispatch(fetchLikedSongs());
+  }, [selectedRadioButton]);
 
   useEffect(() => {
-    console.log("fetched albums", fetchedLikedSongs);
-  }, [fetchedLikedSongs]);
+    console.log(selectedRadioButton);
+  }, [selectedRadioButton]);
+
+  useEffect(() => {
+    console.log("Collection information:", fetchedCollectionPageInformation);
+  }, [fetchedCollectionPageInformation]);
 
   return (
     <div className={cn(style.collections)}>
@@ -29,7 +35,7 @@ const CollectionPage = (): JSX.Element => {
         <RadioButtons />
       </div>
       <div className={cn(style.collectionCardsContainer)}>
-        {fetchedPlaylist.map((item: any) => (
+        {fetchedCollectionPageInformation.map((item: any) => (
           <CollectionCard
             key={item.id}
             name={item.name}
