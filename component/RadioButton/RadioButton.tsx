@@ -1,6 +1,5 @@
 import { RadioButtonsProps } from "./RadioButton.props";
 import "./RadioButton.scss";
-import { useEffect, useState } from "react";
 import { handleSelectRadioButton } from "@/app/store/slice";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/app/store/store";

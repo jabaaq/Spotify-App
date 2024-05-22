@@ -72,6 +72,11 @@ const spotifyService = () => {
         user.display_name.length > 20
           ? user.display_name.substring(0, 20) + "..."
           : user.display_name,
+      email: user.email,
+      followers: user.followers.total,
+      profile_url: user.external_urls.spotify,
+      image: user.images[1].url,
+      id: user.id,
     };
   };
 

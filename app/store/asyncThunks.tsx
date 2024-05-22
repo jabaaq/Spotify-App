@@ -44,6 +44,7 @@ export const fetchUserInformation = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_USER!;
     const res = await request(url, token);
+    console.log(res);
     return _transferUser(res);
   }
 );

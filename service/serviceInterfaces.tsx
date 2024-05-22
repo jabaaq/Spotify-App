@@ -21,6 +21,11 @@ export interface Playlist {
 
 export interface User {
   name: string;
+  email: string;
+  followers: number;
+  profile_url: string;
+  image: string;
+  id: string;
 }
 
 export interface Recommendations {
