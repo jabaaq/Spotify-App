@@ -14,4 +14,5 @@ export interface SpotifyState {
   openSideMenu: boolean;
   selectedRadioButton: string;
   fetchedCollectionPageInformation: string[];
+  thisMonthTopTracks: string[];
 }

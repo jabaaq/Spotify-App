@@ -16,7 +16,6 @@ const CollectionPage = (): JSX.Element => {
   );
 
   useEffect(() => {
-    console.log(selectedRadioButton);
     selectedRadioButton === "collection"
       ? dispatch(fetchUserPlaylist())
       : dispatch(fetchLikedSongs());

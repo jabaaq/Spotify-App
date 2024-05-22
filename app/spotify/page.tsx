@@ -8,24 +8,20 @@ import HomePage from "./HomePage/HomePage";
 import {
   fetchUserInformation,
   fetchTrackRecommendations,
-  fetchGenres,
   fetchNewReleases,
   fetchArtists,
   fetchTopTracks,
-  fetchUserPlaylist,
 } from "../store/asyncThunks";
 
 export default function Spotify() {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    // dispatch(fetchGenres());
-    // dispatch(fetchUserPlaylist());
     dispatch(fetchArtists());
     dispatch(fetchTopTracks());
     dispatch(fetchNewReleases());
     dispatch(fetchUserInformation());
-    // dispatch(fetchTrackRecommendations());
+    dispatch(fetchTrackRecommendations());
   }, [dispatch]);
 
   return (

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/app/store/store";
 import { fetchUserInformation } from "@/app/store/asyncThunks";
 import { useEffect } from "react";
-import testImg from "../../../../images/without_image.png";
+import withoutImg from "../../../../images/without_profile.jpg";
 
 export default function UserInformation() {
   const dispatch = useDispatch<AppDispatch>();
@@ -16,17 +16,16 @@ export default function UserInformation() {
   useEffect(() => {
     dispatch(fetchUserInformation());
   }, []);
-
-  useEffect(() => {
-    console.log(userInformation);
-  }, [userInformation]);
-
   return (
     <div className={cn(style.user_information_container)}>
-      <img src={testImg.src} className={cn(style.user_image)} alt="Test" />
+      <img
+        src={userInformation.image ? userInformation.image : withoutImg.src}
+        className={cn(style.user_image)}
+        alt={userInformation.name}
+      />
       <div className={cn(style.user_details)}>
-        <h1 className={cn(style.username)}>Jaba Kadagishvili</h1>
-        <p>0 Followers</p>
+        <h1 className={cn(style.username)}>{userInformation.name}</h1>
+        <p>{userInformation.followers} Followers</p>
       </div>
     </div>
   );

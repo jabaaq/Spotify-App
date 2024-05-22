@@ -21,8 +21,12 @@
 
   .user_image {
     width: 200px;
+    min-width: 200px;
     height: 200px;
+    min-height: 200px;
     border-radius: 50%;
+    object-fit: cover;
+    transition: 0.5s;
   }
 
   .username {

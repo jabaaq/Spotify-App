@@ -75,7 +75,7 @@ const spotifyService = () => {
       email: user.email,
       followers: user.followers.total,
       profile_url: user.external_urls.spotify,
-      image: user.images[1].url,
+      image: user.images[1] ? user.images[1].url : null,
       id: user.id,
     };
   };

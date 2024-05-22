@@ -11,6 +11,7 @@ import {
   fetchUserInformation,
   fetchUserPlaylist,
   fetchLikedSongs,
+  fetchTopTracksThisMonth,
 } from "./asyncThunks";
 
 const initialState: SpotifyState = {
@@ -29,6 +30,7 @@ const initialState: SpotifyState = {
   openSideMenu: false,
   selectedRadioButton: "collection",
   fetchedCollectionPageInformation: [],
+  thisMonthTopTracks: [],
 };
 
 export const spotifySlice = createSlice({
@@ -88,6 +90,10 @@ export const spotifySlice = createSlice({
       .addCase(fetchLikedSongs.fulfilled, (state, action) => {
         state.fetchedCollectionPageInformation = [];
         state.fetchedCollectionPageInformation = action.payload;
+      })
+      //This month top tracks
+      .addCase(fetchTopTracksThisMonth.fulfilled, (state, action) => {
+        state.thisMonthTopTracks = action.payload;
       })
       .addMatcher(
         isAnyOf(

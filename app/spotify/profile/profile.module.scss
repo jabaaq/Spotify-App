@@ -2,5 +2,17 @@
   width: 100%;
   padding-top: 70px;
   display: flex;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
+
+  .useInformation {
+    width: 80%;
+    background-color: blue;
+  }
+
+  .ThisMonthTopTracks {
+    width: 100%;
+    background-color: red;
+  }
 }

@@ -44,7 +44,6 @@ export const fetchUserInformation = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_USER!;
     const res = await request(url, token);
-    console.log(res);
     return _transferUser(res);
   }
 );
@@ -55,6 +54,17 @@ export const fetchTopTracks = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_TOP_TRACKS!;
     const res = await request(url, token);
+    return res.items.map(_transferTracks);
+  }
+);
+export const fetchTopTracksThisMonth = createAsyncThunk(
+  "fetch/fetchTopTracksThisMonth",
+  async () => {
+    const token: string | null = getToken();
+    const url: string = process.env.NEXT_PUBLIC_TOP_TRACKS_THIS_MONTH!;
+    const res = await request(url, token);
+    console.log(res);
+
     return res.items.map(_transferTracks);
   }
 );
