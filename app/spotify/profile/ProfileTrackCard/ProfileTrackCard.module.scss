@@ -1,0 +1,44 @@
+.track_card {
+  height: 60px;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0 10px;
+  transition: 0.5s;
+  border-radius: 10px;
+  color: var(--text-color);
+  font-weight: 100;
+  transition: 0.5s;
+
+  &:hover {
+    cursor: pointer;
+    background: var(--text-color);
+  }
+
+  svg {
+    color: var(--white);
+  }
+
+  .about_track {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    .track_image {
+      width: 50px;
+    }
+
+    .track_details {
+      display: flex;
+      flex-direction: column;
+
+      .track_title {
+        color: var(--white);
+      }
+    }
+  }
+}

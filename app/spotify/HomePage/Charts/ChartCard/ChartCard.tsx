@@ -1,6 +1,5 @@
 import styles from "./ChartCard.module.scss";
 import cn from "classnames";
-import testImg from "../../../../../testImages/heroSection.jpeg";
 import Checkbox from "@/component/Checkbox/Checkbox";
 import { Track } from "@/service/serviceInterfaces";
 

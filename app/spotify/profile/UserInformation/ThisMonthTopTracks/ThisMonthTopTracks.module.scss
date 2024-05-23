@@ -1,2 +1,13 @@
 .tracks_container {
+  width: 80%;
+  color: var(--white);
+
+  .tracks_container_header {
+    margin: 20px 0;
+
+    span {
+      color: var(--text-color);
+      font-weight: 300;
+    }
+  }
 }
