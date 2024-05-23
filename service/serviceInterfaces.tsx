@@ -5,6 +5,7 @@ export interface Track {
   image: string;
   artist: string;
   duration: string;
+  position?: number;
 }
 
 export interface Playlist {

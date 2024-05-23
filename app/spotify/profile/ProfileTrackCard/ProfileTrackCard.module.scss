@@ -14,7 +14,7 @@
 
   &:hover {
     cursor: pointer;
-    background: var(--text-color);
+    background: var(--light-dark);
   }
 
   svg {
@@ -30,6 +30,7 @@
 
     .track_image {
       width: 50px;
+      border-radius: 5px;
     }
 
     .track_details {

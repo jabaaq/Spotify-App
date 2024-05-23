@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "@/app/store/store";
 import { useEffect } from "react";
 import ProfileTrackCard from "../../ProfileTrackCard/ProfileTrackCard";
+import { Track } from "@/service/serviceInterfaces";
 
 export default function ThisMonthTopTracks() {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,13 +28,22 @@ export default function ThisMonthTopTracks() {
         <h2>Top Tracks this month</h2>
         <span>Only visible for you</span>
       </div>
-      <ProfileTrackCard />
-      <ProfileTrackCard />
-      <ProfileTrackCard />
-      <ProfileTrackCard />
-      <ProfileTrackCard />
-      <ProfileTrackCard />
-      <ProfileTrackCard />
+      <></>
+      {thisMonthTopTracks.map((item: any, i) => (
+        <ProfileTrackCard
+          key={item.id}
+          position={i + 1}
+          title={item.title}
+          artist={item.artist}
+          duration={item.duration}
+          image={item.image}
+          id={item.id}
+        />
+      ))}
     </div>
   );
+}
+
+{
+  /* <ProfileTrackCard key={item.id} title={item.title} artist={item.artist} duration={item.duration} image={item.image} id={item.id}/> */
 }
