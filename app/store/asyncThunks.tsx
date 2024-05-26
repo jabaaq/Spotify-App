@@ -24,6 +24,8 @@ export const fetchUserPlaylist = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_PLAYLIST!;
     const res = await request(url, token);
+    console.log(res);
+
     return res.items.map(_transferPlaylists);
   }
 );

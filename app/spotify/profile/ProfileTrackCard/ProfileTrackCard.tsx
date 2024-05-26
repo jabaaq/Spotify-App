@@ -19,7 +19,9 @@ export default function ProfileTrackCard({
         <h3 className={cn(style.track_number)}>{position}</h3>
         <img src={image} className={cn(style.track_image)} alt={title} />
         <div className={cn(style.track_details)}>
-          <h3 className={cn(style.track_title)}>{title}</h3>
+          <h3 className={cn(style.track_title)}>
+            {title.length < 20 ? title : title.substring(0, 20) + "..."}
+          </h3>
           <p className={cn(style.track_artist)}>{artist}</p>
         </div>
       </div>

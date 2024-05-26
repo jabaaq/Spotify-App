@@ -31,6 +31,7 @@ const initialState: SpotifyState = {
   selectedRadioButton: "collection",
   fetchedCollectionPageInformation: [],
   thisMonthTopTracks: [],
+  selectedPlaylistId: "",
 };
 
 export const spotifySlice = createSlice({
@@ -52,6 +53,9 @@ export const spotifySlice = createSlice({
     },
     handleSelectRadioButton: (state, action) => {
       state.selectedRadioButton = action.payload;
+    },
+    handleGetPlaylistId: (state, action) => {
+      state.selectedPlaylistId = action.payload;
     },
   },
 
@@ -116,6 +120,7 @@ export const {
   handlePageChange,
   toggleSideMenu,
   handleSelectRadioButton,
+  handleGetPlaylistId,
 } = spotifySlice.actions;
 const { reducer } = spotifySlice;
 

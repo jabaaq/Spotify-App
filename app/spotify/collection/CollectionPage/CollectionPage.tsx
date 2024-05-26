@@ -30,6 +30,7 @@ const CollectionPage = (): JSX.Element => {
         {fetchedCollectionPageInformation.map((item: any) => (
           <CollectionCard
             key={item.id}
+            id={item.id}
             name={item.name}
             image={item.image}
             description={item.description}

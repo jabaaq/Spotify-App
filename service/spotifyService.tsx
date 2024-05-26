@@ -18,10 +18,7 @@ const spotifyService = () => {
 
   const _transferTracks = (track: any): Track => {
     return {
-      title:
-        track.name.length > 15
-          ? track.name.substring(0, 15) + "..."
-          : track.name,
+      title: track.name,
       id: track.id,
       key: track.id,
       image: track.album.images[0].url,
@@ -45,6 +42,7 @@ const spotifyService = () => {
       tracks: playlist.tracks,
       href: playlist.href,
       artist: playlist.artist,
+      type: playlist.type,
     };
   };
 

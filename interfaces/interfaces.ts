@@ -15,4 +15,5 @@ export interface SpotifyState {
   selectedRadioButton: string;
   fetchedCollectionPageInformation: string[];
   thisMonthTopTracks: string[];
+  selectedPlaylistId: string;
 }

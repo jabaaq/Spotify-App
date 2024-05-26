@@ -18,6 +18,7 @@ export interface Playlist {
   href?: string;
   scrollTo?: any;
   artist?: string;
+  type?: string;
 }
 
 export interface User {
