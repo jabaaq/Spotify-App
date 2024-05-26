@@ -13,8 +13,8 @@ export default function playlist({ params }: { params: { id: string } }) {
     <div
       className={cn(style.playlist)}
       style={{
-        background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.416) 1%, rgba(0, 0, 0, 0.7)), url(${testImage.src})`,
-        height: "100vh",
+        background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.416) 10%, var(--dark)), url(${testImage.src})`,
+        // height: "100",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -35,6 +35,28 @@ export default function playlist({ params }: { params: { id: string } }) {
           </p>
           <p>64 songs ~ 16 hrs+</p>
         </div>
+      </div>
+      <div className={cn(style.playlist_tracks_container)}>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
+        <h1>Track Card</h1>
       </div>
     </div>
   );
