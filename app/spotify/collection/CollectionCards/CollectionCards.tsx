@@ -6,12 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { handleGetPlaylistId } from "@/app/store/slice";
 import { RootState } from "@/app/store/store";
+import Link from "next/link";
 
 export default function CollectionCard({
   name,
   description,
   image,
   id,
+  type,
 }: Playlist) {
   const dispatch = useDispatch();
 
@@ -24,11 +26,11 @@ export default function CollectionCard({
   }, [selectedPlaylistId]);
 
   return (
-    <div
+    <Link
+      href={type === "playlist" ? `/spotify/playlist/${id}` : ""}
       className={cn(style.collectionCard)}
       onClick={() => dispatch(handleGetPlaylistId(id))}
     >
-      <div></div>
       <div className={cn(style.card_description)}>
         <h3>{name}</h3>
         <p>{description}</p>
@@ -38,6 +40,6 @@ export default function CollectionCard({
         alt={name}
         className={cn(style.card_image)}
       />
-    </div>
+    </Link>
   );
 }

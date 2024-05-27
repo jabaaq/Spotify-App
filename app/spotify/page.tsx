@@ -17,7 +17,7 @@ export default function Spotify() {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchArtists());
+    // dispatch(fetchArtists());
     dispatch(fetchTopTracks());
     dispatch(fetchNewReleases());
     dispatch(fetchUserInformation());

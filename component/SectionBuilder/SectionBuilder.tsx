@@ -43,9 +43,11 @@ const SectionBuilder = ({ sectionName, data }: any): JSX.Element => {
             <SwiperSlide key={item.id}>
               <SectionCard
                 key={item.id}
+                id={item.id}
                 artist={item.artist}
                 image={item.image}
                 name={item.name}
+                type={item.type}
               />
             </SwiperSlide>
           ))}

@@ -8,6 +8,10 @@ body {
   background-color: var(--dark);
 }
 
+a {
+  text-decoration: none;
+}
+
 :root {
   --green: #1db954;
   --white: #ffff;

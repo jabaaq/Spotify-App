@@ -34,6 +34,7 @@ const CollectionPage = (): JSX.Element => {
             name={item.name}
             image={item.image}
             description={item.description}
+            type={item.type}
           />
         ))}
       </div>
