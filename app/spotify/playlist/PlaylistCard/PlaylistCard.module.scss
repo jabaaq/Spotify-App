@@ -1,0 +1,64 @@
+.playlist_card {
+  height: 56px;
+  width: 100%;
+  background: rgba(51, 55, 59, 0.37);
+  transition: 0.5s;
+  box-shadow: 0px 0px 90px -32px rgba(0, 0, 0, 0.75);
+  border-radius: 15px;
+  color: var(--white);
+  font-weight: 100;
+  padding: 8px 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  .track_details {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 50%;
+  }
+
+  .track_duration {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-around;
+    width: 50%;
+  }
+
+  .playlist_card_image {
+    width: 39px;
+    height: 39px;
+    border-radius: 9px;
+    transition: 0.5s;
+  }
+
+  .track_delete {
+    svg {
+      fill: var(--yellow);
+      cursor: pointer;
+
+      &:active {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .playlist_card {
+    font-size: 12px;
+    justify-content: space-evenly;
+    gap: 14px;
+    .track_details {
+      flex-direction: column;
+    }
+    .track_duration {
+      flex-direction: column;
+    }
+  }
+}

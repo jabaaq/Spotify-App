@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import cn from "classnames";
 import style from "./playlist.module.scss";
 import testImage from "../../../../images/playlistTestImage.webp";
+import PlaylistCard from "../PlaylistCard/PlaylistCard";
 
 export default function playlist({ params }: { params: { id: string } }) {
   useEffect(() => {
@@ -37,26 +38,11 @@ export default function playlist({ params }: { params: { id: string } }) {
         </div>
       </div>
       <div className={cn(style.playlist_tracks_container)}>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
-        <h1>Track Card</h1>
+        <PlaylistCard />
+        <PlaylistCard />
+        <PlaylistCard />
+        <PlaylistCard />
+        <PlaylistCard />
       </div>
     </div>
   );
