@@ -5,6 +5,7 @@ import {
   Recommendations,
   NewReleases,
   LikedSongs,
+  PlaylistById,
 } from "./serviceInterfaces";
 import withoutImage from "../images/without_image.png";
 
@@ -110,6 +111,21 @@ const spotifyService = () => {
     };
   };
 
+  const _transferPlaylistById = (playlist: any): PlaylistById => {
+    return {
+      href: playlist.href,
+      id: playlist.id,
+      // description: playlist.description,
+      name: playlist.name,
+      label: playlist.label,
+      popularity: playlist.popularity,
+      release_date: playlist.release_date,
+      total_tracks: playlist.total_tracks,
+      image: playlist.images[1].url,
+      tracks: playlist.tracks.items,
+    };
+  };
+
   return {
     _transferTracks,
     _transferPlaylists,
@@ -117,6 +133,7 @@ const spotifyService = () => {
     _transferNewReleases,
     _transferTrackRecommendations,
     _transferLikedSongs,
+    _transferPlaylistById,
   };
 };
 

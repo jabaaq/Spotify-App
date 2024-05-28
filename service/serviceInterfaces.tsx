@@ -57,3 +57,15 @@ export interface LikedSongs {
   preview_url: string;
   image: string;
 }
+
+export interface PlaylistById {
+  id: string;
+  name: string;
+  href: string;
+  label: string;
+  popularity: string;
+  release_date: string;
+  total_tracks: string;
+  image: string;
+  tracks: string;
+}

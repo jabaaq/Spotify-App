@@ -4,11 +4,22 @@ import cn from "classnames";
 import style from "./playlist.module.scss";
 import testImage from "../../../../images/playlistTestImage.webp";
 import PlaylistCard from "../PlaylistCard/PlaylistCard";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserPlaylistById } from "@/app/store/asyncThunks";
+import { AppDispatch, RootState } from "@/app/store/store";
 
 export default function playlist({ params }: { params: { id: string } }) {
+  const dispatch = useDispatch<AppDispatch>();
+  const { fetchedPlaylistById } = useSelector(
+    (state: RootState) => state.spotifyReducer
+  );
   useEffect(() => {
-    console.log(params.id);
-  }, [params.id]);
+    dispatch(fetchUserPlaylistById(params.id));
+  }, []);
+
+  useEffect(() => {
+    console.log(fetchedPlaylistById);
+  }, [fetchedPlaylistById]);
 
   return (
     <div

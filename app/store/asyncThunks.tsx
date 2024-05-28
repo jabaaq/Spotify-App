@@ -12,6 +12,7 @@ const {
   _transferNewReleases,
   _transferTrackRecommendations,
   _transferLikedSongs,
+  _transferPlaylistById,
 } = spotifyService();
 
 const getToken = () => {
@@ -25,6 +26,20 @@ export const fetchUserPlaylist = createAsyncThunk(
     const url: string = process.env.NEXT_PUBLIC_PLAYLIST!;
     const res = await request(url, token);
     return res.items.map(_transferPlaylists);
+  }
+);
+
+//Playlist by id
+export const fetchUserPlaylistById = createAsyncThunk(
+  "fetch/fetchUserPlaylistById",
+  async (id: string) => {
+    const token: string | null = getToken();
+    const url: string = `${process.env.NEXT_PUBLIC_PLAYLIST_BY_ID! + id}`;
+    const res = await request(url, token);
+    // console.log(res);
+    console.log(_transferPlaylistById(res));
+
+    return res;
   }
 );
 
