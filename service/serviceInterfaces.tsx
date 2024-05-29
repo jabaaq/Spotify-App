@@ -68,6 +68,7 @@ export interface AlbumById {
   total_tracks: string;
   image: string;
   tracks: string;
+  type: string;
 }
 export interface PlaylistById {
   id: string;
@@ -78,4 +79,5 @@ export interface PlaylistById {
   total_tracks: string;
   image: string;
   tracks: string;
+  type: string;
 }

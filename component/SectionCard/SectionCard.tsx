@@ -6,7 +6,7 @@ import Link from "next/link";
 const SectionCard = ({ name, artist, image, type, id }: NewReleases) => {
   return (
     <Link
-      href={type === "album" ? `/spotify/playlist/${id}` : ""}
+      href={type === "album" ? `/spotify/album/${id}` : ""}
       className={cn(style.section_card)}
     >
       <img src={image} alt={name} className={cn(style.card_image)} />

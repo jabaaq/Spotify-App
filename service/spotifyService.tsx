@@ -124,6 +124,7 @@ const spotifyService = () => {
       total_tracks: album.total_tracks,
       image: album.images[1].url,
       tracks: album.tracks.items,
+      type: "album",
     };
   };
 
@@ -138,6 +139,7 @@ const spotifyService = () => {
       total_tracks: playlist.tracks.items.length,
       image: playlist.images[0].url,
       tracks: playlist.tracks.items,
+      type: "playlist",
     };
   };
 

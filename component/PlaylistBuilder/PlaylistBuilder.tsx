@@ -24,7 +24,7 @@ export default function PlaylistBuilder({
         <div className={cn(style.playlist_details)}>
           <h1 className={cn(style.playlist_title)}>{name}</h1>
           <p className={cn(style.playlist_description)}>{description}</p>
-          <p>{total_tracks} Tracks</p>
+          <p>{total_tracks} Songs</p>
         </div>
       </div>
       <div className={cn(style.playlist_tracks_container)}>
