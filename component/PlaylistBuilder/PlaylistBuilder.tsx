@@ -9,6 +9,7 @@ export default function PlaylistBuilder({
   total_tracks,
   tracks,
   release_date,
+  description,
 }: any) {
   return (
     <div
@@ -22,10 +23,7 @@ export default function PlaylistBuilder({
         <img src={image} alt={name} className={cn(style.playlist_image)} />
         <div className={cn(style.playlist_details)}>
           <h1 className={cn(style.playlist_title)}>{name}</h1>
-          <p className={cn(style.playlist_description)}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Perspiciatis nulla, nemo maxime culpa, aliquid asperiores ratione
-          </p>
+          <p className={cn(style.playlist_description)}>{description}</p>
           <p>{total_tracks} Tracks</p>
         </div>
       </div>

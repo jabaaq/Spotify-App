@@ -35,6 +35,7 @@ const initialState: SpotifyState = {
   thisMonthTopTracks: [],
   selectedPlaylistId: "",
   fetchedPlaylistById: [],
+  fetchedAlbumById: [],
 };
 
 export const spotifySlice = createSlice({
@@ -108,7 +109,7 @@ export const spotifySlice = createSlice({
       })
       //Album by id
       .addCase(fetchUserAlbumById.fulfilled, (state, action) => {
-        state.fetchedPlaylistById = action.payload;
+        state.fetchedAlbumById = action.payload;
       })
       .addMatcher(
         isAnyOf(

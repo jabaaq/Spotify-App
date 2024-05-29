@@ -58,13 +58,23 @@ export interface LikedSongs {
   image: string;
 }
 
-export interface PlaylistById {
+export interface AlbumById {
   id: string;
   name: string;
   href: string;
   label: string;
   popularity: string;
   release_date: string;
+  total_tracks: string;
+  image: string;
+  tracks: string;
+}
+export interface PlaylistById {
+  id: string;
+  name: string;
+  href: string;
+  description?: string;
+  release_date?: string;
   total_tracks: string;
   image: string;
   tracks: string;

@@ -12,6 +12,7 @@ const {
   _transferNewReleases,
   _transferTrackRecommendations,
   _transferLikedSongs,
+  _transferAlbumById,
   _transferPlaylistById,
 } = spotifyService();
 
@@ -37,9 +38,9 @@ export const fetchUserPlaylistById = createAsyncThunk(
     const url: string = `${process.env.NEXT_PUBLIC_PLAYLIST_BY_ID! + id}`;
     const res = await request(url, token);
     // console.log("playlist -> ", res);
-    console.log("playlist -> ", _transferPlaylists(res));
+    // console.log("playlist -> ", _transferPlaylistById(res));
 
-    return _transferPlaylists(res);
+    return _transferPlaylistById(res);
   }
 );
 
@@ -51,9 +52,9 @@ export const fetchUserAlbumById = createAsyncThunk(
     const url: string = `${process.env.NEXT_PUBLIC_ALBUM_BY_ID! + id}`;
     const res = await request(url, token);
     // console.log("album -> ", res);
-    console.log("album -> ", _transferPlaylistById(res));
+    console.log("album -> ", _transferAlbumById(res));
 
-    return _transferPlaylistById(res);
+    return _transferAlbumById(res);
   }
 );
 

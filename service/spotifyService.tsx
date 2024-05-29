@@ -6,6 +6,7 @@ import {
   NewReleases,
   LikedSongs,
   PlaylistById,
+  AlbumById,
 } from "./serviceInterfaces";
 import withoutImage from "../images/without_image.png";
 
@@ -111,17 +112,31 @@ const spotifyService = () => {
     };
   };
 
+  const _transferAlbumById = (album: any): AlbumById => {
+    return {
+      href: album.href,
+      id: album.id,
+      // description: album.description,
+      name: album.name,
+      label: album.label,
+      popularity: album.popularity,
+      release_date: album.release_date,
+      total_tracks: album.total_tracks,
+      image: album.images[1].url,
+      tracks: album.tracks.items,
+    };
+  };
+
   const _transferPlaylistById = (playlist: any): PlaylistById => {
     return {
       href: playlist.href,
       id: playlist.id,
-      // description: playlist.description,
+      description: playlist.description
+        ? playlist.description
+        : "Without description",
       name: playlist.name,
-      label: playlist.label,
-      popularity: playlist.popularity,
-      release_date: playlist.release_date,
-      total_tracks: playlist.total_tracks,
-      image: playlist.images[1].url,
+      total_tracks: playlist.tracks.items.length,
+      image: playlist.images[0].url,
       tracks: playlist.tracks.items,
     };
   };
@@ -133,6 +148,7 @@ const spotifyService = () => {
     _transferNewReleases,
     _transferTrackRecommendations,
     _transferLikedSongs,
+    _transferAlbumById,
     _transferPlaylistById,
   };
 };
