@@ -13,6 +13,7 @@ import {
   fetchLikedSongs,
   fetchTopTracksThisMonth,
   fetchUserPlaylistById,
+  fetchUserAlbumById,
 } from "./asyncThunks";
 
 const initialState: SpotifyState = {
@@ -103,6 +104,10 @@ export const spotifySlice = createSlice({
       })
       //Playlist by id
       .addCase(fetchUserPlaylistById.fulfilled, (state, action) => {
+        state.fetchedPlaylistById = action.payload;
+      })
+      //Album by id
+      .addCase(fetchUserAlbumById.fulfilled, (state, action) => {
         state.fetchedPlaylistById = action.payload;
       })
       .addMatcher(

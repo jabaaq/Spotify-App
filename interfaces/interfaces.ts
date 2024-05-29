@@ -16,5 +16,5 @@ export interface SpotifyState {
   fetchedCollectionPageInformation: string[];
   thisMonthTopTracks: string[];
   selectedPlaylistId: string;
-  fetchedPlaylistById: string[];
+  fetchedPlaylistById: any;
 }
