@@ -14,8 +14,18 @@ export default function playlist({ params }: { params: { id: string } }) {
     dispatch(fetchUserPlaylistById(params.id));
   }, []);
 
-  const { name, id, href, total_tracks, image, tracks, description }: any =
-    fetchedPlaylistById;
+  const {
+    name,
+    id,
+    href,
+    total_tracks,
+    image,
+    tracks,
+    description,
+    playlist_owner_name,
+    playlist_owner_href,
+    playlist_owner_followers,
+  }: any = fetchedPlaylistById;
 
   return (
     <>
@@ -26,6 +36,10 @@ export default function playlist({ params }: { params: { id: string } }) {
         total_tracks={total_tracks}
         tracks={tracks}
         description={description}
+        type="Playlist"
+        playlist_owner_name={playlist_owner_name}
+        playlist_owner_href={playlist_owner_href}
+        playlist_owner_followers={playlist_owner_followers}
       />
     </>
   );

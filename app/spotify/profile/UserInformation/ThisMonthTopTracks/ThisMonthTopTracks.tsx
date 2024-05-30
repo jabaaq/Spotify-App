@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "@/app/store/store";
 import { useEffect } from "react";
 import ProfileTrackCard from "../../ProfileTrackCard/ProfileTrackCard";
-import { Track } from "@/service/serviceInterfaces";
 
 export default function ThisMonthTopTracks() {
   const dispatch = useDispatch<AppDispatch>();
@@ -17,10 +16,6 @@ export default function ThisMonthTopTracks() {
   useEffect(() => {
     dispatch(fetchTopTracksThisMonth());
   }, []);
-
-  useEffect(() => {
-    console.log(thisMonthTopTracks);
-  }, [thisMonthTopTracks]);
 
   return (
     <div className={cn(style.tracks_container)}>

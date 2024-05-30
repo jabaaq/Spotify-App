@@ -43,15 +43,27 @@
       text-wrap: wrap;
       text-shadow: 1px 1px 12px rgba(0, 0, 0, 0.39);
 
-      // .playlist_description {
-      //   background: blue;
-      //   max-height: 250px;
-      //   overflow: hidden;
-      // }
-
       h1 {
         color: var(--blue-header);
-        // font-size: 35px;
+        font-size: max(4vw, min(20px));
+      }
+
+      .playlist_owner_information {
+        display: flex;
+        align-items: center;
+
+        span {
+          font-weight: bolder;
+        }
+
+        .owner_name {
+          color: var(--white);
+          font-weight: bolder;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
   }

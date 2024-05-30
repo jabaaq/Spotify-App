@@ -116,15 +116,18 @@ const spotifyService = () => {
     return {
       href: album.href,
       id: album.id,
-      // description: album.description,
       name: album.name,
       label: album.label,
       popularity: album.popularity,
-      release_date: album.release_date,
       total_tracks: album.total_tracks,
       image: album.images[1].url,
       tracks: album.tracks.items,
       type: "album",
+
+      //Album information
+      artist: album.artists[0].name,
+      artist_url: album.artists[0].external_urls.spotify,
+      release_date: album.release_date,
     };
   };
 
@@ -140,6 +143,11 @@ const spotifyService = () => {
       image: playlist.images[0].url,
       tracks: playlist.tracks.items,
       type: "playlist",
+
+      //Owner information
+      playlist_owner_name: playlist.owner.display_name,
+      playlist_owner_href: playlist.owner.external_urls.spotify,
+      playlist_owner_followers: playlist.followers.total,
     };
   };
 

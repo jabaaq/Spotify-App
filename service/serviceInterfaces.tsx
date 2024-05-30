@@ -69,6 +69,8 @@ export interface AlbumById {
   image: string;
   tracks: string;
   type: string;
+  artist: string;
+  artist_url: string;
 }
 export interface PlaylistById {
   id: string;
@@ -80,4 +82,7 @@ export interface PlaylistById {
   image: string;
   tracks: string;
   type: string;
+  playlist_owner_name: string;
+  playlist_owner_href: string;
+  playlist_owner_followers: number;
 }
