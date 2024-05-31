@@ -10,14 +10,13 @@ import {
 } from "./serviceInterfaces";
 import withoutImage from "../images/without_image.png";
 
+export const millisToMinutes = (milliSeconds: number): string => {
+  let minutes = Math.floor(milliSeconds / 60000);
+  let seconds = ((milliSeconds % 60000) / 1000).toFixed(0);
+
+  return minutes + ":" + (+seconds < 10 ? "0" : "") + seconds;
+};
 const spotifyService = () => {
-  const millisToMinutes = (milliSeconds: number): string => {
-    let minutes = Math.floor(milliSeconds / 60000);
-    let seconds = ((milliSeconds % 60000) / 1000).toFixed(0);
-
-    return minutes + ":" + (+seconds < 10 ? "0" : "") + seconds;
-  };
-
   const _transferTracks = (track: any): Track => {
     return {
       title: track.name,

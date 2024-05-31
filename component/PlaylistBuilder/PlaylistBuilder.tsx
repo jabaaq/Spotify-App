@@ -63,11 +63,41 @@ export default function PlaylistBuilder({
         </div>
       </div>
       <div className={cn(style.playlist_tracks_container)}>
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
-        <PlaylistCard />
+        {type === "Playlist" ? (
+          <>
+            {tracks &&
+              tracks.map((track: any, i: number) => {
+                return (
+                  <PlaylistCard
+                    key={track.track.id}
+                    num={i + 1}
+                    name={track.track.name}
+                    image={track.track.album.images[1].url}
+                    id={track.track.id}
+                    artist={track.track.artists[0].name}
+                    duration={track.track.duration_ms}
+                    date_added={track.added_at}
+                  />
+                );
+              })}
+          </>
+        ) : (
+          <>
+            {tracks &&
+              tracks.map((track: any, i: number) => {
+                return (
+                  <PlaylistCard
+                    key={track.id}
+                    num={i + 1}
+                    name={track.name}
+                    id={track.id}
+                    artist={track.artists[0].name}
+                    duration={track.duration_ms}
+                  />
+                );
+              })}
+          </>
+        )}
       </div>
     </div>
   );

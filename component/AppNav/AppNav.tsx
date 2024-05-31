@@ -38,7 +38,9 @@ const AppNav = () => {
   const handleLogOut = (): void => {
     cookie.set("token", "", { expires: new Date(0) });
     sessionStorage.removeItem("ActivePage");
-    window.location.href = "/";
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 100);
   };
 
   return (

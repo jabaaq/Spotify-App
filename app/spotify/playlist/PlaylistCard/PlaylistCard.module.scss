@@ -13,20 +13,13 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  text-wrap: nowrap;
 
   .track_details {
     display: flex;
     align-items: flex-start;
     flex-direction: row;
-    justify-content: space-evenly;
-    width: 50%;
-  }
-
-  .track_duration {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 50%;
   }
 
@@ -35,17 +28,6 @@
     height: 39px;
     border-radius: 9px;
     transition: 0.5s;
-  }
-
-  .track_delete {
-    svg {
-      fill: var(--yellow);
-      cursor: pointer;
-
-      &:active {
-        transform: scale(1.1);
-      }
-    }
   }
 }
 
