@@ -8,6 +8,13 @@
   align-items: center;
   color: var(--text-color);
   z-index: 100;
+  transition: 0.5s ease;
+  top: 0;
+
+  &.none {
+    transition: 0.5s ease;
+    top: -100px;
+  }
 
   .hamburger_container {
     display: flex;

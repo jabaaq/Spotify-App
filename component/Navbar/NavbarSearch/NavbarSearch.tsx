@@ -12,7 +12,7 @@ const NavbarSearch = (): JSX.Element => {
         type="search"
         name="songSearch"
         id="songSearch"
-        placeholder="Search"
+        placeholder="What do you want to play?"
       />
     </>
   );

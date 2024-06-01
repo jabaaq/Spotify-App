@@ -19,8 +19,8 @@ export default function RootLayout({
   return (
     <div className={fonts.className}>
       <Navbar>Search</Navbar>
-      {children}
       <AppNav />
+      {children}
     </div>
   );
 }

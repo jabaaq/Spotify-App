@@ -12,9 +12,7 @@ export default function AppLogo() {
     <Link
       href={"/spotify"}
       className={cn(style.logo)}
-      onClick={() =>
-        dispatch(handlePageChange("home"), dispatch(toggleSideMenu(false)))
-      }
+      onClick={() => dispatch(handlePageChange("home"))}
     >
       <img src={logo.src} alt="Logo" />
     </Link>
