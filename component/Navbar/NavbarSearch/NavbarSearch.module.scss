@@ -1,1 +1,17 @@
+.searchLogo {
+  position: absolute;
+  svg {
+    fill: var(--white);
+  }
+}
 
+.search_container {
+  width: 100%;
+
+  #searchInput {
+    font-family: "Helvetica", FontAwesome, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+  }
+}

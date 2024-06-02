@@ -3,6 +3,7 @@ import style from "./AppNav.module.scss";
 import cn from "classnames";
 import { GoHomeFill } from "react-icons/go";
 import { IoLogOut } from "react-icons/io5";
+import { FaSearch } from "react-icons/fa";
 import { BiSolidCollection } from "react-icons/bi";
 import { IoPerson } from "react-icons/io5";
 import { NavItem } from "./AppNav.props";
@@ -11,7 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/app/store/store";
 import Link from "next/link";
 import cookie from "@boiseitguru/cookie-cutter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const navItems: NavItem[] = [
   { icon: <GoHomeFill size={20} />, page: "home", name: "home" },
@@ -20,6 +21,7 @@ export const navItems: NavItem[] = [
     page: "collection",
     name: "collection",
   },
+  { icon: <FaSearch size={20} />, page: "search", name: "search" },
   { icon: <IoPerson size={20} />, page: "profile", name: "profile" },
   { icon: <IoLogOut size={20} />, page: "", name: "logout" },
 ];
@@ -29,6 +31,16 @@ const AppNav = () => {
   const { activePage } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
+
+  const [screenY, setScreenY] = useState(0);
+
+  const handleSetScreenY = () => {
+    setScreenY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleSetScreenY);
+  }, []);
 
   useEffect(() => {
     const storageActivePage = sessionStorage.getItem("ActivePage");
@@ -44,7 +56,11 @@ const AppNav = () => {
   };
 
   return (
-    <nav className={cn(style.AppNav)}>
+    <nav
+      className={cn(style.AppNav, {
+        [style.slideUp]: screenY > 5,
+      })}
+    >
       <ul>
         {navItems.map((item, i) => (
           <Link
