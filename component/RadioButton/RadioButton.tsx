@@ -35,7 +35,7 @@ const RadioButtons = ({}: RadioButtonsProps): JSX.Element => {
         onChange={() => dispatch(handleSelectRadioButton("likes"))}
       />
       <label className="label label-2" id="lang-2" htmlFor="lang-2">
-        Likes
+        Liked Tracks
       </label>
     </>
   );

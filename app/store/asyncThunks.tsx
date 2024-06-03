@@ -20,6 +20,24 @@ const getToken = () => {
   return cookie.get("token")!;
 };
 
+//Fetch items
+export const fetchSearchItem = createAsyncThunk(
+  "fetch/fetchSearchedItems",
+  async (item: string) => {
+    const token: string | null = getToken();
+    const url: string =
+      process.env.NEXT_PUBLIC_SEARCH_ITEM! +
+      item +
+      process.env.NEXT_PUBLIC_SEARCHED_ITEMS_TYPE;
+    const res = await request(url, token);
+
+    console.log(res);
+
+    return res;
+  }
+);
+
+//User playlists
 export const fetchUserPlaylist = createAsyncThunk(
   "fetch/fetchUserPlaylist",
   async () => {

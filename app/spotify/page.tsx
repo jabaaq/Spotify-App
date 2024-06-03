@@ -21,7 +21,7 @@ export default function Spotify() {
     dispatch(fetchTopTracks());
     dispatch(fetchNewReleases());
     dispatch(fetchUserInformation());
-    dispatch(fetchTrackRecommendations());
+    // dispatch(fetchTrackRecommendations());
   }, [dispatch]);
 
   return (

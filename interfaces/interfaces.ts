@@ -18,4 +18,5 @@ export interface SpotifyState {
   selectedPlaylistId: string;
   fetchedPlaylistById: any;
   fetchedAlbumById: any;
+  fetchSearchedItems: any;
 }

@@ -20,11 +20,6 @@ export default function CollectionCard({
   const { selectedPlaylistId } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
-
-  useEffect(() => {
-    console.log(selectedPlaylistId);
-  }, [selectedPlaylistId]);
-
   return (
     <Link
       href={type === "playlist" ? `/spotify/playlist/${id}` : ""}
