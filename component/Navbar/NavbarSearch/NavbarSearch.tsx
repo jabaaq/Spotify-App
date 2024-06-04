@@ -1,7 +1,6 @@
 "use client";
 import style from "./NavbarSearch.module.scss";
 import cn from "classnames";
-import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { handlePageChange } from "@/app/store/slice";
@@ -9,14 +8,16 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { fetchSearchItem } from "@/app/store/asyncThunks";
 import { AppDispatch } from "@/app/store/store";
 import { useEffect, useState } from "react";
+import { useDebounce } from "./hooks";
 
 const NavbarSearch = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
   const [value, setValue] = useState("");
+  const debouncedSearch = useDebounce(value);
 
   useEffect(() => {
-    dispatch(fetchSearchItem(value));
-  }, [value]);
+    dispatch(fetchSearchItem(debouncedSearch));
+  }, [debouncedSearch]);
 
   const handleInputChange = (event: any) => {
     setValue(event.target.value);

@@ -29,10 +29,8 @@ export const fetchSearchItem = createAsyncThunk(
       process.env.NEXT_PUBLIC_SEARCH_ITEM! +
       item +
       process.env.NEXT_PUBLIC_SEARCHED_ITEMS_TYPE;
-    const res = await request(url, token);
-
-    console.log(res);
-
+    const res = item && (await request(url, token));
+    // const res = await request(url, token);
     return res;
   }
 );
