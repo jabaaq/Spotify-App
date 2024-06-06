@@ -3,9 +3,12 @@
   padding-top: 70px;
   display: flex;
   justify-content: center;
-}
 
-.search_page_container {
-  width: 80%;
-  background-color: aqua;
+  .search_container {
+    width: 80%;
+
+    h1 {
+      color: var(--white);
+    }
+  }
 }

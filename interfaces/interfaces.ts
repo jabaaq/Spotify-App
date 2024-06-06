@@ -20,3 +20,16 @@ export interface SpotifyState {
   fetchedAlbumById: any;
   fetchSearchedItems: any;
 }
+
+export interface Song {
+  [x: string]: any;
+}
+
+export interface SongProps {
+  artist: string;
+  duration: string;
+  id: string;
+  image: string;
+  // key: string;
+  title: string;
+}

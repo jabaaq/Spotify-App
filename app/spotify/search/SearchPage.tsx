@@ -5,6 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchSearchItem } from "@/app/store/asyncThunks";
 import { AppDispatch, RootState } from "@/app/store/store";
+import spotifyService from "@/service/spotifyService";
+import { Song } from "@/interfaces/interfaces";
+import Songs from "./Songs/Songs";
+
+const { _transferTracks } = spotifyService();
 
 export default function SearchPage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -12,30 +17,26 @@ export default function SearchPage() {
     (state: RootState) => state.spotifyReducer
   );
 
-  useEffect(() => {
-    console.log("Information from the SearchPage - ", fetchSearchedItems);
-  }, [fetchSearchedItems]);
-
   const { artists, albums, tracks, playlists } = fetchSearchedItems;
-
-  useEffect(() => {
-    console.log(artists);
-  }, [artists, albums, tracks, playlists]);
+  const transferredTracks: Song = tracks && tracks.items.map(_transferTracks);
 
   // useEffect(() => {
-  //   dispatch(fetchSearchItem());
-  // }, []);
+  //   console.log("Information from the SearchPage - ", fetchSearchedItems);
+  // }, [fetchSearchedItems]);
+
+  useEffect(() => {
+    console.log(transferredTracks);
+  }, [transferredTracks]);
 
   return (
-    <div className={cn(style.search_page_container)}>
-      <div>SearchPage</div>
-      <div>SearchPage</div>
-      <div>SearchPage</div>
-      <div>SearchPage</div>
-      <div>SearchPage</div>
-      <div>SearchPage</div>
-      <div>SearchPage</div>
-      <div>SearchPage</div>
+    <div className={cn(style.search_container)}>
+      {transferredTracks ? <h1>Songs</h1> : null}
+      <div className={cn(style.songs_container)}>
+        {transferredTracks &&
+          transferredTracks.map((song: any) => (
+            <Songs song={song} key={song.key} />
+          ))}
+      </div>
     </div>
   );
 }
