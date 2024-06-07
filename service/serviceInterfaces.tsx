@@ -86,3 +86,16 @@ export interface PlaylistById {
   playlist_owner_href: string;
   playlist_owner_followers: number;
 }
+
+export interface ArtistDetails {
+  name: string;
+  type: string;
+  id: string;
+  image: string;
+  spotifyAcc?: string;
+  followers?: number;
+}
+
+export interface Artist {
+  artist: ArtistDetails;
+}

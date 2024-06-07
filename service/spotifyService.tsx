@@ -7,6 +7,8 @@ import {
   LikedSongs,
   PlaylistById,
   AlbumById,
+  Artist,
+  ArtistDetails,
 } from "./serviceInterfaces";
 import withoutImage from "../images/without_image.png";
 
@@ -150,6 +152,17 @@ const spotifyService = () => {
     };
   };
 
+  const _transferArtists = (artist: any): ArtistDetails => {
+    return {
+      name: artist.name,
+      type: artist.type,
+      id: artist.id,
+      image: artist.images[0].url,
+      spotifyAcc: artist.external_urls.spotify,
+      followers: artist.followers.total,
+    };
+  };
+
   return {
     _transferTracks,
     _transferPlaylists,
@@ -159,6 +172,7 @@ const spotifyService = () => {
     _transferLikedSongs,
     _transferAlbumById,
     _transferPlaylistById,
+    _transferArtists,
   };
 };
 

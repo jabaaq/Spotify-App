@@ -1,0 +1,29 @@
+.artist {
+  height: 193px;
+  width: 150px;
+  //   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--white);
+
+  .artist_details {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+    p {
+      color: var(--text-color);
+    }
+  }
+
+  .artist_image {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}

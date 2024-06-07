@@ -8,6 +8,10 @@
   padding: 10px;
   border-radius: 8px;
 
+  &:hover {
+    background-color: var(--dark-alt);
+  }
+
   .song_image {
     position: relative;
     display: flex;

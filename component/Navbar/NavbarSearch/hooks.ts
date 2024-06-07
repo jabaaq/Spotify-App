@@ -13,3 +13,20 @@ export const useDebounce = <T>(value: T, delay = 500) => {
 
   return debouncedValue;
 };
+
+export const useSize = () => {
+  const [screenY, setScreenY] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleScreenY = () => {
+      setScreenY(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleScreenY);
+
+    return () => {
+      window.removeEventListener("resize", handleScreenY);
+    };
+  }, []);
+  return screenY;
+};
