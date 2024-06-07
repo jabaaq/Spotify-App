@@ -157,7 +157,7 @@ const spotifyService = () => {
       name: artist.name,
       type: artist.type,
       id: artist.id,
-      image: artist.images[0].url,
+      image: artist.images.length !== 0 ? artist.images[0].url : null,
       spotifyAcc: artist.external_urls.spotify,
       followers: artist.followers.total,
     };

@@ -18,11 +18,12 @@ export default function SearchPage() {
   const { fetchSearchedItems } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
-  const screenY = useSize();
+  const { screenY, itemsNum } = useSize();
 
-  useEffect(() => {
-    console.log(screenY);
-  }, [screenY]);
+  // useEffect(() => {
+  //   console.log(screenY);
+  //   console.log("NUMBER OF ITEMS:", itemsNum);
+  // }, [itemsNum, screenY]);
 
   const { artists, albums, tracks, playlists } = fetchSearchedItems;
   const transferredTracks: Song = tracks && tracks.items.map(_transferTracks);
@@ -32,9 +33,9 @@ export default function SearchPage() {
   //   console.log("Information from the SearchPage - ", fetchSearchedItems);
   // }, [fetchSearchedItems]);
 
-  useEffect(() => {
-    console.log(transferredArtists);
-  }, [transferredArtists]);
+  // useEffect(() => {
+  //   console.log(transferredArtists);
+  // }, [transferredArtists]);
 
   return (
     <div className={cn(style.search_container)}>
@@ -49,7 +50,7 @@ export default function SearchPage() {
       <div className={cn(style.artist_container)}>
         {transferredArtists &&
           transferredArtists
-            .slice(0, 4)
+            .slice(0, itemsNum)
             .map((artist: ArtistDetails) => (
               <ArtistCard key={artist.id} artist={artist} />
             ))}
