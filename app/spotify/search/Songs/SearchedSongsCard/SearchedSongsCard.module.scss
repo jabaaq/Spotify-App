@@ -21,6 +21,12 @@
     .play_button {
       position: absolute;
       display: none;
+
+      .tooltip_text {
+        position: absolute;
+        display: inline-block;
+        cursor: pointer;
+      }
     }
   }
 
@@ -53,4 +59,39 @@
 .song_container:hover .song_image img {
   filter: grayscale(5%) brightness(60%);
   cursor: pointer;
+}
+
+.song_image:hover .tooltip_text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip_text {
+  visibility: hidden;
+  // width: 30vw;
+  min-width: 160px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+}
+
+.tooltip_text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
 }

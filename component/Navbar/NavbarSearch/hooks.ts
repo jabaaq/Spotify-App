@@ -15,12 +15,12 @@ export const useDebounce = <T>(value: T, delay = 500) => {
 };
 
 export const useSize = () => {
-  const [screenY, setScreenY] = useState(window.innerWidth);
+  // const [screenY, setScreenY] = useState(window.innerWidth);
   const [itemsNum, setItemsNum] = useState(5);
 
   useEffect(() => {
     const handleScreenY = () => {
-      setScreenY(window.innerWidth);
+      // setScreenY(window.innerWidth);
 
       if (window.innerWidth < 720) {
         setItemsNum(2);
@@ -41,5 +41,5 @@ export const useSize = () => {
       window.removeEventListener("resize", handleScreenY);
     };
   }, []);
-  return { screenY, itemsNum };
+  return { itemsNum };
 };

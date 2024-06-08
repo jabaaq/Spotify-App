@@ -18,20 +18,14 @@ export default function SearchPage() {
   const { fetchSearchedItems } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
-  const { screenY, itemsNum } = useSize();
-
-  // useEffect(() => {
-  //   console.log(screenY);
-  //   console.log("NUMBER OF ITEMS:", itemsNum);
-  // }, [itemsNum, screenY]);
-
+  const { itemsNum } = useSize();
   const { artists, albums, tracks, playlists } = fetchSearchedItems;
   const transferredTracks: Song = tracks && tracks.items.map(_transferTracks);
   const transferredArtists = artists && artists.items.map(_transferArtists);
 
-  // useEffect(() => {
-  //   console.log("Information from the SearchPage - ", fetchSearchedItems);
-  // }, [fetchSearchedItems]);
+  useEffect(() => {
+    console.log("Information from the SearchPage - ", fetchSearchedItems);
+  }, [fetchSearchedItems]);
 
   // useEffect(() => {
   //   console.log(transferredArtists);
