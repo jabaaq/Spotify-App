@@ -17,18 +17,11 @@
     }
   }
 
-  .artist_container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 2rem;
-    width: 100%;
-  }
-
+  .artist_container,
+  .playlist_container,
   .albums_container {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    // flex-wrap: wrap;
     justify-content: flex-start;
     gap: 2rem;
     width: 100%;

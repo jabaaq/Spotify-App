@@ -12,7 +12,12 @@ import SectionCard from "@/component/SectionCard/SectionCard";
 import { ArtistDetails } from "@/service/serviceInterfaces";
 import { useSize } from "@/component/Navbar/NavbarSearch/hooks";
 
-const { _transferTracks, _transferArtists, _transferAlbums } = spotifyService();
+const {
+  _transferTracks,
+  _transferArtists,
+  _transferAlbums,
+  _transferPlaylists,
+} = spotifyService();
 
 export default function SearchPage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -26,14 +31,8 @@ export default function SearchPage() {
   const transferredTracks: Song = tracks && tracks.items.map(_transferTracks);
   const transferredArtists = artists && artists.items.map(_transferArtists);
   const transferAlbums = albums && albums.items.map(_transferAlbums);
-
-  // useEffect(() => {
-  //   console.log("Information from the SearchPage - ", fetchSearchedItems);
-  // }, [fetchSearchedItems]);
-
-  useEffect(() => {
-    console.log(transferAlbums);
-  }, [transferAlbums]);
+  const transferPlaylists =
+    playlists && playlists.items.map(_transferPlaylists);
 
   return (
     <div className={cn(style.search_container)}>
@@ -69,6 +68,26 @@ export default function SearchPage() {
                   album.name.length < 20
                     ? album.name
                     : album.name.substring(0, 20) + "..."
+                }
+              />
+            ))}
+      </div>
+      {transferPlaylists ? <h1>Playlists</h1> : null}
+      <div className={cn(style.playlist_container)}>
+        {transferPlaylists &&
+          transferPlaylists
+            .slice(0, itemsNum)
+            .map((playlist: any) => (
+              <SectionCard
+                key={playlist.id}
+                artist={playlist.artist}
+                id={playlist.id}
+                type={"playlist"}
+                image={playlist.image}
+                name={
+                  playlist.name.length < 20
+                    ? playlist.name
+                    : playlist.name.substring(0, 20) + "..."
                 }
               />
             ))}
