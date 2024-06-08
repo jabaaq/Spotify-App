@@ -52,7 +52,7 @@ const AppNav = () => {
     sessionStorage.removeItem("ActivePage");
     setTimeout(() => {
       window.location.href = "/";
-    }, 100);
+    }, 1000);
   };
 
   return (

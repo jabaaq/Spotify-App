@@ -9,6 +9,7 @@ import {
   AlbumById,
   Artist,
   ArtistDetails,
+  AlbumDetails,
 } from "./serviceInterfaces";
 import withoutImage from "../images/without_image.png";
 
@@ -163,6 +164,16 @@ const spotifyService = () => {
     };
   };
 
+  const _transferAlbums = (album: any): AlbumDetails => {
+    return {
+      id: album.id,
+      name: album.name,
+      release_date: album.release_date.substring(0, 4),
+      image: album.images.length !== 0 ? album.images[0].url : null,
+      artist: album.artists[0].name,
+    };
+  };
+
   return {
     _transferTracks,
     _transferPlaylists,
@@ -173,6 +184,7 @@ const spotifyService = () => {
     _transferAlbumById,
     _transferPlaylistById,
     _transferArtists,
+    _transferAlbums,
   };
 };
 

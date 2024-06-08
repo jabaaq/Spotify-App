@@ -99,3 +99,11 @@ export interface ArtistDetails {
 export interface Artist {
   artist: ArtistDetails;
 }
+
+export interface AlbumDetails {
+  id: string;
+  name: string;
+  release_date: string;
+  image: string;
+  artist: string;
+}
