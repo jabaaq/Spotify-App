@@ -1,6 +1,7 @@
 import cn from "classnames";
 import style from "./MusicPlayer.module.scss";
 import testImg from "../../images/HeroSection.jpg";
+import Audio from "../Audio/Audio";
 
 export default function MusicPlayer() {
   return (
@@ -13,10 +14,7 @@ export default function MusicPlayer() {
         </div>
       </div>
       <div className={cn(style.player_settings)}>
-        <h1>PLAYER SETTINGS</h1>
-      </div>
-      <div className={cn(style.volume)}>
-        <h1>VOLUME</h1>
+        <Audio />
       </div>
     </div>
   );
