@@ -13,7 +13,11 @@ export default function ArtistCard({ artist }: Artist) {
         className={cn(style.artist_image)}
       />
       <div className={cn(style.artist_details)}>
-        <h5>{artist.name}</h5>
+        <h5>
+          {artist.name.length < 15
+            ? artist.name
+            : artist.name.substring(0, 15) + "..."}
+        </h5>
         <p>Artist</p>
       </div>
     </div>

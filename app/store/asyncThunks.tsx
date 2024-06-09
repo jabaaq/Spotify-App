@@ -53,9 +53,6 @@ export const fetchUserPlaylistById = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = `${process.env.NEXT_PUBLIC_PLAYLIST_BY_ID! + id}`;
     const res = await request(url, token);
-    // console.log("playlist -> ", res);
-    console.log("playlist -> ", _transferPlaylistById(res));
-
     return _transferPlaylistById(res);
   }
 );
@@ -67,7 +64,6 @@ export const fetchUserAlbumById = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = `${process.env.NEXT_PUBLIC_ALBUM_BY_ID! + id}`;
     const res = await request(url, token);
-    console.log("filtered album -> ", _transferAlbumById(res));
 
     return _transferAlbumById(res);
   }

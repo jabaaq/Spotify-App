@@ -14,6 +14,10 @@ export default function playlist({ params }: { params: { id: string } }) {
     dispatch(fetchUserPlaylistById(params.id));
   }, []);
 
+  useEffect(() => {
+    console.log(fetchedPlaylistById);
+  }, [fetchedPlaylistById]);
+
   const {
     name,
     id,
