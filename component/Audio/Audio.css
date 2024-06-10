@@ -1,0 +1,49 @@
+.rhap_container {
+    background: none !important;
+    box-shadow: none !important;
+}
+
+
+.rhap_progress-indicator,
+.rhap_progress-filled,
+.rhap_volume-filled {
+    background: var(--yellow) !important;
+    box-shadow: 0px 0px 28px 0px var(--yellow) !important;
+}
+
+.rhap_volume-indicator {
+    display: none !important;
+}
+
+.rhap_download-progress,
+.rhap_volume-bar {
+    background: var(--light-dark) !important;
+    box-shadow: 0px 0px 28px 0px var(--light-dark) !important;
+}
+
+.rhap_container svg {
+    color: var(--yellow);
+}
+
+.rhap_time {
+    color: var(--white) !important;
+}
+
+.rhap_rewind-button svg,
+.rhap_forward-button svg {
+    color: var(--white) !important;
+}
+
+.rhap_repeat-button svg {
+    display: none !important;
+}
+
+.rhap_main {
+    flex-direction: column-reverse !important;
+    gap: 10px;
+}
+
+
+.rhap_main-controls-button {
+    font-size: 30px !important;
+}

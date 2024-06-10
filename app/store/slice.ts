@@ -116,7 +116,6 @@ export const spotifySlice = createSlice({
       //Search items
       .addCase(fetchSearchItem.fulfilled, (state, action) => {
         state.fetchSearchedItems = action.payload;
-        console.log(state.fetchSearchedItems);
       })
       .addMatcher(
         isAnyOf(
