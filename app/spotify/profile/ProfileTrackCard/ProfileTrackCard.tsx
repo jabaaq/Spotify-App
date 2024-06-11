@@ -3,6 +3,8 @@ import style from "./ProfileTrackCard.module.scss";
 import testImg from "../../../../images/without_profile.jpg";
 import { FaPlay } from "react-icons/fa";
 import { Track } from "@/service/serviceInterfaces";
+import { useDispatch } from "react-redux";
+import { handleSelectTrack } from "@/app/store/slice";
 
 export default function ProfileTrackCard({
   artist,
@@ -11,9 +13,24 @@ export default function ProfileTrackCard({
   image,
   title,
   position,
+  preview_url,
 }: Track) {
+  const dispatch = useDispatch();
   return (
-    <div className={cn(style.track_card)}>
+    <div
+      className={cn(style.track_card)}
+      onClick={() =>
+        dispatch(
+          handleSelectTrack({
+            name: title,
+            artist: artist,
+            image: image,
+            preview: preview_url,
+            id: id,
+          })
+        )
+      }
+    >
       <div className={cn(style.about_track)}>
         <FaPlay size={12} />
         <h3 className={cn(style.track_number)}>{position}</h3>

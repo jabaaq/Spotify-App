@@ -6,6 +6,7 @@ export interface Track {
   artist: string;
   duration: string;
   position?: number;
+  preview_url: string;
 }
 
 export interface Playlist {
@@ -19,6 +20,7 @@ export interface Playlist {
   scrollTo?: any;
   artist?: string;
   type?: string;
+  preview_url: string;
 }
 
 export interface User {
@@ -82,6 +84,7 @@ export interface PlaylistById {
   image: string;
   tracks: string;
   type: string;
+  profile_url?: string;
   playlist_owner_name: string;
   playlist_owner_href: string;
   playlist_owner_followers: number;

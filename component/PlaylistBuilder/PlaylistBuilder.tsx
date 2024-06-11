@@ -77,6 +77,7 @@ export default function PlaylistBuilder({
                     artist={track.track.artists[0].name}
                     duration={track.track.duration_ms}
                     date_added={track.added_at}
+                    preview_url={track.track.preview_url}
                   />
                 );
               })}
@@ -93,6 +94,7 @@ export default function PlaylistBuilder({
                     id={track.id}
                     artist={track.artists[0].name}
                     duration={track.duration_ms}
+                    preview_url={track.preview_url}
                   />
                 );
               })}

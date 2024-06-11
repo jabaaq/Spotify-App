@@ -4,7 +4,7 @@ import { Playlist } from "@/service/serviceInterfaces";
 import withoutImage from "../../../../images/without_image.png";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { handleGetPlaylistId } from "@/app/store/slice";
+import { handleGetPlaylistId, handleSelectTrack } from "@/app/store/slice";
 import { RootState } from "@/app/store/store";
 import Link from "next/link";
 
@@ -14,6 +14,8 @@ export default function CollectionCard({
   image,
   id,
   type,
+  artist,
+  preview_url,
 }: Playlist) {
   const dispatch = useDispatch();
 
@@ -24,7 +26,19 @@ export default function CollectionCard({
     <Link
       href={type === "playlist" ? `/spotify/playlist/${id}` : ""}
       className={cn(style.collectionCard)}
-      onClick={() => dispatch(handleGetPlaylistId(id))}
+      onClick={() =>
+        type === "track"
+          ? dispatch(
+              handleSelectTrack({
+                name: name,
+                artist: artist,
+                image: image,
+                preview: preview_url,
+                id: id,
+              })
+            )
+          : dispatch(handleGetPlaylistId(id))
+      }
     >
       <div className={cn(style.card_description)}>
         <h3>{name}</h3>

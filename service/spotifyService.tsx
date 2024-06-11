@@ -31,6 +31,7 @@ const spotifyService = () => {
           ? track.artists[0].name.substring(0, 15) + "..."
           : track.artists[0].name,
       duration: millisToMinutes(track.duration_ms),
+      preview_url: track.preview_url,
     };
   };
 
@@ -47,6 +48,7 @@ const spotifyService = () => {
       href: playlist.href,
       artist: playlist.artist,
       type: playlist.type,
+      preview_url: playlist.preview_url,
     };
   };
 
@@ -145,6 +147,7 @@ const spotifyService = () => {
       image: playlist.images[0].url,
       tracks: playlist.tracks.items,
       type: "playlist",
+      profile_url: playlist.profile_url,
 
       //Owner information
       playlist_owner_name: playlist.owner.display_name,

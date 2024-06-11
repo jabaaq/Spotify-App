@@ -95,6 +95,8 @@ export const fetchTopTracks = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_TOP_TRACKS!;
     const res = await request(url, token);
+    console.log(res);
+
     return res.items.map(_transferTracks);
   }
 );

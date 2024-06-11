@@ -67,7 +67,10 @@ $dark-gray: #1d2123;
   .player_settings {
     width: 80%;
   }
+}
 
-  .volume {
+@media only screen and (max-width: 720px) {
+  .player {
+    padding: 30px;
   }
 }

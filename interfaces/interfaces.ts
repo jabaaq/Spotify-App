@@ -19,6 +19,7 @@ export interface SpotifyState {
   fetchedPlaylistById: any;
   fetchedAlbumById: any;
   fetchSearchedItems: any;
+  selectedTrack: string[];
 }
 
 export interface Song {
@@ -32,4 +33,5 @@ export interface SongProps {
   image: string;
   // key: string;
   title: string;
+  preview_url: string;
 }

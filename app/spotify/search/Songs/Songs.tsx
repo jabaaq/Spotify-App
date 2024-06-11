@@ -12,6 +12,7 @@ export default function Songs({ song }: Song) {
         id={song.id}
         image={song.image}
         title={song.title}
+        preview_url={song.preview_url}
       />
     </div>
   );

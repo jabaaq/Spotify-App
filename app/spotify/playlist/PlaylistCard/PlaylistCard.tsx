@@ -1,6 +1,8 @@
 import style from "./PlaylistCard.module.scss";
 import cn from "classnames";
 import { millisToMinutes } from "@/service/spotifyService";
+import { handleSelectTrack } from "@/app/store/slice";
+import { useDispatch } from "react-redux";
 
 export default function PlaylistCard({
   num,
@@ -9,11 +11,27 @@ export default function PlaylistCard({
   artist,
   duration,
   date_added,
+  preview_url,
+  id,
 }: any) {
+  const dispatch = useDispatch();
   const duration_minutes = millisToMinutes(duration);
 
   return (
-    <div className={cn(style.playlist_card)}>
+    <div
+      className={cn(style.playlist_card)}
+      onClick={() =>
+        dispatch(
+          handleSelectTrack({
+            name: name,
+            artist: artist,
+            image: image,
+            preview: preview_url,
+            id: id,
+          })
+        )
+      }
+    >
       {num}
       {image && (
         <img src={image} alt={name} className={cn(style.playlist_card_image)} />

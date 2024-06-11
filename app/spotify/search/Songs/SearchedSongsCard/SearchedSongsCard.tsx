@@ -2,6 +2,8 @@ import { SongProps } from "@/interfaces/interfaces";
 import cn from "classnames";
 import style from "./SearchedSongsCard.module.scss";
 import { IoPlay } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { handleSelectTrack } from "@/app/store/slice";
 
 export default function SearchedSongsCard({
   artist,
@@ -9,9 +11,24 @@ export default function SearchedSongsCard({
   id,
   image,
   title,
+  preview_url,
 }: SongProps) {
+  const dispatch = useDispatch();
   return (
-    <div className={cn(style.song_container)}>
+    <div
+      className={cn(style.song_container)}
+      onClick={() =>
+        dispatch(
+          handleSelectTrack({
+            name: title,
+            artist: artist,
+            image: image,
+            preview: preview_url,
+            id: id,
+          })
+        )
+      }
+    >
       <div className={cn(style.song_image)}>
         <div className={cn(style.play_button, style.hide_button)}>
           <IoPlay size={20} />

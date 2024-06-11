@@ -33,6 +33,7 @@ export default function ThisMonthTopTracks() {
           duration={item.duration}
           image={item.image}
           id={item.id}
+          preview_url={item.preview_url}
         />
       ))}
     </div>
