@@ -20,7 +20,7 @@ export interface Playlist {
   scrollTo?: any;
   artist?: string;
   type?: string;
-  preview_url: string;
+  preview_url?: string;
 }
 
 export interface User {
@@ -38,6 +38,7 @@ export interface Recommendations {
   name: string;
   type: string;
   image: string;
+  preview_url?: string;
 }
 export interface NewReleases {
   type?: string;
@@ -47,6 +48,7 @@ export interface NewReleases {
   image: string;
   name: string;
   release_date?: string;
+  preview_url?: string;
 }
 
 export interface LikedSongs {

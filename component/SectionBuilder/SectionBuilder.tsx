@@ -48,6 +48,7 @@ const SectionBuilder = ({ sectionName, data }: any): JSX.Element => {
                 image={item.image}
                 name={item.name}
                 type={item.type}
+                preview_url={item.preview_url}
               />
             </SwiperSlide>
           ))}

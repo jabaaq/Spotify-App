@@ -95,7 +95,7 @@ export const fetchTopTracks = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_TOP_TRACKS!;
     const res = await request(url, token);
-    console.log(res);
+    console.log(res.items.map(_transferTracks));
 
     return res.items.map(_transferTracks);
   }
@@ -140,6 +140,7 @@ export const fetchNewReleases = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_NEW_RELEASES!;
     const res = await request(url, token);
+
     return res.albums.items.map(_transferNewReleases);
   }
 );

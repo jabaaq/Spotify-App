@@ -44,6 +44,7 @@ const Charts = () => {
               image={item.image}
               artist={item.artist}
               duration={item.duration}
+              preview_url={item.preview_url}
             />
           ))}
         </div>
@@ -72,6 +73,7 @@ const Charts = () => {
                   image={item.image}
                   artist={item.artist}
                   duration={item.duration}
+                  preview_url={item.preview_url}
                 />
               </SwiperSlide>
             ))}

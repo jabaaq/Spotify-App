@@ -67,6 +67,7 @@ const spotifyService = () => {
           ? release.name.substring(0, 15) + "..."
           : release.name,
       release_date: release.release_date,
+      preview_url: release.preview_url,
     };
   };
 
@@ -97,6 +98,7 @@ const spotifyService = () => {
           : track.name,
       type: track.type,
       image: track.album.images[0].url,
+      preview_url: track.preview_url,
     };
   };
 
