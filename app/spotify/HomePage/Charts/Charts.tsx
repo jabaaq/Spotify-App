@@ -45,6 +45,7 @@ const Charts = () => {
               artist={item.artist}
               duration={item.duration}
               preview_url={item.preview_url}
+              spotify_url={item.spotify_url}
             />
           ))}
         </div>
@@ -74,6 +75,7 @@ const Charts = () => {
                   artist={item.artist}
                   duration={item.duration}
                   preview_url={item.preview_url}
+                  spotify_url={item.spotify_url}
                 />
               </SwiperSlide>
             ))}

@@ -12,6 +12,7 @@ export default function SearchedSongsCard({
   image,
   title,
   preview_url,
+  spotify_url,
 }: SongProps) {
   const dispatch = useDispatch();
   return (
@@ -25,6 +26,7 @@ export default function SearchedSongsCard({
             image: image,
             preview: preview_url,
             id: id,
+            spotify_url: spotify_url,
           })
         )
       }

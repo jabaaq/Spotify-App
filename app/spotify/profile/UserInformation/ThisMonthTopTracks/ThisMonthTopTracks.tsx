@@ -34,6 +34,7 @@ export default function ThisMonthTopTracks() {
           image={item.image}
           id={item.id}
           preview_url={item.preview_url}
+          spotify_url={item.spotify_url}
         />
       ))}
     </div>

@@ -20,7 +20,6 @@ const {
 } = spotifyService();
 
 export default function SearchPage() {
-  const dispatch = useDispatch<AppDispatch>();
   const { fetchSearchedItems } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
@@ -33,6 +32,10 @@ export default function SearchPage() {
   const transferAlbums = albums && albums.items.map(_transferAlbums);
   const transferPlaylists =
     playlists && playlists.items.map(_transferPlaylists);
+
+  useEffect(() => {
+    console.log(transferredTracks);
+  }, [transferredTracks]);
 
   return (
     <div className={cn(style.search_container)}>

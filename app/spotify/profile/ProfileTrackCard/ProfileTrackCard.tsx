@@ -14,6 +14,7 @@ export default function ProfileTrackCard({
   title,
   position,
   preview_url,
+  spotify_url,
 }: Track) {
   const dispatch = useDispatch();
   return (
@@ -27,6 +28,7 @@ export default function ProfileTrackCard({
             image: image,
             preview: preview_url,
             id: id,
+            spotify_url: spotify_url,
           })
         )
       }

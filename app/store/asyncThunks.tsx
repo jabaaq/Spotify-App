@@ -30,7 +30,7 @@ export const fetchSearchItem = createAsyncThunk(
       item +
       process.env.NEXT_PUBLIC_SEARCHED_ITEMS_TYPE;
     const res = item && (await request(url, token));
-    // const res = await request(url, token);
+
     return res;
   }
 );
@@ -53,6 +53,8 @@ export const fetchUserPlaylistById = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = `${process.env.NEXT_PUBLIC_PLAYLIST_BY_ID! + id}`;
     const res = await request(url, token);
+    console.log(res);
+
     return _transferPlaylistById(res);
   }
 );
@@ -64,6 +66,7 @@ export const fetchUserAlbumById = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = `${process.env.NEXT_PUBLIC_ALBUM_BY_ID! + id}`;
     const res = await request(url, token);
+    console.log(res);
 
     return _transferAlbumById(res);
   }
@@ -75,6 +78,7 @@ export const fetchLikedSongs = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_LIKED_SONGS!;
     const res = await request(url, token);
+
     return res.items.map(_transferLikedSongs);
   }
 );
@@ -95,6 +99,8 @@ export const fetchTopTracks = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_TOP_TRACKS!;
     const res = await request(url, token);
+    console.log(res);
+
     return res.items.map(_transferTracks);
   }
 );

@@ -13,6 +13,7 @@ export default function Songs({ song }: Song) {
         image={song.image}
         title={song.title}
         preview_url={song.preview_url}
+        spotify_url={song.spotify_url}
       />
     </div>
   );

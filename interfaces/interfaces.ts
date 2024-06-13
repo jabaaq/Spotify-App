@@ -33,4 +33,5 @@ export interface SongProps {
   // key: string;
   title: string;
   preview_url: string;
+  spotify_url: string;
 }

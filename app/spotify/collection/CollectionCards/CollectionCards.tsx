@@ -2,10 +2,9 @@ import style from "./CollectionCards.module.scss";
 import cn from "classnames";
 import { Playlist } from "@/service/serviceInterfaces";
 import withoutImage from "../../../../images/without_image.png";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { handleGetPlaylistId, handleSelectTrack } from "@/app/store/slice";
-import { RootState } from "@/app/store/store";
+
 import Link from "next/link";
 
 export default function CollectionCard({
@@ -16,12 +15,10 @@ export default function CollectionCard({
   type,
   artist,
   preview_url,
+  spotify_url,
 }: Playlist) {
   const dispatch = useDispatch();
 
-  const { selectedPlaylistId } = useSelector(
-    (state: RootState) => state.spotifyReducer
-  );
   return (
     <Link
       href={type === "playlist" ? `/spotify/playlist/${id}` : ""}
@@ -35,6 +32,7 @@ export default function CollectionCard({
                 image: image,
                 preview: preview_url,
                 id: id,
+                spotify_url: spotify_url,
               })
             )
           : dispatch(handleGetPlaylistId(id))

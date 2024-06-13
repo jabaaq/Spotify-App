@@ -12,6 +12,7 @@ const ChartCard = ({
   duration,
   preview_url,
   id,
+  spotify_url,
 }: Track): JSX.Element => {
   const dispatch = useDispatch();
 
@@ -23,6 +24,7 @@ const ChartCard = ({
         image: image,
         preview: preview_url,
         id: id,
+        spotify_url: spotify_url,
       })
     );
   };

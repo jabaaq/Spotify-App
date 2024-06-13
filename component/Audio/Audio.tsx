@@ -9,8 +9,11 @@ export default function Audio({ preview }: any): JSX.Element {
       <AudioPlayer
         autoPlayAfterSrcChange={true}
         showFilledVolume={true}
-        src={preview && preview}
+        src={preview}
         showSkipControls={false}
+        onWaiting={() => console.log("wait")}
+        onLoadedData={() => console.log("lesgo")}
+        showDownloadProgress={true}
       />
     </div>
   );

@@ -13,6 +13,7 @@ export default function PlaylistCard({
   date_added,
   preview_url,
   id,
+  spotify_url,
 }: any) {
   const dispatch = useDispatch();
   const duration_minutes = millisToMinutes(duration);
@@ -28,6 +29,7 @@ export default function PlaylistCard({
             image: image,
             preview: preview_url,
             id: id,
+            spotify_url: spotify_url,
           })
         )
       }

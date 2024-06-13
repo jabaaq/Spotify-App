@@ -12,6 +12,7 @@ const SectionCard = ({
   type,
   id,
   preview_url,
+  spotify_url,
 }: NewReleases) => {
   const dispatch = useDispatch();
 
@@ -25,6 +26,7 @@ const SectionCard = ({
           image: image,
           preview: preview_url,
           id: id,
+          spotify_url: spotify_url,
         })
       );
     }

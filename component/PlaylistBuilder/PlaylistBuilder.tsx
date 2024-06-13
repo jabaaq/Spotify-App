@@ -69,7 +69,7 @@ export default function PlaylistBuilder({
               tracks.map((track: any, i: number) => {
                 return (
                   <PlaylistCard
-                    key={track.track.id}
+                    key={i}
                     num={i + 1}
                     name={track.track.name}
                     image={
@@ -77,6 +77,7 @@ export default function PlaylistBuilder({
                         ? track.track.album.images[1].url
                         : null
                     }
+                    spotify_url={track.track.external_urls.spotify}
                     id={track.track.id}
                     artist={track.track.artists[0].name}
                     duration={track.track.duration_ms}
@@ -99,6 +100,7 @@ export default function PlaylistBuilder({
                     artist={track.artists[0].name}
                     duration={track.duration_ms}
                     preview_url={track.preview_url}
+                    spotify_url={track.external_urls.spotify}
                   />
                 );
               })}

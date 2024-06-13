@@ -32,6 +32,7 @@ const spotifyService = () => {
           : track.artists[0].name,
       duration: millisToMinutes(track.duration_ms),
       preview_url: track.preview_url,
+      spotify_url: track.external_urls.spotify,
     };
   };
 
@@ -49,6 +50,7 @@ const spotifyService = () => {
       artist: playlist.artist,
       type: playlist.type,
       preview_url: playlist.preview_url,
+      spotify_url: playlist.spotify_url,
     };
   };
 
@@ -99,6 +101,7 @@ const spotifyService = () => {
       type: track.type,
       image: track.album.images[0].url,
       preview_url: track.preview_url,
+      spotify_url: track.external_urls.spotify,
     };
   };
 
@@ -115,6 +118,7 @@ const spotifyService = () => {
       uri: song.track.uri,
       preview_url: song.track.preview_url,
       image: song.track.album.images[0].url,
+      spotify_url: song.track.external_urls.spotify,
     };
   };
 

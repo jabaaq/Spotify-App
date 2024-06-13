@@ -36,6 +36,7 @@ const CollectionPage = (): JSX.Element => {
             description={item.description}
             type={item.type}
             preview_url={item.preview_url}
+            spotify_url={item.spotify_url}
             artist={item.artist}
           />
         ))}

@@ -49,6 +49,7 @@ const SectionBuilder = ({ sectionName, data }: any): JSX.Element => {
                 name={item.name}
                 type={item.type}
                 preview_url={item.preview_url}
+                spotify_url={item.spotify_url}
               />
             </SwiperSlide>
           ))}

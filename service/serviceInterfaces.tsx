@@ -7,6 +7,7 @@ export interface Track {
   duration: string;
   position?: number;
   preview_url: string;
+  spotify_url?: string;
 }
 
 export interface Playlist {
@@ -21,6 +22,7 @@ export interface Playlist {
   artist?: string;
   type?: string;
   preview_url?: string;
+  spotify_url: string;
 }
 
 export interface User {
@@ -39,6 +41,7 @@ export interface Recommendations {
   type: string;
   image: string;
   preview_url?: string;
+  spotify_url?: string;
 }
 export interface NewReleases {
   type?: string;
@@ -49,6 +52,7 @@ export interface NewReleases {
   name: string;
   release_date?: string;
   preview_url?: string;
+  spotify_url?: string;
 }
 
 export interface LikedSongs {
@@ -60,6 +64,7 @@ export interface LikedSongs {
   uri: string;
   preview_url: string;
   image: string;
+  spotify_url: string;
 }
 
 export interface AlbumById {
