@@ -6,15 +6,16 @@ import Audio from "../Audio/Audio";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
 import { useEffect } from "react";
+import WithoutPreview from "./WithoutPreview/WithoutPreview";
 
 export default function MusicPlayer() {
   const { selectedTrack } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
-  const { artist, id, image, name, preview } = selectedTrack;
+  const { artist, id, image, name, preview, spotify_url } = selectedTrack;
 
   useEffect(() => {
-    console.log(selectedTrack);
+    console.log(spotify_url);
   }, [selectedTrack]);
 
   return (
@@ -27,7 +28,11 @@ export default function MusicPlayer() {
         </div>
       </div>
       <div className={cn(style.player_settings)}>
-        {preview ? <Audio preview={preview} /> : <h1>Oops...</h1>}
+        {preview ? (
+          <Audio preview={preview} />
+        ) : (
+          <WithoutPreview spotify_url={spotify_url} />
+        )}
       </div>
     </div>
   );

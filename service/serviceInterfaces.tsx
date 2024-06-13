@@ -117,3 +117,7 @@ export interface AlbumDetails {
   image: string;
   artist: string;
 }
+
+export interface WithoutPreviewProps {
+  spotify_url: string;
+}
