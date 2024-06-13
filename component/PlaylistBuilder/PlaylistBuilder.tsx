@@ -72,7 +72,11 @@ export default function PlaylistBuilder({
                     key={track.track.id}
                     num={i + 1}
                     name={track.track.name}
-                    image={track.track.album.images[1].url}
+                    image={
+                      track.track.album.images[1]
+                        ? track.track.album.images[1].url
+                        : null
+                    }
                     id={track.track.id}
                     artist={track.track.artists[0].name}
                     duration={track.track.duration_ms}

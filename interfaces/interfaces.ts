@@ -19,13 +19,12 @@ export interface SpotifyState {
   fetchedPlaylistById: any;
   fetchedAlbumById: any;
   fetchSearchedItems: any;
-  selectedTrack: string[];
+  selectedTrack: any;
 }
 
 export interface Song {
   [x: string]: any;
 }
-
 export interface SongProps {
   artist: string;
   duration: string;

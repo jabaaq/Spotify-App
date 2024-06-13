@@ -66,8 +66,6 @@ export const spotifySlice = createSlice({
     },
     handleSelectTrack: (state, action) => {
       state.selectedTrack = action.payload;
-      //....
-      console.log(action.payload);
     },
   },
 

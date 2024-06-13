@@ -14,10 +14,6 @@ export default function Album({ params }: { params: { id: string } }) {
     dispatch(fetchUserAlbumById(params.id));
   }, []);
 
-  useEffect(() => {
-    console.log(fetchedAlbumById);
-  }, [fetchedAlbumById]);
-
   const {
     name,
     id,

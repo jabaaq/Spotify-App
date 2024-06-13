@@ -10,13 +10,10 @@ export default function playlist({ params }: { params: { id: string } }) {
   const { fetchedPlaylistById } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
+
   useEffect(() => {
     dispatch(fetchUserPlaylistById(params.id));
   }, []);
-
-  useEffect(() => {
-    console.log(fetchedPlaylistById);
-  }, [fetchedPlaylistById]);
 
   const {
     name,
