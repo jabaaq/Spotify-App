@@ -40,7 +40,7 @@ export default function SearchedSongsCard({
       </div>
       <div className={cn(style.song_details)}>
         <div className={cn(style.song_title)}>
-          {title.length < 55 ? title : title.substring(0, 55) + "..."}
+          {title.length < 30 ? title : title.substring(0, 30) + "..."}
         </div>
         <div className={cn(style.artist)}>{artist}</div>
       </div>

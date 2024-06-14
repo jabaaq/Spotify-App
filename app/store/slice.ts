@@ -39,6 +39,7 @@ const initialState: SpotifyState = {
   fetchedAlbumById: [],
   fetchSearchedItems: [],
   selectedTrack: [],
+  openPlayer: false,
 };
 
 export const spotifySlice = createSlice({
@@ -66,6 +67,11 @@ export const spotifySlice = createSlice({
     },
     handleSelectTrack: (state, action) => {
       state.selectedTrack = action.payload;
+      state.openPlayer = true;
+    },
+    handleClosePlayer: (state) => {
+      state.openPlayer = false;
+      state.selectedTrack = [];
     },
   },
 
@@ -144,6 +150,7 @@ export const {
   handleSelectRadioButton,
   handleGetPlaylistId,
   handleSelectTrack,
+  handleClosePlayer,
 } = spotifySlice.actions;
 const { reducer } = spotifySlice;
 

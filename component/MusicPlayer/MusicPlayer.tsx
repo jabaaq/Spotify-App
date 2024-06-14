@@ -1,17 +1,19 @@
 "use client";
 import cn from "classnames";
 import style from "./MusicPlayer.module.scss";
-import testImg from "../../images/HeroSection.jpg";
 import Audio from "../Audio/Audio";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/app/store/store";
 import { useEffect } from "react";
 import WithoutPreview from "./WithoutPreview/WithoutPreview";
+import { handleClosePlayer } from "@/app/store/slice";
 
 export default function MusicPlayer() {
-  const { selectedTrack } = useSelector(
+  const { selectedTrack, openPlayer } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
+  const dispatch = useDispatch();
+
   const { artist, id, image, name, preview, spotify_url } = selectedTrack;
 
   useEffect(() => {
@@ -19,11 +21,17 @@ export default function MusicPlayer() {
   }, [selectedTrack]);
 
   return (
-    <div className={cn(style.player)}>
+    <div
+      className={cn(style.player, {
+        [style.show]: openPlayer,
+      })}
+    >
       <div className={cn(style.song)}>
         {image ? <img src={image} alt={name} /> : null}
         <div className={cn(style.song_details)}>
-          <h4>{name}</h4>
+          <h4>
+            {name && name.length > 30 ? name.substring(0, 30) + "..." : name}
+          </h4>
           <p>{artist}</p>
         </div>
       </div>
@@ -34,6 +42,7 @@ export default function MusicPlayer() {
           <WithoutPreview spotify_url={spotify_url} />
         )}
       </div>
+      {/* <button onClick={() => dispatch(handleClosePlayer())}>X</button> */}
     </div>
   );
 }

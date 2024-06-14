@@ -87,4 +87,13 @@
     .rhap_forward-button svg {
         color: var(--white) !important;
     }
+
+    .rhap_additional-controls {
+        display: none !important;
+    }
+
+    .rhap_controls-section {
+        justify-content: flex-end !important;
+    }
+
 }
