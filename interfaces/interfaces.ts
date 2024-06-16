@@ -21,6 +21,7 @@ export interface SpotifyState {
   fetchSearchedItems: any;
   selectedTrack: any;
   openPlayer: boolean;
+  currentSongId: string;
 }
 
 export interface Song {

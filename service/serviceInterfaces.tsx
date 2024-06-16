@@ -121,3 +121,7 @@ export interface AlbumDetails {
 export interface WithoutPreviewProps {
   spotify_url: string;
 }
+
+export interface PlayButtonProps {
+  playSong: boolean;
+}
