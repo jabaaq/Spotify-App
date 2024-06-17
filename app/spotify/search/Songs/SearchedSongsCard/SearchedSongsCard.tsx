@@ -47,7 +47,7 @@ export default function SearchedSongsCard({
           <SongPlayButton playSong={id === currentSongId ? true : false} />
           <div className={cn(style.tooltip_text)}>{title}</div>
         </div>
-        <img src={image} alt={title} />
+        <img src={image} alt={title} loading="lazy" />
       </div>
       <div className={cn(style.song_details)}>
         <div className={cn(style.song_title)}>

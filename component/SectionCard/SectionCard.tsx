@@ -40,7 +40,12 @@ const SectionCard = ({
       }
       className={cn(style.section_card)}
     >
-      <img src={image} alt={name} className={cn(style.card_image)} />
+      <img
+        src={image}
+        alt={name}
+        className={cn(style.card_image)}
+        loading="lazy"
+      />
       <div className={cn(style.card_description)}>
         <h3>{name}</h3>
         <p>{artist}</p>

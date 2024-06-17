@@ -31,7 +31,7 @@ const ChartCard = ({
 
   return (
     <div className={cn(styles.chartCard)} onClick={handleCLick}>
-      <img src={image} alt="Test Image" />
+      <img src={image} alt={title} loading="lazy" />
       <div className={styles.chartCard_description}>
         {/* need to create the tag components */}
         <h3>{title}</h3>

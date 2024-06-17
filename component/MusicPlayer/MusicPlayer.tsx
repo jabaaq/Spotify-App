@@ -2,23 +2,17 @@
 import cn from "classnames";
 import style from "./MusicPlayer.module.scss";
 import Audio from "../Audio/Audio";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
-import { useEffect } from "react";
+
 import WithoutPreview from "./WithoutPreview/WithoutPreview";
-import { handleClosePlayer } from "@/app/store/slice";
 
 export default function MusicPlayer() {
   const { selectedTrack, openPlayer } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
-  const dispatch = useDispatch();
 
   const { artist, id, image, name, preview, spotify_url } = selectedTrack;
-
-  useEffect(() => {
-    console.log(spotify_url);
-  }, [selectedTrack]);
 
   return (
     <div
@@ -42,7 +36,6 @@ export default function MusicPlayer() {
           <WithoutPreview spotify_url={spotify_url} />
         )}
       </div>
-      {/* <button onClick={() => dispatch(handleClosePlayer())}>X</button> */}
     </div>
   );
 }

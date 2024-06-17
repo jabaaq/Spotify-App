@@ -75,7 +75,6 @@ export const spotifySlice = createSlice({
       state.selectedTrack = [];
     },
     handleSelectCurrentSongId: (state, action) => {
-      console.log(action.payload);
       state.currentSongId = action.payload;
     },
   },

@@ -45,6 +45,7 @@ export default function CollectionCard({
       <img
         src={image ? image : withoutImage.src}
         alt={name}
+        loading="lazy"
         className={cn(style.card_image)}
       />
     </Link>

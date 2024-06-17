@@ -22,7 +22,7 @@ export interface Playlist {
   artist?: string;
   type?: string;
   preview_url?: string;
-  spotify_url: string;
+  spotify_url?: string;
 }
 
 export interface User {

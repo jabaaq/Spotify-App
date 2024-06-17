@@ -6,7 +6,7 @@ import { StoreProvider } from "./store/StoreProvider";
 const fonts = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Spotify - Web Player: Music for everyone",
+  title: "MusicWave - Web Player: Music for everyone",
   description: "Spotify Clone App",
 };
 

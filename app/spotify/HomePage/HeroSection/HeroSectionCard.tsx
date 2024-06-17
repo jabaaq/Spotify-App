@@ -14,7 +14,6 @@ const HeroSectionCard = ({
   return (
     <div className={cn(style.heroSection_container)}>
       <div className={cn(style.section_description)}>
-        {/* A separate component must be created for this 2 tag ↓ */}
         <h2>SPOTIFY WAVE</h2>
         <p>
           Be the first to hear new tracks, connect directly with fellow fans and
@@ -26,7 +25,7 @@ const HeroSectionCard = ({
           Let's Start
         </Button>
       </div>
-      <img src={heroSection.src} alt="HeroSection" />
+      <img src={heroSection.src} alt="HeroSection" loading="lazy" />
     </div>
   );
 };

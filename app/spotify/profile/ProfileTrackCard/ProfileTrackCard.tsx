@@ -9,6 +9,7 @@ import {
 } from "@/app/store/slice";
 import SongPlayButton from "@/component/SongPlayButton/SongPlayButton";
 import { RootState } from "@/app/store/store";
+import { useEffect, useState } from "react";
 
 export default function ProfileTrackCard({
   artist,
@@ -24,28 +25,49 @@ export default function ProfileTrackCard({
   const { currentSongId } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
+  const [showPlayButton, setShowPlayButton] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowPlayButton(true);
+  };
+  const handleMouseLeave = () => {
+    setShowPlayButton(false);
+  };
+
+  const handleClick = () => {
+    dispatch(
+      handleSelectTrack({
+        name: title,
+        artist: artist,
+        image: image,
+        preview: preview_url,
+        id: id,
+        spotify_url: spotify_url,
+      })
+    );
+  };
 
   return (
     <div
       className={cn(style.track_card)}
-      onClick={() =>
-        dispatch(
-          handleSelectTrack({
-            name: title,
-            artist: artist,
-            image: image,
-            preview: preview_url,
-            id: id,
-            spotify_url: spotify_url,
-          }),
-          dispatch(handleSelectCurrentSongId(id))
-        )
-      }
+      onClick={() => {
+        handleClick(), dispatch(handleSelectCurrentSongId(id));
+      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className={cn(style.about_track)}>
-        <SongPlayButton playSong={id === currentSongId ? true : false} />
-        <h3 className={cn(style.track_number)}>{position}</h3>
-        <img src={image} className={cn(style.track_image)} alt={title} />
+        {showPlayButton ? (
+          <SongPlayButton playSong={id === currentSongId ? true : false} />
+        ) : (
+          <h3 className={cn(style.track_number)}>{position}</h3>
+        )}
+        <img
+          src={image}
+          className={cn(style.track_image)}
+          alt={title}
+          loading="lazy"
+        />
         <div className={cn(style.track_details)}>
           <h3 className={cn(style.track_title)}>
             {title.length < 20 ? title : title.substring(0, 20) + "..."}

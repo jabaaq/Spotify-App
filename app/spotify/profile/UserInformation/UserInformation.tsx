@@ -22,6 +22,7 @@ export default function UserInformation() {
         src={userInformation.image ? userInformation.image : withoutImg.src}
         className={cn(style.user_image)}
         alt={userInformation.name}
+        loading="lazy"
       />
       <div className={cn(style.user_details)}>
         <h1 className={cn(style.username)}>{userInformation.name}</h1>
