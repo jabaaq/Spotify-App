@@ -22,6 +22,9 @@ export interface SpotifyState {
   selectedTrack: any;
   openPlayer: boolean;
   currentSongId: string;
+  fetchedArtistInfo: string[];
+  fetchedArtistTopTracks: string[];
+  fetchedArtistAlbums: string[];
 }
 
 export interface Song {

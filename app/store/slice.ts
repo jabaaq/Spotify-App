@@ -15,6 +15,9 @@ import {
   fetchUserPlaylistById,
   fetchUserAlbumById,
   fetchSearchItem,
+  fetchArtistInfo,
+  fetchArtistTopTracks,
+  fetchArtistAlbums,
 } from "./asyncThunks";
 
 const initialState: SpotifyState = {
@@ -41,6 +44,9 @@ const initialState: SpotifyState = {
   selectedTrack: [],
   openPlayer: false,
   currentSongId: "",
+  fetchedArtistInfo: [],
+  fetchedArtistTopTracks: [],
+  fetchedArtistAlbums: [],
 };
 
 export const spotifySlice = createSlice({
@@ -131,6 +137,19 @@ export const spotifySlice = createSlice({
       .addCase(fetchSearchItem.fulfilled, (state, action) => {
         state.fetchSearchedItems = action.payload;
       })
+      //Artist information
+      .addCase(fetchArtistInfo.fulfilled, (state, action) => {
+        state.fetchedArtistInfo = action.payload;
+      })
+      //Artist Top Tracks
+      .addCase(fetchArtistTopTracks.fulfilled, (state, action) => {
+        state.fetchedArtistTopTracks = action.payload;
+      })
+      //Artist Albums
+      .addCase(fetchArtistAlbums.fulfilled, (state, action) => {
+        state.fetchedArtistAlbums = action.payload;
+      })
+
       .addMatcher(
         isAnyOf(
           fetchNewReleases.fulfilled,

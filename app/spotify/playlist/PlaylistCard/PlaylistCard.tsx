@@ -62,11 +62,13 @@ export default function PlaylistCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {showPlayButton ? (
-        <SongPlayButton playSong={currentSongId === id} />
-      ) : (
-        num
-      )}
+      <div className={cn(style.num_button)}>
+        {showPlayButton ? (
+          <SongPlayButton playSong={currentSongId === id} />
+        ) : (
+          num
+        )}
+      </div>
 
       {image && (
         <img src={image} alt={name} className={cn(style.playlist_card_image)} />

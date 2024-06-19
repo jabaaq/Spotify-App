@@ -28,6 +28,13 @@
     align-items: center;
     gap: 15px;
 
+    .num_PlayButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+    }
+
     .track_image {
       width: 50px;
       border-radius: 5px;

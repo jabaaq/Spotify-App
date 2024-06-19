@@ -68,6 +68,49 @@ export const fetchUserAlbumById = createAsyncThunk(
   }
 );
 
+//Fetch artist information
+export const fetchArtistInfo = createAsyncThunk(
+  "fetch/fetchArtistInfo",
+  async (id: string) => {
+    const token: string | null = getToken();
+    const url: string = `${process.env.NEXT_PUBLIC_ARTIST_INFO! + id}`;
+    const res = await request(url, token);
+    console.log(res);
+
+    return res;
+  }
+);
+
+//Fetch artist top tracks
+export const fetchArtistTopTracks = createAsyncThunk(
+  "fetch/fetchArtistTopTracks ",
+  async (id: string) => {
+    const token: string | null = getToken();
+    const url: string = `${
+      process.env.NEXT_PUBLIC_ARTIST_TOP_TRACKS! + id
+    }/top-tracks`;
+    const res = await request(url, token);
+    console.log(res);
+
+    return res;
+  }
+);
+
+//Fetch artist albums
+export const fetchArtistAlbums = createAsyncThunk(
+  "fetch/fetchArtistAlbums ",
+  async (id: string) => {
+    const token: string | null = getToken();
+    const url: string = `${
+      process.env.NEXT_PUBLIC_ARTIST_ALBUMS! + id
+    }/albums `;
+    const res = await request(url, token);
+    console.log(res);
+
+    return res;
+  }
+);
+
 export const fetchLikedSongs = createAsyncThunk(
   "fetch/fetchLikedSongs",
   async () => {

@@ -29,19 +29,17 @@ export default function playlist({ params }: { params: { id: string } }) {
   }: any = fetchedPlaylistById;
 
   return (
-    <>
-      <PlaylistBuilder
-        id={id}
-        name={name}
-        image={image}
-        total_tracks={total_tracks}
-        tracks={tracks}
-        description={description}
-        type="Playlist"
-        playlist_owner_name={playlist_owner_name}
-        playlist_owner_href={playlist_owner_href}
-        playlist_owner_followers={playlist_owner_followers}
-      />
-    </>
+    <PlaylistBuilder
+      id={id}
+      name={name}
+      image={image}
+      total_tracks={total_tracks}
+      tracks={tracks}
+      description={description}
+      type="Playlist"
+      playlist_owner_name={playlist_owner_name}
+      playlist_owner_href={playlist_owner_href}
+      playlist_owner_followers={playlist_owner_followers}
+    />
   );
 }

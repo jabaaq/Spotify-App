@@ -57,11 +57,13 @@ export default function ProfileTrackCard({
       onMouseLeave={handleMouseLeave}
     >
       <div className={cn(style.about_track)}>
-        {showPlayButton ? (
-          <SongPlayButton playSong={id === currentSongId ? true : false} />
-        ) : (
-          <h3 className={cn(style.track_number)}>{position}</h3>
-        )}
+        <div className={cn(style.num_PlayButton)}>
+          {showPlayButton ? (
+            <SongPlayButton playSong={id === currentSongId ? true : false} />
+          ) : (
+            <h3 className={cn(style.track_number)}>{position}</h3>
+          )}
+        </div>
         <img
           src={image}
           className={cn(style.track_image)}

@@ -21,6 +21,14 @@
     background-color: var(--dark-alt);
   }
 
+  .num_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 100%;
+  }
+
   .track_details {
     display: flex;
     align-items: flex-start;
