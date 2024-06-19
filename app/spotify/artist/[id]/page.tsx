@@ -6,9 +6,12 @@ import {
   fetchArtistTopTracks,
   fetchArtistAlbums,
 } from "@/app/store/asyncThunks";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { AppDispatch } from "@/app/store/store";
+import { AppDispatch, RootState } from "@/app/store/store";
+import ArtistInformation from "../ArtistInformation/ArtistInformation";
+import ArtistAlbums from "../ArtistAlbums/ArtistAlbums";
+import ArtistTracks from "../ArtistTracks/ArtistTracks";
 
 export default function Artist({
   params,
@@ -23,5 +26,19 @@ export default function Artist({
     dispatch(fetchArtistAlbums(params.id));
   }, []);
 
-  return <div className={cn(style.artist_page)}>{params.id}</div>;
+  const { fetchedArtistInfo, fetchedArtistAlbums, fetchedArtistTopTracks } =
+    useSelector((state: RootState) => state.spotifyReducer);
+
+  useEffect(() => {
+    console.log("---", fetchedArtistTopTracks);
+  }, [fetchedArtistTopTracks]);
+
+  return (
+    <div className={cn(style.artist_page)}>
+      {params.id}
+      <ArtistInformation artist={fetchedArtistInfo} />
+      <ArtistAlbums album={fetchedArtistAlbums} />
+      <ArtistTracks track={fetchArtistTopTracks} />
+    </div>
+  );
 }

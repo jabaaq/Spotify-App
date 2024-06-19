@@ -14,6 +14,8 @@ const {
   _transferLikedSongs,
   _transferAlbumById,
   _transferPlaylistById,
+  _transferArtistInfo,
+  _transferAlbums,
 } = spotifyService();
 
 const getToken = () => {
@@ -30,7 +32,6 @@ export const fetchSearchItem = createAsyncThunk(
       item +
       process.env.NEXT_PUBLIC_SEARCHED_ITEMS_TYPE;
     const res = item && (await request(url, token));
-
     return res;
   }
 );
@@ -75,9 +76,7 @@ export const fetchArtistInfo = createAsyncThunk(
     const token: string | null = getToken();
     const url: string = `${process.env.NEXT_PUBLIC_ARTIST_INFO! + id}`;
     const res = await request(url, token);
-    console.log(res);
-
-    return res;
+    return _transferArtistInfo(res);
   }
 );
 
@@ -90,8 +89,7 @@ export const fetchArtistTopTracks = createAsyncThunk(
       process.env.NEXT_PUBLIC_ARTIST_TOP_TRACKS! + id
     }/top-tracks`;
     const res = await request(url, token);
-    console.log(res);
-
+    // console.log(res.tracks.map(_transferTracks));
     return res;
   }
 );
@@ -105,9 +103,7 @@ export const fetchArtistAlbums = createAsyncThunk(
       process.env.NEXT_PUBLIC_ARTIST_ALBUMS! + id
     }/albums `;
     const res = await request(url, token);
-    console.log(res);
-
-    return res;
+    return res.items.map(_transferAlbums);
   }
 );
 

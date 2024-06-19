@@ -183,6 +183,17 @@ const spotifyService = () => {
     };
   };
 
+  const _transferArtistInfo = (artist: any) => {
+    return {
+      id: artist.id,
+      followers: artist.followers.total,
+      image: artist.images[0].url,
+      name: artist.name,
+    };
+  };
+
+  const _transferArtistAlbums = () => {};
+
   return {
     _transferTracks,
     _transferPlaylists,
@@ -194,6 +205,7 @@ const spotifyService = () => {
     _transferPlaylistById,
     _transferArtists,
     _transferAlbums,
+    _transferArtistInfo,
   };
 };
 

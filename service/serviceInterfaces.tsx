@@ -110,18 +110,33 @@ export interface Artist {
   artist: ArtistDetails;
 }
 
-export interface AlbumDetails {
-  id: string;
-  name: string;
-  release_date: string;
-  image: string;
-  artist: string;
-}
-
 export interface WithoutPreviewProps {
   spotify_url: string;
 }
 
 export interface PlayButtonProps {
   playSong: boolean;
+}
+
+export interface Artist {
+  artist: ArtistDetails;
+}
+
+export interface ArtistInfo {
+  followers: number;
+  id: string;
+  image: string;
+  name: string;
+}
+
+export interface Album {
+  album: AlbumDetails;
+}
+
+export interface AlbumDetails {
+  id: string;
+  name: string;
+  release_date?: string;
+  image: string;
+  artist: string;
 }
