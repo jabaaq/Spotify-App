@@ -5,7 +5,25 @@
   flex-direction: column;
   padding-top: 70px;
   padding-bottom: 100px;
+  background: rgb(79, 91, 95);
+  background: linear-gradient(
+    180deg,
+    rgb(54, 56, 57) 0%,
+    rgb(31, 31, 32) 0%,
+    rgba(26, 30, 31, 1) 100%
+  );
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center;
 
-  //...
-  background: aqua;
+  .artist_page_container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    h1 {
+      color: var(--white);
+    }
+  }
 }

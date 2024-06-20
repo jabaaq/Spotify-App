@@ -15,6 +15,7 @@ export default function ThisMonthTopTracks() {
 
   useEffect(() => {
     dispatch(fetchTopTracksThisMonth());
+    console.log(thisMonthTopTracks);
   }, []);
 
   return (
