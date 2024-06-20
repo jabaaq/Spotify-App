@@ -75,7 +75,8 @@ export default function PlaylistCard({
       )}
       <div className={cn(style.track_details)}>
         <p className={cn(style.track_title)}>
-          {name.length < 12 ? name : name.substring(0, 12) + "..."}
+          {/* {name.length < 12 ? name : name.substring(0, 12) + "..."} */}
+          {name}
         </p>
         <p className={cn(style.track_artist)}>
           {artist && artist.length > 12

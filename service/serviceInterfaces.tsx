@@ -140,4 +140,5 @@ export interface AlbumDetails {
   release_date?: string;
   image: string;
   artist: string;
+  type: string;
 }

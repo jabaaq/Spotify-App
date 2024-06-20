@@ -180,6 +180,7 @@ const spotifyService = () => {
       release_date: album.release_date.substring(0, 4),
       image: album.images.length !== 0 ? album.images[0].url : null,
       artist: album.artists[0].name,
+      type: album.album_type,
     };
   };
 

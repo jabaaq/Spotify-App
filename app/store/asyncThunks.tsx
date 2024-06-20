@@ -89,7 +89,6 @@ export const fetchArtistTopTracks = createAsyncThunk(
       process.env.NEXT_PUBLIC_ARTIST_TOP_TRACKS! + id
     }/top-tracks`;
     const res = await request(url, token);
-    // console.log(res.tracks.map(_transferTracks));
     return res;
   }
 );

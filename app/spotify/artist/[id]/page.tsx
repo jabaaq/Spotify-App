@@ -29,9 +29,9 @@ export default function Artist({
   const { fetchedArtistInfo, fetchedArtistAlbums, fetchedArtistTopTracks } =
     useSelector((state: RootState) => state.spotifyReducer);
 
-  // useEffect(() => {
-  //   console.log("---", fetchedArtistTopTracks);
-  // }, [fetchedArtistTopTracks]);
+  useEffect(() => {
+    console.log("---", fetchedArtistTopTracks);
+  }, [fetchedArtistTopTracks]);
 
   return (
     <div className={cn(style.artist_page)}>
