@@ -33,12 +33,12 @@ export default function SearchPage() {
   const transferPlaylists =
     playlists && playlists.items.map(_transferPlaylists);
 
-  useEffect(() => {
-    console.log(transferredTracks);
-  }, [transferredTracks]);
-
   return (
-    <div className={cn(style.search_container)}>
+    <div
+      className={cn(style.search_container, {
+        [style.add_height]: !fetchSearchedItems,
+      })}
+    >
       {transferredTracks ? <h1>Songs</h1> : null}
       <div className={cn(style.songs_container)}>
         {transferredTracks &&

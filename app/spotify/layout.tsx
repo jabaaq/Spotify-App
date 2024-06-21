@@ -3,6 +3,7 @@ import { Quicksand } from "next/font/google";
 import Navbar from "@/component/Navbar/Navbar";
 import AppNav from "@/component/AppNav/AppNav";
 import MusicPlayer from "@/component/MusicPlayer/MusicPlayer";
+import Footer from "@/component/Footer/Footer";
 
 const fonts = Quicksand({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <AppNav />
       {children}
       <MusicPlayer />
+      <Footer />
     </div>
   );
 }

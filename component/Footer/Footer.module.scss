@@ -1,0 +1,31 @@
+.footer_container {
+  background: var(--dark-alt);
+  color: var(--white);
+  position: relative;
+  bottom: 0;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+
+  h1 {
+    font-weight: 700;
+  }
+}
+
+.footer_lift_up {
+  align-items: flex-start;
+  height: 200px;
+}
+
+@media only screen and (max-width: 720px) {
+  .footer_container {
+    justify-content: center;
+
+    h1 {
+      display: none;
+    }
+  }
+}

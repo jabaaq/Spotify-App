@@ -4,7 +4,6 @@ import style from "./MusicPlayer.module.scss";
 import Audio from "../Audio/Audio";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
-
 import WithoutPreview from "./WithoutPreview/WithoutPreview";
 
 export default function MusicPlayer() {

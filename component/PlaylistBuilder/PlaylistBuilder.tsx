@@ -2,6 +2,8 @@ import cn from "classnames";
 import style from "./PlaylistBuilder.module.scss";
 import PlaylistCard from "@/app/spotify/playlist/PlaylistCard/PlaylistCard";
 import { LuDot } from "react-icons/lu";
+import Link from "next/link";
+import { useEffect } from "react";
 
 export default function PlaylistBuilder({
   image,
@@ -18,6 +20,9 @@ export default function PlaylistBuilder({
   artist_url,
   release_date,
 }: any) {
+  const artistId = artist_url && artist_url.split("/");
+  const currArtistId = artistId && artistId[artistId.length - 1];
+
   return (
     <div
       className={cn(style.playlist)}
@@ -47,13 +52,12 @@ export default function PlaylistBuilder({
             </div>
           ) : (
             <div className={cn(style.playlist_owner_information)}>
-              <a
-                href={artist_url}
-                target="_blank"
+              <Link
+                href={`/spotify/artist/${currArtistId}`}
                 className={cn(style.owner_name)}
               >
                 {artist}
-              </a>
+              </Link>
               <LuDot size={20} />
               <span>{release_date}</span>
               <LuDot size={20} />
