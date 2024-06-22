@@ -12,7 +12,7 @@ export default function Album({ params }: { params: { id: string } }) {
   );
   useEffect(() => {
     dispatch(fetchUserAlbumById(params.id));
-  }, []);
+  }, [dispatch, params.id]);
 
   const {
     name,

@@ -2,6 +2,7 @@ import style from "./CollectionCards.module.scss";
 import cn from "classnames";
 import { Playlist } from "@/service/serviceInterfaces";
 import withoutImage from "../../../../images/without_image.png";
+import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { handleGetPlaylistId, handleSelectTrack } from "@/app/store/slice";
 
@@ -42,11 +43,13 @@ export default function CollectionCard({
         <h3>{name}</h3>
         <p>{description}</p>
       </div>
-      <img
+      <Image
         src={image ? image : withoutImage.src}
-        alt={name}
+        alt={name || "Collection Card"}
+        className={cn(style.artist_image)}
         loading="lazy"
-        className={cn(style.card_image)}
+        width={200}
+        height={200}
       />
     </Link>
   );

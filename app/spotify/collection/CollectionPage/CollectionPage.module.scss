@@ -1,6 +1,5 @@
 .collections {
   width: 80%;
-  // height: 100vh;
 
   .collectionCardsContainer {
     padding: 23px 0;
@@ -17,4 +16,8 @@
     justify-content: flex-start;
     gap: 20px;
   }
+}
+
+.add_height {
+  height: 100vh;
 }

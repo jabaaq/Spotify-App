@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import { useEffect } from "react";
-import { setToken, setIsLogged } from "./store/slice";
+import { setToken } from "./store/slice";
 export const useAuth = () => {
   const dispatch = useDispatch();
   const router = useRouter();

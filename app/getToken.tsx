@@ -19,9 +19,9 @@ const GetToken = () => {
       dispatch(setToken(token));
       router.push("/");
     }
-  }, []);
+  }, [dispatch, router]);
 
-  return <div>{token ? <Spotify /> : <Login />}</div>; //I have to add Error page here instead of <Login/>
+  return <div>{token ? <Spotify /> : <Login />}</div>;
 };
 
 export default GetToken;

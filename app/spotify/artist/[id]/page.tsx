@@ -24,7 +24,7 @@ export default function Artist({
     dispatch(fetchArtistInfo(params.id));
     dispatch(fetchArtistTopTracks(params.id));
     dispatch(fetchArtistAlbums(params.id));
-  }, []);
+  }, [dispatch, params.id]);
 
   const { fetchedArtistInfo, fetchedArtistAlbums, fetchedArtistTopTracks } =
     useSelector((state: RootState) => state.spotifyReducer);
