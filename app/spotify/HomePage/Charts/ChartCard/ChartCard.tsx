@@ -4,6 +4,7 @@ import Checkbox from "@/component/Checkbox/Checkbox";
 import { Track } from "@/service/serviceInterfaces";
 import { useDispatch } from "react-redux";
 import { handleSelectTrack } from "@/app/store/slice";
+import Image from "next/image";
 
 const ChartCard = ({
   title,
@@ -31,14 +32,13 @@ const ChartCard = ({
 
   return (
     <div className={cn(styles.chartCard)} onClick={handleCLick}>
-      <img src={image} alt={title} loading="lazy" />
+      <Image src={image} alt={title} loading="lazy" width={65} height={65} />
       <div className={styles.chartCard_description}>
-        {/* need to create the tag components */}
         <h3>{title}</h3>
         <p>{artist}</p>
         <p>{duration}</p>
       </div>
-      <Checkbox children={null}></Checkbox>
+      <Checkbox />
     </div>
   );
 };

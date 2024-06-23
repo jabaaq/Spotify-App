@@ -12,11 +12,16 @@
     background-color: var(--dark-alt);
   }
 
-  .song_image {
+  .song_image_container {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .song_image {
+      width: auto;
+      height: auto;
+    }
 
     .play_button {
       position: absolute;
@@ -56,12 +61,12 @@
   z-index: 1;
   cursor: pointer;
 }
-.song_container:hover .song_image img {
+.song_container:hover .song_image_container img {
   filter: grayscale(5%) brightness(60%);
   cursor: pointer;
 }
 
-.song_image:hover .tooltip_text {
+.song_image_container:hover .tooltip_text {
   visibility: visible;
   opacity: 1;
 }

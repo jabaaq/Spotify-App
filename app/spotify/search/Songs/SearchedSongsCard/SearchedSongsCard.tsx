@@ -1,7 +1,7 @@
 import { SongProps } from "@/interfaces/interfaces";
 import cn from "classnames";
 import style from "./SearchedSongsCard.module.scss";
-import { IoPlay } from "react-icons/io5";
+import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import {
   handleSelectTrack,
@@ -42,12 +42,20 @@ export default function SearchedSongsCard({
           dispatch(handleSelectCurrentSongId(id));
       }}
     >
-      <div className={cn(style.song_image)}>
+      <div className={cn(style.song_image_container)}>
         <div className={cn(style.play_button, style.hide_button)}>
           <SongPlayButton playSong={id === currentSongId ? true : false} />
           <div className={cn(style.tooltip_text)}>{title}</div>
         </div>
-        <img src={image} alt={title} loading="lazy" />
+        <Image
+          src={image}
+          alt={title}
+          loading="lazy"
+          quality={100}
+          width={40}
+          height={40}
+          className={cn(style.song_image)}
+        />
       </div>
       <div className={cn(style.song_details)}>
         <div className={cn(style.song_title)}>

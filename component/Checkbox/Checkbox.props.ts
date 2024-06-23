@@ -5,6 +5,6 @@ export interface CheckboxProps
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  children: ReactNode;
+  children?: ReactNode;
   checked?: boolean;
 }

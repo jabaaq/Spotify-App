@@ -7,9 +7,10 @@ import {
 } from "@/app/store/slice";
 import { useDispatch, useSelector } from "react-redux";
 import SongPlayButton from "@/component/SongPlayButton/SongPlayButton";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RootState } from "@/app/store/store";
 import { useSize } from "@/component/Navbar/NavbarSearch/hooks";
+import Image from "next/image";
 
 export default function PlaylistCard({
   num,
@@ -71,7 +72,14 @@ export default function PlaylistCard({
       </div>
 
       {image && (
-        <img src={image} alt={name} className={cn(style.playlist_card_image)} />
+        <Image
+          src={image}
+          alt={name}
+          width={39}
+          height={39}
+          className={cn(style.playlist_card_image)}
+          quality={100}
+        />
       )}
       <div className={cn(style.track_details)}>
         <p className={cn(style.track_title)}>

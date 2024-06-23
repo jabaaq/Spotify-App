@@ -1,9 +1,8 @@
 "use client";
 import cn from "classnames";
 import style from "./SearchPage.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { AppDispatch, RootState } from "@/app/store/store";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store/store";
 import spotifyService from "@/service/spotifyService";
 import { Song } from "@/interfaces/interfaces";
 import Songs from "./Songs/Songs";

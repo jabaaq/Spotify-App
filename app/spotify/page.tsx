@@ -5,15 +5,16 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import HomePage from "./HomePage/HomePage";
-import {
-  fetchUserInformation,
-  fetchTrackRecommendations,
-  fetchNewReleases,
-  fetchArtists,
-  fetchTopTracks,
-} from "../store/asyncThunks";
+import { useFetch } from "../store/asyncThunks";
 
 export default function Spotify() {
+  const {
+    fetchUserInformation,
+    fetchTrackRecommendations,
+    fetchNewReleases,
+    fetchArtists,
+    fetchTopTracks,
+  } = useFetch();
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {

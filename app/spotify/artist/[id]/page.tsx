@@ -1,11 +1,7 @@
 "use client";
 import style from "./ArtistPage.module.scss";
 import cn from "classnames";
-import {
-  fetchArtistInfo,
-  fetchArtistTopTracks,
-  fetchArtistAlbums,
-} from "@/app/store/asyncThunks";
+import { useFetch } from "@/app/store/asyncThunks";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { AppDispatch, RootState } from "@/app/store/store";
@@ -19,12 +15,20 @@ export default function Artist({
   params: { id: string };
 }): JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
+  const { fetchArtistInfo, fetchArtistTopTracks, fetchArtistAlbums } =
+    useFetch();
 
   useEffect(() => {
     dispatch(fetchArtistInfo(params.id));
     dispatch(fetchArtistTopTracks(params.id));
     dispatch(fetchArtistAlbums(params.id));
-  }, [dispatch, params.id]);
+  }, [
+    dispatch,
+    params.id,
+    fetchArtistInfo,
+    fetchArtistTopTracks,
+    fetchArtistAlbums,
+  ]);
 
   const { fetchedArtistInfo, fetchedArtistAlbums, fetchedArtistTopTracks } =
     useSelector((state: RootState) => state.spotifyReducer);

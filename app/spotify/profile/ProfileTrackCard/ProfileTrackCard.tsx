@@ -9,7 +9,9 @@ import {
 } from "@/app/store/slice";
 import SongPlayButton from "@/component/SongPlayButton/SongPlayButton";
 import { RootState } from "@/app/store/store";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Image from "next/image";
+import { useSize } from "@/component/Navbar/NavbarSearch/hooks";
 
 export default function ProfileTrackCard({
   artist,
@@ -33,6 +35,8 @@ export default function ProfileTrackCard({
   const handleMouseLeave = () => {
     setShowPlayButton(false);
   };
+
+  const { screenY } = useSize();
 
   const handleClick = () => {
     dispatch(
@@ -64,17 +68,23 @@ export default function ProfileTrackCard({
             <h3 className={cn(style.track_number)}>{position}</h3>
           )}
         </div>
-        <img
+        <Image
           src={image}
           className={cn(style.track_image)}
           alt={title}
           loading="lazy"
+          width={50}
+          height={50}
+          quality={100}
         />
+
         <div className={cn(style.track_details)}>
           <h3 className={cn(style.track_title)}>
-            {title.length < 20 ? title : title.substring(0, 20) + "..."}
+            {screenY > 720 ? title : title.substring(0, 10) + "..."}
           </h3>
-          <p className={cn(style.track_artist)}>{artist}</p>
+          <p className={cn(style.track_artist)}>
+            {screenY > 720 ? artist : artist.substring(0, 10) + "..."}
+          </p>
         </div>
       </div>
       <p className={cn(style.track_duration)}>{duration}</p>

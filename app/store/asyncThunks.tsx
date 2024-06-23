@@ -22,161 +22,178 @@ const getToken = () => {
   return cookie.get("token")!;
 };
 
-//Fetch items
-export const fetchSearchItem = createAsyncThunk(
-  "fetch/fetchSearchedItems",
-  async (item: string) => {
-    const token: string | null = getToken();
-    const url: string =
-      process.env.NEXT_PUBLIC_SEARCH_ITEM! +
-      item +
-      process.env.NEXT_PUBLIC_SEARCHED_ITEMS_TYPE;
-    const res = item && (await request(url, token));
-    return res;
-  }
-);
+export const useFetch = () => {
+  //Fetch items
+  const fetchSearchItem = createAsyncThunk(
+    "fetch/fetchSearchedItems",
+    async (item: string) => {
+      const token: string | null = getToken();
+      const url: string =
+        process.env.NEXT_PUBLIC_SEARCH_ITEM! +
+        item +
+        process.env.NEXT_PUBLIC_SEARCHED_ITEMS_TYPE;
+      const res = item && (await request(url, token));
+      return res;
+    }
+  );
 
-//User playlists
-export const fetchUserPlaylist = createAsyncThunk(
-  "fetch/fetchUserPlaylist",
-  async () => {
-    const token: string | null = getToken();
-    const url: string = process.env.NEXT_PUBLIC_PLAYLIST!;
-    const res = await request(url, token);
-    return res.items.map(_transferPlaylists);
-  }
-);
+  //User playlists
+  const fetchUserPlaylist = createAsyncThunk(
+    "fetch/fetchUserPlaylist",
+    async () => {
+      const token: string | null = getToken();
+      const url: string = process.env.NEXT_PUBLIC_PLAYLIST!;
+      const res = await request(url, token);
+      return res.items.map(_transferPlaylists);
+    }
+  );
 
-//Playlist by id
-export const fetchUserPlaylistById = createAsyncThunk(
-  "fetch/fetchUserPlaylistById",
-  async (id: string) => {
-    const token: string | null = getToken();
-    const url: string = `${process.env.NEXT_PUBLIC_PLAYLIST_BY_ID! + id}`;
-    const res = await request(url, token);
-    return _transferPlaylistById(res);
-  }
-);
+  //Playlist by id
+  const fetchUserPlaylistById = createAsyncThunk(
+    "fetch/fetchUserPlaylistById",
+    async (id: string) => {
+      const token: string | null = getToken();
+      const url: string = `${process.env.NEXT_PUBLIC_PLAYLIST_BY_ID! + id}`;
+      const res = await request(url, token);
+      return _transferPlaylistById(res);
+    }
+  );
 
-//Fetch Album by id
-export const fetchUserAlbumById = createAsyncThunk(
-  "fetch/fetchUserAlbumById",
-  async (id: string) => {
-    const token: string | null = getToken();
-    const url: string = `${process.env.NEXT_PUBLIC_ALBUM_BY_ID! + id}`;
-    const res = await request(url, token);
-    return _transferAlbumById(res);
-  }
-);
+  //Fetch Album by id
+  const fetchUserAlbumById = createAsyncThunk(
+    "fetch/fetchUserAlbumById",
+    async (id: string) => {
+      const token: string | null = getToken();
+      const url: string = `${process.env.NEXT_PUBLIC_ALBUM_BY_ID! + id}`;
+      const res = await request(url, token);
+      return _transferAlbumById(res);
+    }
+  );
 
-//Fetch artist information
-export const fetchArtistInfo = createAsyncThunk(
-  "fetch/fetchArtistInfo",
-  async (id: string) => {
-    const token: string | null = getToken();
-    const url: string = `${process.env.NEXT_PUBLIC_ARTIST_INFO! + id}`;
-    const res = await request(url, token);
-    return _transferArtistInfo(res);
-  }
-);
+  //Fetch artist information
+  const fetchArtistInfo = createAsyncThunk(
+    "fetch/fetchArtistInfo",
+    async (id: string) => {
+      const token: string | null = getToken();
+      const url: string = `${process.env.NEXT_PUBLIC_ARTIST_INFO! + id}`;
+      const res = await request(url, token);
+      return _transferArtistInfo(res);
+    }
+  );
 
-//Fetch artist top tracks
-export const fetchArtistTopTracks = createAsyncThunk(
-  "fetch/fetchArtistTopTracks ",
-  async (id: string) => {
-    const token: string | null = getToken();
-    const url: string = `${
-      process.env.NEXT_PUBLIC_ARTIST_TOP_TRACKS! + id
-    }/top-tracks`;
-    const res = await request(url, token);
-    return res;
-  }
-);
+  //Fetch artist top tracks
+  const fetchArtistTopTracks = createAsyncThunk(
+    "fetch/fetchArtistTopTracks ",
+    async (id: string) => {
+      const token: string | null = getToken();
+      const url: string = `${
+        process.env.NEXT_PUBLIC_ARTIST_TOP_TRACKS! + id
+      }/top-tracks`;
+      const res = await request(url, token);
+      return res;
+    }
+  );
 
-//Fetch artist albums
-export const fetchArtistAlbums = createAsyncThunk(
-  "fetch/fetchArtistAlbums ",
-  async (id: string) => {
-    const token: string | null = getToken();
-    const url: string = `${
-      process.env.NEXT_PUBLIC_ARTIST_ALBUMS! + id
-    }/albums `;
-    const res = await request(url, token);
-    return res.items.map(_transferAlbums);
-  }
-);
+  //Fetch artist albums
+  const fetchArtistAlbums = createAsyncThunk(
+    "fetch/fetchArtistAlbums ",
+    async (id: string) => {
+      const token: string | null = getToken();
+      const url: string = `${
+        process.env.NEXT_PUBLIC_ARTIST_ALBUMS! + id
+      }/albums `;
+      const res = await request(url, token);
+      return res.items.map(_transferAlbums);
+    }
+  );
 
-export const fetchLikedSongs = createAsyncThunk(
-  "fetch/fetchLikedSongs",
-  async () => {
-    const token: string | null = getToken();
-    const url: string = process.env.NEXT_PUBLIC_LIKED_SONGS!;
-    const res = await request(url, token);
+  const fetchLikedSongs = createAsyncThunk(
+    "fetch/fetchLikedSongs",
+    async () => {
+      const token: string | null = getToken();
+      const url: string = process.env.NEXT_PUBLIC_LIKED_SONGS!;
+      const res = await request(url, token);
 
-    return res.items.map(_transferLikedSongs);
-  }
-);
+      return res.items.map(_transferLikedSongs);
+    }
+  );
 
-export const fetchUserInformation = createAsyncThunk(
-  "fetch/fetchUserInformation",
-  async () => {
-    const token: string | null = getToken();
-    const url: string = process.env.NEXT_PUBLIC_USER!;
-    const res = await request(url, token);
-    return _transferUser(res);
-  }
-);
+  const fetchUserInformation = createAsyncThunk(
+    "fetch/fetchUserInformation",
+    async () => {
+      const token: string | null = getToken();
+      const url: string = process.env.NEXT_PUBLIC_USER!;
+      const res = await request(url, token);
+      return _transferUser(res);
+    }
+  );
 
-export const fetchTopTracks = createAsyncThunk(
-  "fetch/fetchTopTracks",
-  async () => {
+  const fetchTopTracks = createAsyncThunk("fetch/fetchTopTracks", async () => {
     const token: string | null = getToken();
     const url: string = process.env.NEXT_PUBLIC_TOP_TRACKS!;
     const res = await request(url, token);
     return res.items.map(_transferTracks);
-  }
-);
-export const fetchTopTracksThisMonth = createAsyncThunk(
-  "fetch/fetchTopTracksThisMonth",
-  async () => {
+  });
+  const fetchTopTracksThisMonth = createAsyncThunk(
+    "fetch/fetchTopTracksThisMonth",
+    async () => {
+      const token: string | null = getToken();
+      const url: string = process.env.NEXT_PUBLIC_TOP_TRACKS_THIS_MONTH!;
+      const res = await request(url, token);
+      return res.items.map(_transferTracks);
+    }
+  );
+
+  const fetchTrackRecommendations = createAsyncThunk(
+    "fetch/fetchTrackRecommendations",
+    async () => {
+      const token: string | null = getToken();
+      const url: string = process.env.NEXT_PUBLIC_TRACKS_RECOMMENDATIONS!;
+      const res = await request(url, token);
+      return res.tracks.map(_transferTrackRecommendations);
+    }
+  );
+
+  const fetchGenres = createAsyncThunk("fetch/fetchGenres", async () => {
     const token: string | null = getToken();
-    const url: string = process.env.NEXT_PUBLIC_TOP_TRACKS_THIS_MONTH!;
+    const url: string = process.env.NEXT_PUBLIC_GENRES!;
     const res = await request(url, token);
-    return res.items.map(_transferTracks);
-  }
-);
+    return res;
+  });
 
-export const fetchTrackRecommendations = createAsyncThunk(
-  "fetch/fetchTrackRecommendations",
-  async () => {
+  const fetchArtists = createAsyncThunk("fetch/fetchArtists", async () => {
     const token: string | null = getToken();
-    const url: string = process.env.NEXT_PUBLIC_TRACKS_RECOMMENDATIONS!;
+    const url: string = process.env.NEXT_PUBLIC_SEVERAL_ARTISTS!;
     const res = await request(url, token);
-    return res.tracks.map(_transferTrackRecommendations);
-  }
-);
+    return res;
+  });
 
-export const fetchGenres = createAsyncThunk("fetch/fetchGenres", async () => {
-  const token: string | null = getToken();
-  const url: string = process.env.NEXT_PUBLIC_GENRES!;
-  const res = await request(url, token);
-  return res;
-});
+  const fetchNewReleases = createAsyncThunk(
+    "fetch/fetchNewReleases",
+    async () => {
+      const token: string | null = getToken();
+      const url: string = process.env.NEXT_PUBLIC_NEW_RELEASES!;
+      const res = await request(url, token);
 
-export const fetchArtists = createAsyncThunk("fetch/fetchArtists", async () => {
-  const token: string | null = getToken();
-  const url: string = process.env.NEXT_PUBLIC_SEVERAL_ARTISTS!;
-  const res = await request(url, token);
-  return res;
-});
+      return res.albums.items.map(_transferNewReleases);
+    }
+  );
 
-export const fetchNewReleases = createAsyncThunk(
-  "fetch/fetchNewReleases",
-  async () => {
-    const token: string | null = getToken();
-    const url: string = process.env.NEXT_PUBLIC_NEW_RELEASES!;
-    const res = await request(url, token);
-
-    return res.albums.items.map(_transferNewReleases);
-  }
-);
+  return {
+    fetchGenres,
+    fetchArtists,
+    fetchNewReleases,
+    fetchTopTracks,
+    fetchTrackRecommendations,
+    fetchUserInformation,
+    fetchUserPlaylist,
+    fetchLikedSongs,
+    fetchTopTracksThisMonth,
+    fetchUserPlaylistById,
+    fetchUserAlbumById,
+    fetchSearchItem,
+    fetchArtistInfo,
+    fetchArtistTopTracks,
+    fetchArtistAlbums,
+  };
+};

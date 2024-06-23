@@ -3,6 +3,7 @@ import style from "./HeroSectionCard.module.scss";
 import heroSection from "../../../../images/HeroSection.jpg";
 import { Playlist } from "@/service/serviceInterfaces";
 import Button from "@/component/Button/Button";
+import Image from "next/image";
 
 const HeroSectionCard = ({
   name,
@@ -22,10 +23,17 @@ const HeroSectionCard = ({
         </p>
         <h3>Welcome, {name}!</h3>
         <Button appearance={"start"} onClick={scrollTo}>
-          Let's Start
+          Let&rsquo;s Start
         </Button>
       </div>
-      <img src={heroSection.src} alt="HeroSection" loading="lazy" />
+      <Image
+        src={heroSection.src}
+        alt="HeroSection"
+        loading="lazy"
+        width={1000}
+        height={400}
+        quality={100}
+      />
     </div>
   );
 };

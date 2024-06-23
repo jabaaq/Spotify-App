@@ -2,23 +2,24 @@ import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { SpotifyState } from "@/interfaces/interfaces";
 import cookie from "@boiseitguru/cookie-cutter";
-import {
-  fetchGenres,
-  fetchArtists,
-  fetchNewReleases,
-  fetchTopTracks,
-  fetchTrackRecommendations,
-  fetchUserInformation,
-  fetchUserPlaylist,
-  fetchLikedSongs,
-  fetchTopTracksThisMonth,
-  fetchUserPlaylistById,
-  fetchUserAlbumById,
-  fetchSearchItem,
-  fetchArtistInfo,
-  fetchArtistTopTracks,
-  fetchArtistAlbums,
-} from "./asyncThunks";
+import { useFetch } from "./asyncThunks";
+// import {
+//   fetchGenres,
+//   fetchArtists,
+//   fetchNewReleases,
+//   fetchTopTracks,
+//   fetchTrackRecommendations,
+//   fetchUserInformation,
+//   fetchUserPlaylist,
+//   fetchLikedSongs,
+//   fetchTopTracksThisMonth,
+//   fetchUserPlaylistById,
+//   fetchUserAlbumById,
+//   fetchSearchItem,
+//   fetchArtistInfo,
+//   fetchArtistTopTracks,
+//   fetchArtistAlbums,
+// } from "./asyncThunks";
 
 const initialState: SpotifyState = {
   token: "",
@@ -48,6 +49,24 @@ const initialState: SpotifyState = {
   fetchedArtistTopTracks: [],
   fetchedArtistAlbums: [],
 };
+
+const {
+  fetchGenres,
+  fetchArtists,
+  fetchNewReleases,
+  fetchTopTracks,
+  fetchTrackRecommendations,
+  fetchUserInformation,
+  fetchUserPlaylist,
+  fetchLikedSongs,
+  fetchTopTracksThisMonth,
+  fetchUserPlaylistById,
+  fetchUserAlbumById,
+  fetchSearchItem,
+  fetchArtistInfo,
+  fetchArtistTopTracks,
+  fetchArtistAlbums,
+} = useFetch();
 
 export const spotifySlice = createSlice({
   name: "spotify",

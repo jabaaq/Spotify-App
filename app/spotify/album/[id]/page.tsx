@@ -1,18 +1,20 @@
 "use client";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserAlbumById } from "@/app/store/asyncThunks";
 import { AppDispatch, RootState } from "@/app/store/store";
 import PlaylistBuilder from "@/component/PlaylistBuilder/PlaylistBuilder";
+import { useFetch } from "@/app/store/asyncThunks";
 
 export default function Album({ params }: { params: { id: string } }) {
   const dispatch = useDispatch<AppDispatch>();
   const { fetchedAlbumById } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
+  const { fetchUserAlbumById } = useFetch();
+
   useEffect(() => {
     dispatch(fetchUserAlbumById(params.id));
-  }, [dispatch, params.id]);
+  }, [dispatch, params.id, fetchUserAlbumById]);
 
   const {
     name,

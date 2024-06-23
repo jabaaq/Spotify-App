@@ -46,10 +46,11 @@ export default function CollectionCard({
       <Image
         src={image ? image : withoutImage.src}
         alt={name || "Collection Card"}
-        className={cn(style.artist_image)}
+        className={cn(style.card_image)}
         loading="lazy"
         width={200}
         height={200}
+        quality={100}
       />
     </Link>
   );
