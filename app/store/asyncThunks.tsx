@@ -1,9 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { useHttp } from "@/services/http.hook";
+// import { request } from "@/services/http.hook";
 import spotifyService from "@/service/spotifyService";
 import cookie from "@boiseitguru/cookie-cutter";
-
-const { request } = useHttp();
 
 const {
   _transferTracks,
@@ -23,6 +22,8 @@ const getToken = () => {
 };
 
 export const useFetch = () => {
+  const { request } = useHttp();
+
   //Fetch items
   const fetchSearchItem = createAsyncThunk(
     "fetch/fetchSearchedItems",

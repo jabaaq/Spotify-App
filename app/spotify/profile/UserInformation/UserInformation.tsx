@@ -17,7 +17,7 @@ export default function UserInformation() {
 
   useEffect(() => {
     dispatch(fetchUserInformation());
-  }, [dispatch]);
+  }, [dispatch, fetchUserInformation]);
 
   return (
     <div className={cn(style.user_information_container)}>

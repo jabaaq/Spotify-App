@@ -22,7 +22,7 @@ export const useAuth = () => {
     if (!token && window.location.pathname !== "/") {
       router.push("/");
     }
-  }, [token]);
+  }, [token, router]);
 
   return token;
 };

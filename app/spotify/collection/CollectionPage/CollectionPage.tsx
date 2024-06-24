@@ -7,7 +7,7 @@ import { AppDispatch, RootState } from "@/app/store/store";
 import { useEffect } from "react";
 import { useFetch } from "@/app/store/asyncThunks";
 import CollectionCard from "../CollectionCards/CollectionCards";
-
+/* eslint-disable */
 const CollectionPage = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
   const { fetchUserPlaylist, fetchLikedSongs } = useFetch();

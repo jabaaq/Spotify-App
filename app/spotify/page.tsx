@@ -23,7 +23,13 @@ export default function Spotify() {
     dispatch(fetchNewReleases());
     dispatch(fetchUserInformation());
     dispatch(fetchTrackRecommendations());
-  }, [dispatch]);
+  }, [
+    dispatch,
+    fetchUserInformation,
+    fetchTrackRecommendations,
+    fetchNewReleases,
+    fetchTopTracks,
+  ]);
 
   return (
     <main className={cn(style.main)}>

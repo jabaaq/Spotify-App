@@ -16,7 +16,7 @@ export default function ThisMonthTopTracks() {
 
   useEffect(() => {
     dispatch(fetchTopTracksThisMonth());
-  }, [dispatch, thisMonthTopTracks]);
+  }, [dispatch, fetchTopTracksThisMonth]);
 
   return (
     <div className={cn(style.tracks_container)}>
