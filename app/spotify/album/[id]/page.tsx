@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/app/store/store";
 import PlaylistBuilder from "@/component/PlaylistBuilder/PlaylistBuilder";
 import { useFetch } from "@/app/store/asyncThunks";
-
+/* eslint-disable */
 export default function Album({ params }: { params: { id: string } }) {
   const dispatch = useDispatch<AppDispatch>();
   const { fetchedAlbumById } = useSelector(

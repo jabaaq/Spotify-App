@@ -49,6 +49,7 @@ const initialState: SpotifyState = {
   fetchedArtistTopTracks: [],
   fetchedArtistAlbums: [],
 };
+
 /* eslint-disable */
 const {
   fetchGenres,
