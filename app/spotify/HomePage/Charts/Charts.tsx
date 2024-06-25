@@ -1,12 +1,11 @@
 "use client";
-
 import style from "./Charts.module.scss";
 import cn from "classnames";
 import ChartCard from "./ChartCard/ChartCard";
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
 import { Track } from "@/service/serviceInterfaces";
+import { useSize } from "@/component/Navbar/NavbarSearch/hooks";
 
 //Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,25 +15,15 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 const Charts = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const { screenY } = useSize();
   const { fetchedTopTracks } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [windowWidth]);
 
   return (
     <div className={cn(style.chart_container)}>
-      <h1>Top Charts</h1> {/* need to create the <h> component */}
-      {windowWidth > 720 ? (
+      <h1>Top Charts</h1>
+      {screenY > 720 ? (
         <div className={cn(style.chartCards)}>
           {fetchedTopTracks.map((item: Track) => (
             <ChartCard

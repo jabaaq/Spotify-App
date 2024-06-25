@@ -12,8 +12,8 @@ export default function Spotify() {
     fetchUserInformation,
     fetchTrackRecommendations,
     fetchNewReleases,
-    fetchArtists,
     fetchTopTracks,
+    // fetchArtists,
   } = useFetch();
   const dispatch = useDispatch<AppDispatch>();
 

@@ -13,9 +13,10 @@ import { RootState } from "@/app/store/store";
 import Link from "next/link";
 import cookie from "@boiseitguru/cookie-cutter";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export const navItems: NavItem[] = [
-  { icon: <GoHomeFill size={20} />, page: "home", name: "home" },
+  { icon: <GoHomeFill size={20} />, page: "spotify", name: "home" },
   {
     icon: <BiSolidCollection size={20} />,
     page: "collection",
@@ -32,6 +33,13 @@ const AppNav = () => {
     (state: RootState) => state.spotifyReducer
   );
 
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const path = pathname.split("/");
+    dispatch(handlePageChange(path[path.length - 1]));
+  }, [pathname]);
+
   const [screenY, setScreenY] = useState(0);
 
   const handleSetScreenY = () => {
@@ -40,11 +48,6 @@ const AppNav = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleSetScreenY);
-  }, []);
-
-  useEffect(() => {
-    const storageActivePage = sessionStorage.getItem("ActivePage");
-    handlePageChange(storageActivePage);
   }, []);
 
   const handleLogOut = (): void => {
@@ -64,7 +67,9 @@ const AppNav = () => {
       <ul>
         {navItems.map((item, i) => (
           <Link
-            href={item.page === "home" ? "/spotify" : `/spotify/${item.page}`}
+            href={
+              item.page === "spotify" ? "/spotify" : `/spotify/${item.page}`
+            }
             key={i}
             className={cn({ [style.activePage]: activePage === item.page })}
             onClick={() =>

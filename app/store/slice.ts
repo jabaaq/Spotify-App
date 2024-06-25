@@ -3,23 +3,6 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { SpotifyState } from "@/interfaces/interfaces";
 import cookie from "@boiseitguru/cookie-cutter";
 import { useFetch } from "./asyncThunks";
-// import {
-//   fetchGenres,
-//   fetchArtists,
-//   fetchNewReleases,
-//   fetchTopTracks,
-//   fetchTrackRecommendations,
-//   fetchUserInformation,
-//   fetchUserPlaylist,
-//   fetchLikedSongs,
-//   fetchTopTracksThisMonth,
-//   fetchUserPlaylistById,
-//   fetchUserAlbumById,
-//   fetchSearchItem,
-//   fetchArtistInfo,
-//   fetchArtistTopTracks,
-//   fetchArtistAlbums,
-// } from "./asyncThunks";
 
 const initialState: SpotifyState = {
   token: "",
@@ -33,7 +16,7 @@ const initialState: SpotifyState = {
   fetchedNewReleases: [],
   fetchedArtists: [],
   section: [],
-  activePage: sessionStorage.getItem("ActivePage") || "home",
+  activePage: "home",
   openSideMenu: false,
   selectedRadioButton: "collection",
   fetchedCollectionPageInformation: [],
@@ -78,7 +61,6 @@ export const spotifySlice = createSlice({
       state.token = action.payload;
     },
     handlePageChange: (state, action) => {
-      sessionStorage.setItem("ActivePage", action.payload);
       state.activePage = action.payload;
     },
     toggleSideMenu: (state, action): void => {
