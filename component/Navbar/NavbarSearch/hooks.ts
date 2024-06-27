@@ -15,9 +15,8 @@ export const useDebounce = <T>(value: T, delay = 500) => {
 };
 
 export const useSize = () => {
-  const [screenY, setScreenY] = useState<number>(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
+  const [screenY, setScreenY] = useState(0);
+
   const [itemsNum, setItemsNum] = useState<number>(5);
 
   useEffect(() => {

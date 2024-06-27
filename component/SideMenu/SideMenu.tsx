@@ -22,7 +22,7 @@ const SideMenu = (): JSX.Element => {
       <ul>
         {navItems.map((item, i) => (
           <Link
-            href={item.page === "home" ? "/spotify" : `/spotify/${item.page}`}
+            href={item.name === "home" ? "/spotify" : `/spotify/${item.page}`}
             key={i}
             className={cn({ [style.activePage]: activePage === item.page })}
             onClick={() =>

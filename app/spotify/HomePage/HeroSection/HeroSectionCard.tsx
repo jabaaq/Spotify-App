@@ -29,10 +29,11 @@ const HeroSectionCard = ({
       <Image
         src={heroSection.src}
         alt="HeroSection"
-        loading="lazy"
         width={1000}
         height={400}
         quality={100}
+        loading="lazy"
+        // priority={true}
       />
     </div>
   );

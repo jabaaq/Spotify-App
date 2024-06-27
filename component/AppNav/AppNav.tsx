@@ -36,7 +36,7 @@ const AppNav = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    const path = pathname.split("/");
+    const path: string[] = pathname.split("/");
     dispatch(handlePageChange(path[path.length - 1]));
   }, [pathname]);
 
@@ -67,9 +67,7 @@ const AppNav = () => {
       <ul>
         {navItems.map((item, i) => (
           <Link
-            href={
-              item.page === "spotify" ? "/spotify" : `/spotify/${item.page}`
-            }
+            href={item.name === "home" ? "/spotify" : `/spotify/${item.page}`}
             key={i}
             className={cn({ [style.activePage]: activePage === item.page })}
             onClick={() =>

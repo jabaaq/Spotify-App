@@ -7,6 +7,7 @@ import { AppDispatch, RootState } from "../store/store";
 import HomePage from "./HomePage/HomePage";
 import { useFetch } from "../store/asyncThunks";
 
+/* eslint-disable */
 export default function Spotify() {
   const {
     fetchUserInformation,
@@ -23,13 +24,7 @@ export default function Spotify() {
     dispatch(fetchNewReleases());
     dispatch(fetchUserInformation());
     dispatch(fetchTrackRecommendations());
-  }, [
-    dispatch,
-    fetchUserInformation,
-    fetchTrackRecommendations,
-    fetchNewReleases,
-    fetchTopTracks,
-  ]);
+  }, [dispatch]);
 
   return (
     <main className={cn(style.main)}>
