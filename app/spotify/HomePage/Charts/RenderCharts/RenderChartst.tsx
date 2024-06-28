@@ -1,11 +1,7 @@
-"use client";
 import style from "../Charts.module.scss";
 import cn from "classnames";
 import ChartCard from "../ChartCard/ChartCard";
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/store/store";
 import { Track } from "@/service/serviceInterfaces";
-import { useSize } from "@/component/Navbar/NavbarSearch/hooks";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
@@ -13,11 +9,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
-const renderSwiperCharts = () => {
-  const { fetchedTopTracks } = useSelector(
-    (state: RootState) => state.spotifyReducer
-  );
-
+const renderSwiperCharts = (data: any) => {
   return (
     <div className={cn(style.swiper)}>
       <Swiper
@@ -34,8 +26,8 @@ const renderSwiperCharts = () => {
         modules={[FreeMode, Pagination]}
         className="mySwiper"
       >
-        {fetchedTopTracks &&
-          fetchedTopTracks.map((item: Track) => (
+        {data &&
+          data.map((item: Track) => (
             <SwiperSlide key={item.key}>
               <ChartCard
                 key={item.key}
@@ -54,14 +46,11 @@ const renderSwiperCharts = () => {
   );
 };
 
-const renderCharts = () => {
-  const { fetchedTopTracks } = useSelector(
-    (state: RootState) => state.spotifyReducer
-  );
+const renderCharts = (data: any) => {
   return (
     <div className={cn(style.chartCards)}>
-      {fetchedTopTracks &&
-        fetchedTopTracks.map((item: Track) => (
+      {data &&
+        data.map((item: Track) => (
           <ChartCard
             key={item.key}
             title={item.title}

@@ -33,7 +33,6 @@ const HeroSectionCard = ({
         height={400}
         quality={100}
         loading="lazy"
-        // priority={true}
       />
     </div>
   );
