@@ -11,9 +11,9 @@ import { handlePageChange } from "@/app/store/slice";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/app/store/store";
 import Link from "next/link";
-import cookie from "@boiseitguru/cookie-cutter";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { handleLogOut } from "../Navbar/NavbarSearch/hooks";
 
 export const navItems: NavItem[] = [
   { icon: <GoHomeFill size={20} />, page: "spotify", name: "home" },
@@ -50,13 +50,13 @@ const AppNav = () => {
     window.addEventListener("scroll", handleSetScreenY);
   }, []);
 
-  const handleLogOut = (): void => {
-    cookie.set("token", "", { expires: new Date(0) });
-    sessionStorage.removeItem("ActivePage");
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 1000);
-  };
+  // const handleLogOut = (): void => {
+  //   cookie.set("token", "", { expires: new Date(0) });
+  //   // cookie.
+  //   sessionStorage.clear();
+  //   localStorage.clear();
+  //   window.location.href = "/";
+  // };
 
   return (
     <nav

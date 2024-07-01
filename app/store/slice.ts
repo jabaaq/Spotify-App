@@ -57,8 +57,8 @@ export const spotifySlice = createSlice({
   initialState,
   reducers: {
     setToken: (state, action: PayloadAction<string>) => {
-      cookie.set("token", action.payload);
       state.token = action.payload;
+      cookie.set("token", action.payload);
     },
     handlePageChange: (state, action) => {
       state.activePage = action.payload;

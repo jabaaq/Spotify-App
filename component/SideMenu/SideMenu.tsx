@@ -6,12 +6,22 @@ import { useSelector, useDispatch } from "react-redux";
 import { handlePageChange, toggleSideMenu } from "@/app/store/slice";
 import { RootState } from "@/app/store/store";
 import Link from "next/link";
+import { handleLogOut } from "../Navbar/NavbarSearch/hooks";
 
 const SideMenu = (): JSX.Element => {
   const dispatch = useDispatch();
   const { activePage, openSideMenu } = useSelector(
     (state: RootState) => state.spotifyReducer
   );
+
+  const handleSideMenuLogout = () => {
+    handleLogOut();
+  };
+
+  const handleSideMenuPageChange = (item: any) => {
+    dispatch(handlePageChange(item.page));
+    dispatch(toggleSideMenu(false));
+  };
 
   return (
     <div
@@ -26,10 +36,9 @@ const SideMenu = (): JSX.Element => {
             key={i}
             className={cn({ [style.activePage]: activePage === item.page })}
             onClick={() =>
-              dispatch(
-                handlePageChange(item.page),
-                dispatch(toggleSideMenu(false))
-              )
+              item.name === "logout"
+                ? handleSideMenuLogout()
+                : handleSideMenuPageChange(item)
             }
           >
             {item.icon}

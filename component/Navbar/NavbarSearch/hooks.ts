@@ -1,3 +1,4 @@
+import cookie from "@boiseitguru/cookie-cutter";
 import { useEffect, useState } from "react";
 
 export const useDebounce = <T>(value: T, delay = 500) => {
@@ -42,4 +43,11 @@ export const useSize = () => {
     };
   }, []);
   return { itemsNum, screenY };
+};
+
+export const handleLogOut = (): void => {
+  cookie.set("token", "", { expires: new Date(0) });
+  sessionStorage.clear();
+  localStorage.clear();
+  window.location.href = "/";
 };
