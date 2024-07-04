@@ -3,7 +3,7 @@ import style from "./Navbar.module.scss";
 import cn from "classnames";
 import { NavbarProps } from "./Navbar.props";
 import SideMenu from "../SideMenu/SideMenu";
-import HamburgerCheckbox from "../Checkbox/HamburgerCheckbox";
+import HamburgerCheckbox from "../checkbox/HamburgerCheckbox";
 import AppLogo from "../AppLogo/AppLogo";
 import NavbarSearch from "./NavbarSearch/NavbarSearch";
 import { useEffect, useState } from "react";

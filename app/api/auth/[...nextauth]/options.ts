@@ -40,36 +40,4 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login",
   },
-  // callbacks: {
-  //   async jwt({ token, account, user }: any) {
-  //     //for the initial signing
-  //     if (account && user) {
-  //       return {
-  //         ...token,
-  //         accessToken: account.access_token,
-  //         refreshToken: account.refresh_token,
-  //         username: account.providerAccountId,
-  //         accessTokenExpires: account.expires_at * 1000,
-  //       };
-  //     }
-
-  //     // Return previous token if the access token has not expired yet
-  //     if (Date.now() < token.accessTokenExpires) {
-  //       console.log("EXISTING TOKEN IS VALID");
-  //       return token;
-  //     }
-
-  //     // Access token has expired, try to update it
-  //     console.log("ACCESS TOKEN IS EXPIRED ");
-  //     return await refreshAccessToken(token);
-  //   },
-
-  //   async session({ session, token }: any) {
-  //     session.user.accessToken = token.accessToken;
-  //     session.user.refreshToken = token.refreshToken;
-  //     session.user.username = token.username;
-
-  //     return session;
-  //   },
-  // },
 };

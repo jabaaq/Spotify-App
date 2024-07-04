@@ -11,6 +11,7 @@ export default function Audio({ preview }: any): JSX.Element {
         showFilledVolume={true}
         src={preview}
         showSkipControls={false}
+        autoPlay={true}
         // onWaiting={() => console.log("wait")}
         // onLoadedData={() => console.log("lesgo")}
         showDownloadProgress={true}

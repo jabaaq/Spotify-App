@@ -50,14 +50,6 @@ const AppNav = () => {
     window.addEventListener("scroll", handleSetScreenY);
   }, []);
 
-  // const handleLogOut = (): void => {
-  //   cookie.set("token", "", { expires: new Date(0) });
-  //   // cookie.
-  //   sessionStorage.clear();
-  //   localStorage.clear();
-  //   window.location.href = "/";
-  // };
-
   return (
     <nav
       className={cn(style.AppNav, {
