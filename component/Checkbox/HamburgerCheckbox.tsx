@@ -5,7 +5,7 @@ import { toggleSideMenu } from "@/app/store/slice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
 
-const HamburgerCheckbox = () => {
+const HamburgerCheckbox = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const { openSideMenu } = useSelector(
