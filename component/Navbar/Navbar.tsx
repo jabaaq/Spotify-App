@@ -6,7 +6,7 @@ import SideMenu from "../SideMenu/SideMenu";
 import AppLogo from "../AppLogo/AppLogo";
 import NavbarSearch from "./NavbarSearch/NavbarSearch";
 import { useEffect, useState } from "react";
-import HamburgerCheckbox from "../checkbox/HamburgerCheckbox";
+import HamburgerCheckbox from "../checkbox/HamburgerCheckbox/HamburgerCheckbox";
 
 const Navbar = ({ children, ...props }: NavbarProps) => {
   const [screenY, setScreenY] = useState(0);
